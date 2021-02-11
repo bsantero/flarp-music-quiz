@@ -9,7 +9,12 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+    background-color: antiquewhite;
+    padding: 1%;
+    border-radius: 12px;
+    border: 3px solid rgba(82, 46, 5, 0.397);
+    box-shadow: 0 3px 10px 10px rgba(160, 144, 110, 0.1);
+    /* animation: App-logo-spin infinite 20s linear; */
   }
 }
 
@@ -35,4 +40,26 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.Submit-button {
+  box-shadow: inset 0px 1px 3px 0px #91b8b3;
+  background-color: #768d87;
+  border-radius: 3px;
+  border: 1px solid #566963;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Georgia;
+  font-size: 15px;
+  padding: 11px 23px;
+  text-decoration: none;
+  text-shadow: 0px -1px 0px #2b665e;
+}
+.Submit-button:hover {
+  background-color: #6c7c7c;
+}
+.Submit-button:active {
+  position: relative;
+  top: 1px;
 }
