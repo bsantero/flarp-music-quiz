@@ -159,8 +159,8 @@ function App() {
   return (
     <div className="App">
       <div className="Title-bar">
-        <img src={logo} className="Logo"></img>
-        <h1 className="Logo-title">Flarp!</h1>
+        <img src={logo} className="inline Logo"></img>
+        <h1 className="inline Logo-title">Flarp!</h1>
       </div>
       <header className="App-header">
         <div className="Question-bar">
@@ -192,6 +192,18 @@ function App() {
               </button>
             </div>
           </div>
+        </div>
+        <div className="Footer-bar">
+          <img src={logo} className="inline Logo"></img>
+          <h1 className="inline Logo-title">Flarp!</h1>
+        </div>
+        <div className="credit-container">
+          <p className="credit">
+            by{' '}
+            <a href="https://github.com/bsantero">
+              Brian Santero von der Embse
+            </a>
+          </p>
         </div>
       </header>
     </div>
