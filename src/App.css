@@ -9,20 +9,53 @@
   color: white;
 }
 
-.Title-bar * {
+.inline {
   max-height: 50px;
   display: inline;
 }
 
-.Title-bar .Logo {
-  /* max-height: 50px; */
+.Logo {
+  max-height: calc(24px + 3vmin) !important;
   border-radius: 20%;
 }
 
-.Title-bar .Logo-title {
+.Title-bar .Logo-title,
+.Footer-bar .Logo-title {
+  font-size: calc(18px + 2vmin) !important;
   position: absolute;
-  margin-top: 0.5vw;
+  margin-top: 0vw;
   margin-left: 0.5vw;
+}
+
+.Footer-bar {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  transform: rotate(180deg);
+  opacity: 8%;
+}
+
+.Footer-bar .Logo-title {
+  /* margin-top: -1.5vw; */
+}
+
+.credit-container {
+  position: absolute;
+  bottom: 1px;
+}
+
+.credit,
+.credit a,
+.credit a:visited {
+  font-size: 16px;
+  font-weight: 100;
+  color: rgba(141, 66, 141, 0.842);
+  text-shadow: 4px 4px 10px rgba(1, 2, 1, 0.596);
+}
+
+.credit a:hover {
+  font-size: 18px;
+  font-size-adjust: 2px;
 }
 
 .Question-bar {
