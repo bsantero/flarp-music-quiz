@@ -1,0 +1,22 @@
+name: Publish to GitHub Pages
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '15.x'
+      - name: Install dependencies
+        run: npm install
+      - name: Configure Git identity
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "automation@kaicataldo.com"
+      - name: Build & deploy site to GitHub Pages
+        run: npm run deploy
