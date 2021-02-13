@@ -4,6 +4,7 @@ import { useState } from 'react';
 import './App.css';
 import { keySignatures, keyofc, majorKeys, minorKeys } from './Keys';
 import './circle.css';
+import logo from './img/logo.png';
 
 // Constants
 
@@ -157,8 +158,11 @@ function App() {
 
   return (
     <div className="App">
+      <div className="Title-bar">
+        <img src={logo} className="Logo"></img>
+        <h1 className="Logo-title">Flarp!</h1>
+      </div>
       <header className="App-header">
-        <div className="Title-bar">Flarp!</div>
         <div className="Question-bar">
           <h3>What's the {mode.toUpperCase()} Key?</h3>
         </div>

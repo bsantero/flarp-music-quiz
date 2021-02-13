@@ -6,6 +6,23 @@
   position: absolute;
   top: 20px;
   left: 20px;
+  color: white;
+}
+
+.Title-bar * {
+  max-height: 50px;
+  display: inline;
+}
+
+.Title-bar .Logo {
+  /* max-height: 50px; */
+  border-radius: 20%;
+}
+
+.Title-bar .Logo-title {
+  position: absolute;
+  margin-top: 0.5vw;
+  margin-left: 0.5vw;
 }
 
 .Question-bar {
