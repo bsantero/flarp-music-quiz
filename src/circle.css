@@ -96,7 +96,7 @@ ul.circle {
   transform: rotate(90deg) translate(150px);
 }
 .circle .tick:nth-child(7) .label {
-  transform: rotate(-90deg) translate(-16px);
+  transform: rotate(-90deg) translate(0px);
 }
 .circle .tick:nth-child(8) {
   transform: rotate(120deg) translate(150px);

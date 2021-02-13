@@ -2,6 +2,32 @@
   text-align: center;
 }
 
+.Title-bar {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.Question-bar {
+  margin-top: -10vh;
+}
+
+.Score {
+  position: absolute;
+  /* margin-top: -5vh; */
+  margin-left: -4vw;
+  top: 28%;
+  left: 39.5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5vw;
+  height: 5vw;
+  border: 3px solid rgba(224, 224, 224, 0.397);
+  border-radius: 20%;
+  background-color: black;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

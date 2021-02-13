@@ -14,84 +14,86 @@ import flat5 from './img/keysigs/flat5.png';
 import flat6 from './img/keysigs/flat6.png';
 import flat7 from './img/keysigs/flat7.png';
 
+// F♯/G♭
+
 const majorKeys = {
-  0: { uri: keyofc, name: 'C' },
-  1: { uri: sharp1, name: 'G' },
-  2: { uri: sharp2, name: 'D' },
-  3: { uri: sharp3, name: 'A' },
-  4: { uri: sharp4, name: 'E' },
-  5: { uri: sharp5, name: 'B' },
+  0: { uri: keyofc, label: 'C' },
+  1: { uri: sharp1, label: 'G' },
+  2: { uri: sharp2, label: 'D' },
+  3: { uri: sharp3, label: 'A' },
+  4: { uri: sharp4, label: 'E' },
+  5: { uri: sharp5, label: 'B' },
   6: {
     uri: 'choose',
     sharp: {
       uri: sharp6,
-      name: 'F sharp'
+      label: 'F♯'
     },
     flat: {
       uri: flat6,
-      name: 'G flat'
+      label: 'G♭'
     }
   },
   7: {
     uri: 'choose',
     sharp: {
       uri: sharp7,
-      name: 'C sharp'
+      label: 'C♯'
     },
     flat: {
       uri: flat5,
-      name: 'D flat'
+      label: 'D♭'
     }
   },
-  8: { uri: flat4, name: 'A flat' },
-  9: { uri: flat3, name: 'E flat' },
-  10: { uri: flat2, name: 'B flat' },
-  11: { uri: flat1, name: 'F' }
+  8: { uri: flat4, label: 'A♭' },
+  9: { uri: flat3, label: 'E♭' },
+  10: { uri: flat2, label: 'B♭' },
+  11: { uri: flat1, label: 'F' }
 };
 
 const minorKeys = {
-  0: { uri: keyofc, name: 'A' },
-  1: { uri: sharp1, name: 'E' },
-  2: { uri: sharp2, name: 'B' },
-  3: { uri: sharp3, name: 'F sharp' },
-  4: { uri: sharp4, name: 'C sharp' },
+  0: { uri: keyofc, label: 'A' },
+  1: { uri: sharp1, label: 'E' },
+  2: { uri: sharp2, label: 'B' },
+  3: { uri: sharp3, label: 'F♯' },
+  4: { uri: sharp4, label: 'C♯' },
   5: {
     uri: 'choose',
     sharp: {
       uri: sharp5,
-      name: 'G sharp'
+      label: 'G♯'
     },
     flat: {
       uri: flat7,
-      name: 'A flat'
+      label: 'A♭'
     }
   },
   6: {
     uri: 'choose',
     sharp: {
       uri: sharp6,
-      name: 'D sharp'
+      label: 'D♯'
     },
     flat: {
       uri: flat6,
-      name: 'E flat'
+      label: 'E♭'
     }
   },
   7: {
     uri: 'choose',
     sharp: {
       uri: sharp7,
-      name: 'A sharp'
+      label: 'A♯'
     },
     flat: {
       uri: flat5,
-      name: 'B flat'
+      label: 'B♭'
     }
   },
-  8: { uri: flat4, name: 'F' },
-  9: { uri: flat3, name: 'C' },
-  10: { uri: flat2, name: 'G' },
-  11: { uri: flat1, name: 'D' }
+  8: { uri: flat4, label: 'F' },
+  9: { uri: flat3, label: 'C' },
+  10: { uri: flat2, label: 'G' },
+  11: { uri: flat1, label: 'D' }
 };
 
 const keySignatures = {
@@ -112,43 +114,43 @@ const keySignatures = {
   },
   3: {
     major: ['a'],
-    minor: ['f sharp'],
+    minor: ['f♯'],
     uri: [sharp3]
   },
   4: {
     major: ['e'],
-    minor: ['c sharp'],
+    minor: ['c♯'],
     uri: [sharp4]
   },
   5: {
-    major: ['b', 'c flat'],
-    minor: ['g sharp', 'a flat'],
+    major: ['b', 'c♭'],
+    minor: ['g♯', 'a♭'],
     uri: [sharp5, flat6]
   },
   6: {
-    major: ['f sharp', 'g flat'],
-    minor: ['d sharp', 'e flat'],
+    major: ['f♯', 'g♭'],
+    minor: ['d♯', 'e♭'],
     uri: [sharp6, flat6]
   },
   7: {
     sharp: 7,
     flat: 0,
-    major: ['c sharp', 'd flat'],
-    minor: ['a sharp', 'b flat'],
+    major: ['c♯', 'd♭'],
+    minor: ['a♯', 'b♭'],
     uri: [sharp7, flat5]
   },
   8: {
-    major: ['a flat'],
+    major: ['a♭'],
     minor: ['f'],
     uri: [flat4]
   },
   9: {
-    major: ['e flat'],
+    major: ['e♭'],
     minor: ['c'],
     uri: [flat3]
   },
   10: {
-    major: ['b flat'],
+    major: ['b♭'],
     minor: ['g'],
     uri: [flat2]
   },

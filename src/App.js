@@ -23,16 +23,42 @@ function App() {
   const [mode, updateMode] = useState(DEFAULT_MODE);
   const [modeArray, updateModeArray] = useState(majorKeys);
   const [imgSrc, updateImgSrc] = useState(keyofc);
+  const [sharpOrFlat, updateSharpOrFlat] = useState('sharp');
 
   console.log(`\nApp rerendered:`);
   console.log(`\tkeyId: ${keyId}`);
   console.log(`\tscore: ${score}`);
   console.log(`\tmode: ${mode}`);
-  console.log(`\timgSrc: ${imgSrc}`);
+  // console.log(`\timgSrc: ${imgSrc}`);
   // console.log(`\tmodeArray: ${modeArray}`);
 
+  function formatNoteName(index) {
+    const noteToFormat = modeArray[index];
+    // console.log(noteToFormat);
+    if (noteToFormat) {
+      let accidental = noteToFormat[2];
+      if (accidental == 's') {
+        return `${noteToFormat[0]}♯`;
+      } else if (accidental == 'f') {
+        return `${noteToFormat[0]}♭`;
+      } else return noteToFormat;
+    }
+  }
+
   function NoteButton({ note, handleClick }) {
-    formatNoteName(note);
+    let noteLabel = '';
+
+    const i = parseInt(note, 10);
+
+    console.log(i);
+
+    if (modeArray[i].uri == 'choose') {
+      noteLabel = modeArray[i][sharpOrFlat].label;
+    } else {
+      noteLabel = modeArray[i].label;
+    }
+    console.log(noteLabel);
+
     return (
       <div className="tick">
         <div className="label">
@@ -41,25 +67,11 @@ function App() {
               handleClick(note);
             }}
           >
-            {formatNoteName(note)}
+            {noteLabel}
           </button>
         </div>
       </div>
     );
-  }
-
-  function formatNoteName(note) {
-    // console.log(note);
-    const noteToFormat = modeArray[note];
-    if (note) {
-      let accidental = note[1];
-      // console.log(accidental);
-      if (accidental == 's') {
-        return `${note[0]}♯`;
-      } else if (accidental == 'f') {
-        return `${note[0]}♭`;
-      } else return note;
-    }
   }
 
   function generateQuality(accidental) {
@@ -86,7 +98,7 @@ function App() {
     }
 
     const majOrMin = generateQuality();
-    console.log(`Your random number is: ${newKeyId} ${majOrMin}`);
+    // console.log(`Your random number is: ${newKeyId} ${majOrMin}`);
     updateKeyId(newKeyId);
 
     if (majOrMin == 'major') {
@@ -102,20 +114,21 @@ function App() {
     let newNoteFromArray = {};
 
     if (modeArray[newKeyId].uri == 'choose') {
-      const sharpOrFlat = generateQuality(true);
-      if (sharpOrFlat == 'sharp') {
+      const newSharpOrFlat = generateQuality(true);
+      if (newSharpOrFlat == 'sharp') {
         console.log('generated a sharp key');
-      } else if (sharpOrFlat == 'flat') {
+      } else if (newSharpOrFlat == 'flat') {
         console.log('generated a flat key');
       } else {
         console.log('Error: no sharp or flat given');
       }
-      newNoteFromArray = modeArray[newKeyId][sharpOrFlat];
+      updateSharpOrFlat(newSharpOrFlat);
+      newNoteFromArray = modeArray[newKeyId][newSharpOrFlat];
     } else {
       newNoteFromArray = modeArray[newKeyId];
     }
 
-    console.log(Object.values(newNoteFromArray));
+    // console.log(Object.values(newNoteFromArray));
 
     updateImgSrc(newNoteFromArray.uri);
   }
@@ -145,10 +158,14 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <div>
+        <div className="Title-bar">Flarp!</div>
+        <div className="Question-bar">
           <h3>What's the {mode.toUpperCase()} Key?</h3>
         </div>
         <div>
+          <span className="Score">
+            <h5>{score}</h5>
+          </span>
           <img src={imgSrc} className="App-logo" alt="logo" />
         </div>
         <div className="circleOfFifths">
@@ -170,9 +187,6 @@ function App() {
                 Skip!
               </button>
             </div>
-          </div>
-          <div className="score">
-            <h5>{score}</h5>
           </div>
         </div>
       </header>
