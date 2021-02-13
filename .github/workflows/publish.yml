@@ -17,6 +17,6 @@ jobs:
       - name: Configure Git identity
         run: |
           git config user.name "GitHub Actions"
-          git config user.email "automation@kaicataldo.com"
+          git config user.email "code@duckchase.com"
       - name: Build & deploy site to GitHub Pages
         run: npm run deploy
