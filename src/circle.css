@@ -1,0 +1,201 @@
+.circle {
+  width: 33vh;
+  height: 33vh;
+  margin-top: 5vh;
+  background: rgb(1, 53, 40);
+  border-radius: 50%;
+  padding: 0;
+  box-shadow: 0 3px 10px 20px rgba(59, 56, 49, 0.226);
+  position: relative;
+}
+
+ul.circle {
+  list-style-type: none; /* Remove bullets */
+}
+
+.circle li {
+  position: absolute;
+}
+
+.circle .tick {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -15px;
+  margin-top: -15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circleOfFifths button {
+  text-align: center;
+  font-size: 2.5vh;
+  background: rgb(3, 100, 76);
+  color: White;
+  border-radius: 50%;
+  border: rgb(3, 100, 76);
+  padding: 10px;
+}
+
+.circleOfFifths button:hover {
+  background-color: #1a5858;
+}
+
+.circleOfFifths button:active {
+  position: relative;
+  top: 1px;
+}
+
+.circleOfFiths button:focus {
+  outline: 0 !important;
+  background-color: #224141;
+}
+
+.circle .Submit-button {
+  transform: translate(1vh) translateY(15vh);
+}
+
+.circle .tick:nth-child(1) {
+  transform: rotate(-90deg) translate(150px);
+}
+.circle .tick:nth-child(1) .label {
+  transform: rotate(90deg) translate(0px);
+}
+.circle .tick:nth-child(2) {
+  transform: rotate(-60deg) translate(150px);
+}
+.circle .tick:nth-child(2) .label {
+  transform: rotate(60deg) translate(0px);
+}
+.circle .tick:nth-child(3) {
+  transform: rotate(-30deg) translate(150px);
+}
+.circle .tick:nth-child(3) .label {
+  transform: rotate(30deg) translate(0px);
+}
+.circle .tick:nth-child(4) {
+  transform: rotate(0deg) translate(150px);
+}
+.circle .tick:nth-child(4) .label {
+  transform: rotate(0deg) translate(0px);
+}
+.circle .tick:nth-child(5) {
+  transform: rotate(30deg) translate(150px);
+}
+.circle .tick:nth-child(5) .label {
+  transform: rotate(-30deg) translate(0px);
+}
+.circle .tick:nth-child(6) {
+  transform: rotate(60deg) translate(150px);
+}
+.circle .tick:nth-child(6) .label {
+  transform: rotate(-60deg) translate(0px);
+}
+.circle .tick:nth-child(7) {
+  transform: rotate(90deg) translate(150px);
+}
+.circle .tick:nth-child(7) .label {
+  transform: rotate(-90deg) translate(0px);
+}
+.circle .tick:nth-child(8) {
+  transform: rotate(120deg) translate(150px);
+}
+.circle .tick:nth-child(8) .label {
+  transform: rotate(-120deg) translate(0px);
+}
+.circle .tick:nth-child(9) {
+  transform: rotate(150deg) translate(150px);
+}
+.circle .tick:nth-child(9) .label {
+  transform: rotate(-150deg) translate(0px);
+}
+.circle .tick:nth-child(10) {
+  transform: rotate(180deg) translate(150px);
+}
+.circle .tick:nth-child(10) .label {
+  transform: rotate(-180deg) translate(0px);
+}
+.circle .tick:nth-child(11) {
+  transform: rotate(210deg) translate(150px);
+}
+.circle .tick:nth-child(11) .label {
+  transform: rotate(-210deg) translate(0px);
+}
+.circle .tick:nth-child(12) {
+  transform: rotate(240deg) translate(150px);
+}
+.circle .tick:nth-child(12) .label {
+  transform: rotate(-240deg) translate(0px);
+}
+
+/* .circle .button-C {
+    transform: translate(15vh) translateY(-2vh);
+}
+
+.circle .button-G {
+    transform: translate(24.5vh) translateY(1vh);
+}
+
+.circle .button-D {
+    transform: translate(29vh) translateY(7vh);
+}
+
+.circle .button-A {
+    transform: translate(31vh) translateY(14vh);
+}
+
+.circle .button-E {
+    transform: translate(29vh) translateY(21vh);
+}
+
+.circle .button-B {
+    transform: translate(24.5vh) translateY(27vh);
+}
+
+.circle .button-Fsharp {
+    transform: translate(13vh) translateY(31.5vh);
+}
+
+.circle .button-Db {
+    transform: translate(6vh) translateY(27vh);
+}
+
+.circle .button-Ab {
+    transform: translate(1vh) translateY(21vh);
+}
+
+.circle .button-Eb {
+    transform: translate(-1.2vh) translateY(14vh);
+}
+
+.circle .button-Bb {
+    transform: translate(1vh) translateY(7vh);
+}
+
+.circle .button-F {
+    transform: translate(6vh) translateY(1vh);
+} */
+
+.Submit-button {
+  box-shadow: inset 0px 1px 3px 0px #91b8b3;
+  background-color: #768d87;
+  border-radius: 3px;
+  border: 1px solid #566963;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Georgia;
+  font-size: 15px;
+  padding: 11px 23px;
+  text-decoration: none;
+  text-shadow: 0px -1px 0px #2b665e;
+}
+.Submit-button:hover {
+  background-color: #1a5858;
+}
+.Submit-button:active {
+  position: relative;
+  top: 1px;
+  border-radius: 50%;
+}
