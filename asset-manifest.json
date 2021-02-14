@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/flarp-music-quiz/static/css/main.da7c9036.chunk.css",
-    "main.js": "/flarp-music-quiz/static/js/main.069badd6.chunk.js",
-    "main.js.map": "/flarp-music-quiz/static/js/main.069badd6.chunk.js.map",
-    "runtime-main.js": "/flarp-music-quiz/static/js/runtime-main.140011f1.js",
-    "runtime-main.js.map": "/flarp-music-quiz/static/js/runtime-main.140011f1.js.map",
-    "static/js/2.7070ff53.chunk.js": "/flarp-music-quiz/static/js/2.7070ff53.chunk.js",
-    "static/js/2.7070ff53.chunk.js.map": "/flarp-music-quiz/static/js/2.7070ff53.chunk.js.map",
-    "static/js/3.ee935986.chunk.js": "/flarp-music-quiz/static/js/3.ee935986.chunk.js",
-    "static/js/3.ee935986.chunk.js.map": "/flarp-music-quiz/static/js/3.ee935986.chunk.js.map",
+    "main.css": "/flarp-music-quiz/static/css/main.1b8fc66d.chunk.css",
+    "main.js": "/flarp-music-quiz/static/js/main.41527574.chunk.js",
+    "main.js.map": "/flarp-music-quiz/static/js/main.41527574.chunk.js.map",
+    "runtime-main.js": "/flarp-music-quiz/static/js/runtime-main.464a7ee6.js",
+    "runtime-main.js.map": "/flarp-music-quiz/static/js/runtime-main.464a7ee6.js.map",
+    "static/js/2.0290d937.chunk.js": "/flarp-music-quiz/static/js/2.0290d937.chunk.js",
+    "static/js/2.0290d937.chunk.js.map": "/flarp-music-quiz/static/js/2.0290d937.chunk.js.map",
+    "static/js/3.73b69b58.chunk.js": "/flarp-music-quiz/static/js/3.73b69b58.chunk.js",
+    "static/js/3.73b69b58.chunk.js.map": "/flarp-music-quiz/static/js/3.73b69b58.chunk.js.map",
     "index.html": "/flarp-music-quiz/index.html",
-    "static/css/main.da7c9036.chunk.css.map": "/flarp-music-quiz/static/css/main.da7c9036.chunk.css.map",
-    "static/js/2.7070ff53.chunk.js.LICENSE.txt": "/flarp-music-quiz/static/js/2.7070ff53.chunk.js.LICENSE.txt"
+    "static/css/main.1b8fc66d.chunk.css.map": "/flarp-music-quiz/static/css/main.1b8fc66d.chunk.css.map",
+    "static/js/2.0290d937.chunk.js.LICENSE.txt": "/flarp-music-quiz/static/js/2.0290d937.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.140011f1.js",
-    "static/js/2.7070ff53.chunk.js",
-    "static/css/main.da7c9036.chunk.css",
-    "static/js/main.069badd6.chunk.js"
+    "static/js/runtime-main.464a7ee6.js",
+    "static/js/2.0290d937.chunk.js",
+    "static/css/main.1b8fc66d.chunk.css",
+    "static/js/main.41527574.chunk.js"
   ]
 }
