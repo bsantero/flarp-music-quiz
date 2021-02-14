@@ -4,6 +4,7 @@ import { useState } from 'react';
 import './App.css';
 import { keySignatures, keyofc, majorKeys, minorKeys } from './Keys';
 import './circle.css';
+import './mediaqueries.css';
 import logo from './img/logo.png';
 
 // Constants
@@ -163,16 +164,19 @@ function App() {
         <h1 className="inline Logo-title">Flarp!</h1>
       </div>
       <header className="App-header">
-        <div className="Question-bar">
+        <div className="child Question-bar">
           <h3>What's the {mode.toUpperCase()} Key?</h3>
         </div>
-        <div>
-          <span className="Score">
-            <h5>{score}</h5>
-          </span>
+        <div className="child image-container">
           <img src={imgSrc} className="App-logo" alt="logo" />
+          <button className="Skip-button" onClick={handleSkip}>
+            Skip!
+          </button>
         </div>
-        <div className="circleOfFifths">
+        <div className="child circleOfFifths">
+          <div className="Score">
+            <h5>{score}</h5>
+          </div>
           <div className="circle">
             <NoteButton note="0" handleClick={handleClick} />
             <NoteButton note="1" handleClick={handleClick} />
@@ -186,11 +190,6 @@ function App() {
             <NoteButton note="9" handleClick={handleClick} />
             <NoteButton note="10" handleClick={handleClick} />
             <NoteButton note="11" handleClick={handleClick} />
-            <div>
-              <button className="Submit-button" onClick={handleSkip}>
-                Skip!
-              </button>
-            </div>
           </div>
         </div>
         <div className="Footer-bar">
