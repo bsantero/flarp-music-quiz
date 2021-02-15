@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/flarp-music-quiz/static/css/main.291d0b3f.chunk.css",
-    "main.js": "/flarp-music-quiz/static/js/main.460972f5.chunk.js",
-    "main.js.map": "/flarp-music-quiz/static/js/main.460972f5.chunk.js.map",
+    "main.css": "/flarp-music-quiz/static/css/main.effc6b6d.chunk.css",
+    "main.js": "/flarp-music-quiz/static/js/main.b1a18339.chunk.js",
+    "main.js.map": "/flarp-music-quiz/static/js/main.b1a18339.chunk.js.map",
     "runtime-main.js": "/flarp-music-quiz/static/js/runtime-main.605f1934.js",
     "runtime-main.js.map": "/flarp-music-quiz/static/js/runtime-main.605f1934.js.map",
     "static/js/2.3bc38bdb.chunk.js": "/flarp-music-quiz/static/js/2.3bc38bdb.chunk.js",
@@ -10,13 +10,13 @@
     "static/js/3.361a74ce.chunk.js": "/flarp-music-quiz/static/js/3.361a74ce.chunk.js",
     "static/js/3.361a74ce.chunk.js.map": "/flarp-music-quiz/static/js/3.361a74ce.chunk.js.map",
     "index.html": "/flarp-music-quiz/index.html",
-    "static/css/main.291d0b3f.chunk.css.map": "/flarp-music-quiz/static/css/main.291d0b3f.chunk.css.map",
+    "static/css/main.effc6b6d.chunk.css.map": "/flarp-music-quiz/static/css/main.effc6b6d.chunk.css.map",
     "static/js/2.3bc38bdb.chunk.js.LICENSE.txt": "/flarp-music-quiz/static/js/2.3bc38bdb.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.605f1934.js",
     "static/js/2.3bc38bdb.chunk.js",
-    "static/css/main.291d0b3f.chunk.css",
-    "static/js/main.460972f5.chunk.js"
+    "static/css/main.effc6b6d.chunk.css",
+    "static/js/main.b1a18339.chunk.js"
   ]
 }
