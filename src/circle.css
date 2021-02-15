@@ -1,39 +1,37 @@
-.circle {
-  width: 33vh;
-  height: 33vh;
-  margin-top: -9vh;
-  border: 15px solid rgba(9, 78, 87, 0.5);
-  border-radius: 50%;
-  padding: 0;
-  box-shadow: 0 10px 30px 30px rgba(69, 119, 128, 0.1);
+.circleOfFifths {
   position: relative;
-}
-
-.circle .tick {
-  position: absolute;
-  left: 47.5%;
-  top: 46%;
-  margin-left: -15px;
-  margin-top: -15px;
+  width: 100vw;
+  height: 100%;
+  outline: 1px solid rgb(255, 200, 200);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+.circle {
+  width: 33vmax;
+  height: 33vmax;
+  padding: 0;
+  border: 15px solid rgba(9, 78, 87, 0.5);
+  border-radius: 50%;
+  box-shadow: 0 10px 30px 30px rgba(69, 119, 128, 0.1);
+  position: relative;
+}
+
+.circle .tick {
+  display: none;
+  position: absolute;
+  left: unset;
+  top: unset;
+}
+
 .circleOfFifths button {
-  text-align: center;
-  font-size: 3.5vh;
+  padding: 0.3em 0.35em;
   background: rgba(13, 24, 44, 0.7);
   color: rgb(158, 245, 233);
   border-radius: 35%;
   border: rgb(3, 100, 76);
-  padding: 0.3em 0.35em;
-}
-
-.Skip-button:hover,
-.circleOfFifths button:hover {
-  background: rgb(80, 127, 221);
-  color: rgb(255, 255, 255);
+  font-size: 3.5vmax;
 }
 
 .circleOfFifths button:active {
@@ -45,11 +43,87 @@
   background-color: #224141;
 }
 
-.Skip-button {
-  position: absolute;
-  top: 2vh;
-  right: 2vh;
+.circle .tick:nth-child(1) {
+  transform: rotate(-90deg) translate(17vmax);
 }
+.circle .tick:nth-child(1) .label {
+  transform: rotate(90deg) translate(0px);
+}
+.circle .tick:nth-child(7) {
+  transform: rotate(90deg) translate(17vmax);
+}
+.circle .tick:nth-child(7) .label {
+  transform: rotate(-90deg) translate(0px);
+}
+
+.circle .tick:nth-child(2) {
+  transform: rotate(-60deg) translate(17vmax);
+}
+.circle .tick:nth-child(2) .label {
+  transform: rotate(60deg) translate(0px);
+}
+.circle .tick:nth-child(12) {
+  transform: rotate(240deg) translate(17vmax);
+}
+.circle .tick:nth-child(12) .label {
+  transform: rotate(-240deg) translate(0px);
+}
+
+.circle .tick:nth-child(3) {
+  transform: rotate(-30deg) translate(17vmax);
+}
+.circle .tick:nth-child(3) .label {
+  transform: rotate(30deg) translate(0px);
+}
+.circle .tick:nth-child(11) {
+  transform: rotate(210deg) translate(17vmax);
+}
+.circle .tick:nth-child(11) .label {
+  transform: rotate(-210deg) translate(0px);
+}
+
+.circle .tick:nth-child(4) {
+  transform: rotate(0deg) translate(17vmax);
+}
+.circle .tick:nth-child(4) .label {
+  transform: rotate(0deg) translate(0px);
+}
+.circle .tick:nth-child(10) {
+  transform: rotate(180deg) translate(17vmax);
+}
+.circle .tick:nth-child(10) .label {
+  transform: rotate(-180deg) translate(0px);
+}
+
+.circle .tick:nth-child(5) {
+  transform: rotate(30deg) translate(17vmax);
+}
+.circle .tick:nth-child(5) .label {
+  transform: rotate(-30deg) translate(0px);
+}
+.circle .tick:nth-child(9) {
+  transform: rotate(150deg) translate(17vmax);
+}
+.circle .tick:nth-child(9) .label {
+  transform: rotate(-150deg) translate(0px);
+}
+
+.circle .tick:nth-child(6) {
+  transform: rotate(60deg) translate(17vmax);
+}
+.circle .tick:nth-child(6) .label {
+  transform: rotate(-60deg) translate(0px);
+}
+.circle .tick:nth-child(8) {
+  transform: rotate(120deg) translate(17vmax);
+}
+.circle .tick:nth-child(8) .label {
+  transform: rotate(-120deg) translate(0px);
+}
+
+
+/*
+
 
 .circle .tick:nth-child(1) {
   transform: rotate(-90deg) translate(17vh);
@@ -129,29 +203,5 @@
   transform: rotate(-120deg) translate(0px);
 }
 
-.Skip-button {
-  /* box-shadow: inset 0px 1px 3px 0px #91b8b3; */
-  position: absolute;
-  /* bottom: 0; */
-  background-color: #dd50b299;
-  border-radius: 3px;
-  border: 2px solid rgb(49, 41, 49);
-  display: inline-block;
-  cursor: pointer;
-  color: #f7b7fc;
-  font-family: Georgia;
-  font-size: 15px;
-  padding: 11px 23px;
-  text-decoration: none;
-  text-shadow: 0px -1px 0px #2b665e;
-}
 
-.Skip-button:focus,
-.Skip-button:hover {
-  background-color: rgb(125, 21, 132);
-  color: #ffffff;
-}
-.Skip-button:active {
-  top: calc(2vh + 1px);
-  background-color: rgba(125, 21, 132);
-}
+*/

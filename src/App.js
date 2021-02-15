@@ -1,8 +1,7 @@
-// F♯/G♭
-
 import { useState } from 'react';
-import './App.css';
 import { keySignatures, keyofc, majorKeys, minorKeys } from './Keys';
+import './App.css';
+import './flexbox.css';
 import './circle.css';
 import './mediaqueries.css';
 import logo from './img/logo.png';
@@ -159,19 +158,23 @@ function App() {
 
   return (
     <div className="App">
-      <div className="Title-bar">
-        <img src={logo} className="inline Logo"></img>
-        <h1 className="inline Logo-title">Flarp!</h1>
-      </div>
       <header className="App-header">
+        <div className="brand">
+          <img src={logo} className="inline App-logo"></img>
+          <h1 className="inline Logo-title">Flarp!</h1>
+        </div>
+      </header>
+      <main className="App-main">
         <div className="child Question-bar">
           <h3>What's the {mode.toUpperCase()} Key?</h3>
         </div>
-        <div className="child image-container">
-          <img src={imgSrc} className="App-logo" alt="logo" />
+        <div className="child skip-container">
           <button className="Skip-button" onClick={handleSkip}>
             Skip!
           </button>
+        </div>
+        <div className="child image-container">
+          <img src={imgSrc} className="key-img" alt="logo" />
         </div>
         <div className="child circleOfFifths">
           <div className="Score">
@@ -192,19 +195,19 @@ function App() {
             <NoteButton note="11" handleClick={handleClick} />
           </div>
         </div>
-        <div className="Footer-bar">
-          <img src={logo} className="inline Logo"></img>
+      </main>
+      <footer className="child App-footer">
+        <p className="credit">
+          by <a href="https://github.com/bsantero">Brian Santero von der Embse</a>
+        </p>
+        <div className="brand reflection">
+          <img src={logo} className="inline App-logo"></img>
           <h1 className="inline Logo-title">Flarp!</h1>
         </div>
-        <div className="credit-container">
-          <p className="credit">
-            by{' '}
-            <a href="https://github.com/bsantero">
-              Brian Santero von der Embse
-            </a>
-          </p>
-        </div>
-      </header>
+        {/* <div className="credit-container">
+
+        </div> */}
+      </footer>
     </div>
   );
 }
