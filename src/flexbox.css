@@ -1,6 +1,5 @@
 @media only screen and (max-device-width: 768px) and (orientation: portrait){
     .App-main {
-        background-color: rgb(191, 74, 74);
         flex-wrap: nowrap;
         flex-direction: column;
         justify-content: space-around;
@@ -12,7 +11,8 @@
 
     .Question-bar {
         flex-grow: 1;
-        order: 3;
+        order: 3
+        ;
     }
 
     .image-container {
@@ -50,6 +50,11 @@
 
   .image-container {
     flex-grow: 2;
+  }
+
+  .image-container,
+  .circleOfFifths {
+    margin-bottom: 1em;
   }
 
   .App-footer .Logo-title {

@@ -9,8 +9,8 @@
 }
 
 .circle {
-  width: 33vmax;
-  height: 33vmax;
+  width: 50vmin;
+  height: 50vmin;
   padding: 0;
   border: 15px solid rgba(9, 78, 87, 0.5);
   border-radius: 50%;
@@ -19,11 +19,11 @@
 }
 
 .circle .tick {
-  display: none;
+  /* display: none; */
+  left: calc((100vmin / 4) - 1em);;
+  top: calc((100vmin / 4) - 1em);;
   position: absolute;
-  left: unset;
-  top: unset;
-}
+  }
 
 .circleOfFifths button {
   padding: 0.3em 0.35em;
@@ -44,78 +44,78 @@
 }
 
 .circle .tick:nth-child(1) {
-  transform: rotate(-90deg) translate(17vmax);
+  transform: rotate(-90deg) translate(calc(25vmin + .5em));
 }
 .circle .tick:nth-child(1) .label {
   transform: rotate(90deg) translate(0px);
 }
 .circle .tick:nth-child(7) {
-  transform: rotate(90deg) translate(17vmax);
+  transform: rotate(90deg) translate(calc(25vmin + .5em));
 }
 .circle .tick:nth-child(7) .label {
   transform: rotate(-90deg) translate(0px);
 }
 
 .circle .tick:nth-child(2) {
-  transform: rotate(-60deg) translate(17vmax);
+  transform: rotate(-60deg) translate(calc(25vmin + .5em));
 }
 .circle .tick:nth-child(2) .label {
   transform: rotate(60deg) translate(0px);
 }
 .circle .tick:nth-child(12) {
-  transform: rotate(240deg) translate(17vmax);
+  transform: rotate(240deg) translate(calc(25vmin + .5em));
 }
 .circle .tick:nth-child(12) .label {
   transform: rotate(-240deg) translate(0px);
 }
 
 .circle .tick:nth-child(3) {
-  transform: rotate(-30deg) translate(17vmax);
+  transform: rotate(-30deg) translate(calc(25vmin + .5em));
 }
 .circle .tick:nth-child(3) .label {
   transform: rotate(30deg) translate(0px);
 }
 .circle .tick:nth-child(11) {
-  transform: rotate(210deg) translate(17vmax);
+  transform: rotate(210deg) translate(calc(25vmin + .5em));
 }
 .circle .tick:nth-child(11) .label {
   transform: rotate(-210deg) translate(0px);
 }
 
 .circle .tick:nth-child(4) {
-  transform: rotate(0deg) translate(17vmax);
+  transform: rotate(0deg) translate(calc(25vmin + .5em));
 }
 .circle .tick:nth-child(4) .label {
   transform: rotate(0deg) translate(0px);
 }
 .circle .tick:nth-child(10) {
-  transform: rotate(180deg) translate(17vmax);
+  transform: rotate(180deg) translate(calc(25vmin + .5em));
 }
 .circle .tick:nth-child(10) .label {
   transform: rotate(-180deg) translate(0px);
 }
 
 .circle .tick:nth-child(5) {
-  transform: rotate(30deg) translate(17vmax);
+  transform: rotate(30deg) translate(calc(25vmin + .5em));
 }
 .circle .tick:nth-child(5) .label {
   transform: rotate(-30deg) translate(0px);
 }
 .circle .tick:nth-child(9) {
-  transform: rotate(150deg) translate(17vmax);
+  transform: rotate(150deg) translate(calc(25vmin + .5em));
 }
 .circle .tick:nth-child(9) .label {
   transform: rotate(-150deg) translate(0px);
 }
 
 .circle .tick:nth-child(6) {
-  transform: rotate(60deg) translate(17vmax);
+  transform: rotate(60deg) translate(calc(25vmin + .5em));
 }
 .circle .tick:nth-child(6) .label {
   transform: rotate(-60deg) translate(0px);
 }
 .circle .tick:nth-child(8) {
-  transform: rotate(120deg) translate(17vmax);
+  transform: rotate(120deg) translate(calc(25vmin + .5em));
 }
 .circle .tick:nth-child(8) .label {
   transform: rotate(-120deg) translate(0px);

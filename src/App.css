@@ -1,6 +1,7 @@
 .App {
+  background-color: #253555;
   text-align: center;
-  max-height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
@@ -14,6 +15,10 @@ header .App-header {
   top: 3vmin;
   left: 3vmin;
   color: white;
+  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  flex-direction: row;
 }
 
 .inline {
@@ -22,8 +27,12 @@ header .App-header {
 }
 
 .App-logo {
-  max-height: calc(24px + 3vmin) !important;
+  max-height: 2em !important;
   border-radius: 20%;
+}
+
+.Logo-title {
+  margin: auto;
 }
 
 .Title-bar .Logo-title,
@@ -76,14 +85,15 @@ div.Score {
 
 .App-main {
   background-color: #253555;
-  min-height: calc(100vh - 1.5em);
-  max-height: 96vh;
+  min-height: 94vh;
+  max-height: calc(100vh - 1.5em);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
   font-size: calc(10px + 2vmin);
   color: white;
+  flex: 1 0 auto;
 }
 
 .App-link {
@@ -91,13 +101,9 @@ div.Score {
 }
 
 .App-footer {
-  /* position: absolute; */
-  /* bottom: 20px; */
-  /* right: 20px; */
   height: 1.5em;
-  background-color: rgba(194, 92, 194, 0.842);
+  font-size: .9em;
   color: beige;
-  outline: 1px solid rgba(0, 0, 0, 0.76);
 }
 
 .reflection {
@@ -116,13 +122,18 @@ div.Score {
 
 .credit a,
 .credit a:visited {
-  font-size: 16px;
+  font-size: .9em;
   font-weight: 100;
-  color: rgba(97, 13, 97, 0.842);
+  color: inherit;
   text-shadow: 4px 4px 10px rgba(1, 2, 1, 0.596);
 }
 
 .credit a:hover {
   font-size: 18px;
   font-size-adjust: 2px;
+}
+
+.App-footer {
+  /* background-color: rgba(194, 92, 194, 0.842); */
+  outline: 1px solid rgba(0, 0, 0, 0.76);
 }
