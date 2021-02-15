@@ -1,13 +1,31 @@
-.App {
-  text-align: center;
-  max-height: 100vh;
+:root {
+  --radius: 45vmin;
+  --button-text: calc(1.5 * (var(--radius) / 10));
+  --base: calc(var(--radius) / 3.14);
+  --button-transform: calc(var(--radius) / 2 + (var(--button-text) / 3) );
 }
 
-.Title-bar {
+.App {
+  background-color: #253555;
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header .App-header {
+
+}
+
+.brand {
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 3vmin;
+  left: 3vmin;
   color: white;
+  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  flex-direction: row;
 }
 
 .inline {
@@ -15,73 +33,58 @@
   display: inline;
 }
 
-.Logo {
-  max-height: calc(24px + 3vmin) !important;
+.App-logo {
+  max-height: 2em !important;
   border-radius: 20%;
+}
+
+.Logo-title {
+  margin: auto;
 }
 
 .Title-bar .Logo-title,
 .Footer-bar .Logo-title {
   font-size: calc(18px + 2vmin) !important;
+  /* position: absolute; */
+  /* margin-top: 0vw; */
+  /* margin-left: 0.5vw; */
+}
+
+.key-img {
+  max-height: 45vmin;
+  min-height: 40vmin;
+  margin-top: 2vh;
+  pointer-events: none;
+}
+
+div.Score {
   position: absolute;
-  margin-top: 0vw;
-  margin-left: 0.5vw;
-}
-
-.Footer-bar {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  transform: rotate(180deg);
-  opacity: 10%;
-}
-
-.Footer-bar .Logo-title {
-  /* margin-top: -1.5vw; */
-}
-
-.credit-container {
-  position: absolute;
-  bottom: 1px;
-}
-
-.credit,
-.credit a,
-.credit a:visited {
-  font-size: 16px;
-  font-weight: 100;
-  color: rgba(141, 66, 141, 0.842);
-  text-shadow: 4px 4px 10px rgba(1, 2, 1, 0.596);
-}
-
-.credit a:hover {
-  font-size: 18px;
-  font-size-adjust: 2px;
-}
-
-.Score {
-  position: relative;
-  top: 13.5vh;
   width: 10vw;
   height: 10vw;
   margin: auto;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   border: 3px solid rgba(23, 65, 86, 0.73);
   border-radius: 35%;
   background-color: black;
   box-shadow: 0 8px 30px 22px rgba(4, 12, 14, 0.35);
 }
 
-.App-logo {
-  height: 35vmax;
-  min-height: 31vmin;
-  pointer-events: none;
+.Skip-button:hover,
+.circleOfFifths button:hover {
+  background: rgb(80, 127, 221);
+  color: rgb(255, 255, 255);
+}
+
+.Skip-button {
+  position: absolute;
+  top: 2vh;
+  right: 2vh;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
+  .key-img {
     background-color: antiquewhite;
     padding: 1%;
     border-radius: 12px;
@@ -91,36 +94,52 @@
   }
 }
 
-.App-header {
+.App-main {
   background-color: #253555;
-  min-height: 100vh;
+  min-height: calc(100vh - 1.3em);
+  max-height: calc(100vh - 1.5em);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
   font-size: calc(10px + 2vmin);
   color: white;
+  flex: 1 0 auto;
 }
 
 .App-link {
   color: #61dafb;
 }
 
-.App-header .child:first-child {
-  width: 100%;
+.App-footer {
+  height: 1.5em;
+  font-size: .9em;
+  color: beige;
 }
 
-.Question-bar {
-  flex-grow: 1;
-  /* margin-top: -10vh; */
+.reflection {
+  /* position: absolute; */
+  transform: rotate(180deg);
+  opacity: 20%;
+  left: unset;
+  top: unset;
+  bottom: 3vmin;
+  right: 3vmin;
 }
 
-.image-container {
-  flex-grow: 3;
+.App-footer p {
   margin: auto;
 }
 
-.image-container,
-.circleOfFifths {
-  flex-grow: 6;
+.credit a,
+.credit a:visited {
+  font-size: .9em;
+  font-weight: 100;
+  color: inherit;
+  text-shadow: 4px 4px 10px rgba(1, 2, 1, 0.596);
+}
+
+.credit a:hover {
+  font-size: 18px;
+  font-size-adjust: 2px;
 }

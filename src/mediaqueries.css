@@ -1,19 +1,20 @@
-@media only screen and (min-device-width: 320px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
-  .App-header {
+@media only screen and (max-device-height: 4000px) and (orientation: landscape) {
+  .App-main {
+    /* background-color: rgb(74, 191, 74) !important; */
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: space-around safe;
+    /* justify-content: space-around safe; */
   }
 
-  .child:first-child {
+  .Question-bar {
     width: 100%;
   }
 
-  .child:not(:first-child) {
+  /* .App-main .child:not(:first-child) {
     flex: 1;
-  }
+  } */
 
-  .question-bar: {
+  .question-bar {
     flex-grow: 1;
   }
 
@@ -21,164 +22,33 @@
     flex-grow: 2;
   }
 
+  .image-container,
   .circleOfFifths {
-    /* position: absolute; */
-    /* left: 50%; */
+    margin-bottom: 1em;
+  }
+
+  .circleOfFifths {
+    flex: 4;
   }
 
   .circle {
-    margin: auto;
-    width: 62vmin;
-    height: 62vmin;
+    max-width: 33vmax;
+    max-height: 33vmax;
   }
 
-  .circle .tick {
-    left: 50%;
-    top: 48%;
+  .circle .tick {  
+    /* left: calc(14vmax - .8em) !important;
+    top: calc(14vmax - .8em) !important; */
   }
 
-  .circle .tick:nth-child(1) {
-    transform: rotate(-90deg) translate(28vh);
+  .App-footer .Logo-title {
+      display: none;
   }
-  .circle .tick:nth-child(2) {
-    transform: rotate(-60deg) translate(28vh);
-  }
-  .circle .tick:nth-child(3) {
-    transform: rotate(-30deg) translate(28vh);
-  }
-  .circle .tick:nth-child(4) {
-    transform: rotate(0deg) translate(28vh);
-  }
-  .circle .tick:nth-child(5) {
-    transform: rotate(30deg) translate(28vh);
-  }
-  .circle .tick:nth-child(6) {
-    transform: rotate(60deg) translate(28vh);
-  }
-  .circle .tick:nth-child(7) {
-    transform: rotate(90deg) translate(28vh);
-  }
-  .circle .tick:nth-child(8) {
-    transform: rotate(120deg) translate(28vh);
-  }
-  .circle .tick:nth-child(9) {
-    transform: rotate(150deg) translate(28vh);
-  }
-  .circle .tick:nth-child(10) {
-    transform: rotate(180deg) translate(28vh);
-  }
-  .circle .tick:nth-child(11) {
-    transform: rotate(210deg) translate(28vh);
-  }
-  .circle .tick:nth-child(12) {
-    transform: rotate(240deg) translate(28vh);
-  }
-
-  .Score {
-    top: 14vh;
-  }
+  
 }
 
-/* iPhone 4 */
-@media only screen and (min-device-width: 320px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
-  .App-logo {
-    height: 30vmax;
-  }
 
-  .Question-bar {
-    margin-top: 15vmin;
-  }
 
-  .Score {
-    top: 9.5vmax;
-  }
-
-  .circleOfFifths button {
-    font-size: 2.5vh;
-    padding: 1vh;
-  }
-
-  .circle {
-    /* margin-top: 15vmin; */
-    width: 45vmin;
-    height: 45vmin;
-  }
-  .circle .tick {
-    left: 42%;
-    top: 42%;
-    margin-left: 0;
-    margin-top: 0;
-  }
-
-  .circle .tick:nth-child(1) {
-    transform: rotate(-90deg) translate(12vh);
-  }
-  .circle .tick:nth-child(2) {
-    transform: rotate(-60deg) translate(12vh);
-  }
-  .circle .tick:nth-child(3) {
-    transform: rotate(-30deg) translate(12vh);
-  }
-  .circle .tick:nth-child(4) {
-    transform: rotate(0deg) translate(12vh);
-  }
-  .circle .tick:nth-child(5) {
-    transform: rotate(30deg) translate(12vh);
-  }
-  .circle .tick:nth-child(6) {
-    transform: rotate(60deg) translate(12vh);
-  }
-  .circle .tick:nth-child(7) {
-    transform: rotate(90deg) translate(12vh);
-  }
-  .circle .tick:nth-child(8) {
-    transform: rotate(120deg) translate(12vh);
-  }
-  .circle .tick:nth-child(9) {
-    transform: rotate(150deg) translate(12vh);
-  }
-  .circle .tick:nth-child(10) {
-    transform: rotate(180deg) translate(12vh);
-  }
-  .circle .tick:nth-child(11) {
-    transform: rotate(210deg) translate(12vh);
-  }
-  .circle .tick:nth-child(12) {
-    transform: rotate(240deg) translate(12vh);
-  }
-}
-
-/* iPhone 5*s */
-@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
-}
-
-/* iPhone 6/7/8 */
-@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
-}
-
-/* iPhone 6+/7+/8+ */
-@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
-  .Score {
-    top: 9.5vmax;
-  }
-}
-
-/* iPhone X */
-@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
-  .App-logo {
-    /* height: 65vmin; */
-  }
-
-  .circle {
-    /* height: 55vw; */
-    /* width: 55vw; */
-  }
-
-  .Score {
-    top: 6.5vmax;
-  }
-}
-
-/* iPad minis */
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1) {
+/* @media only screen and (min-device-width: 768px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1) { */
+@media only screen and (min-device-width: 768px) and (orientation: portrait) {
 }
