@@ -1,5 +1,5 @@
 :root {
-  --radius: 45vmin;
+  --radius: 30vmax;
   --button-text: calc(1.5 * (var(--radius) / 10));
   --base: calc(var(--radius) / 3.14);
   --button-transform: calc(var(--radius) / 2 + (var(--button-text) / 3) );
@@ -69,6 +69,10 @@ div.Score {
   border-radius: 35%;
   background-color: black;
   box-shadow: 0 8px 30px 22px rgba(4, 12, 14, 0.35);
+}
+
+.Score h5 {
+  font-size: var(--button-text);
 }
 
 .Skip-button:hover,

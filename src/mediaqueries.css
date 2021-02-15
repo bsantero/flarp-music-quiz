@@ -31,10 +31,10 @@
     flex: 4;
   }
 
-  .circle {
+  /* .circle {
     max-width: 33vmax;
     max-height: 33vmax;
-  }
+}*/
 
   .circle .tick {  
     /* left: calc(14vmax - .8em) !important;
