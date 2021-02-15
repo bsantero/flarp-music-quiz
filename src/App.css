@@ -44,8 +44,9 @@ header .App-header {
 }
 
 .key-img {
-  height: 35vmax;
-  min-height: 31vmin;
+  max-height: 45vmin;
+  min-height: 40vmin;
+  margin-top: 2vh;
   pointer-events: none;
 }
 
@@ -54,6 +55,9 @@ div.Score {
   width: 10vw;
   height: 10vw;
   margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: 3px solid rgba(23, 65, 86, 0.73);
   border-radius: 35%;
   background-color: black;
@@ -85,7 +89,7 @@ div.Score {
 
 .App-main {
   background-color: #253555;
-  min-height: 94vh;
+  min-height: calc(100vh - 1.3em);
   max-height: calc(100vh - 1.5em);
   display: flex;
   flex-direction: column;
@@ -131,9 +135,4 @@ div.Score {
 .credit a:hover {
   font-size: 18px;
   font-size-adjust: 2px;
-}
-
-.App-footer {
-  /* background-color: rgba(194, 92, 194, 0.842); */
-  outline: 1px solid rgba(0, 0, 0, 0.76);
 }

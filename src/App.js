@@ -166,7 +166,7 @@ function App() {
       </header>
       <main className="App-main">
         <div className="child Question-bar">
-          <h3>What's the {mode.toUpperCase()} Key?</h3>
+          <h3 className="question">What's the {mode.toUpperCase()} Key?</h3>
         </div>
         <div className="child skip-container">
           <button className="Skip-button" onClick={handleSkip}>
@@ -198,7 +198,7 @@ function App() {
       </main>
       <footer className="child App-footer">
         <p className="credit">
-          by <a href="https://github.com/bsantero">Brian Santero von der Embse</a>
+          by <a href="https://github.com/bsantero">BSvdE</a> | <a href="https://github.com/bsantero/flarp-music-quiz">Comments, Suggestions?</a>
         </p>
         <div className="brand reflection">
           <img src={logo} className="inline App-logo"></img>
