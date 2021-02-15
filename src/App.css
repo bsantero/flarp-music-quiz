@@ -1,3 +1,10 @@
+:root {
+  --radius: 45vmin;
+  --button-text: calc(1.5 * (var(--radius) / 10));
+  --base: calc(var(--radius) / 3.14);
+  --button-transform: calc(var(--radius) / 2 + (var(--button-text) / 3) );
+}
+
 .App {
   background-color: #253555;
   text-align: center;
