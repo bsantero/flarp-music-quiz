@@ -13,10 +13,6 @@
   flex-direction: column;
 }
 
-header .App-header {
-
-}
-
 .brand {
   position: absolute;
   top: 3vmin;

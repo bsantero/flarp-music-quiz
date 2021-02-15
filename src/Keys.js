@@ -22,7 +22,17 @@ const majorKeys = {
   2: { uri: sharp2, label: 'D' },
   3: { uri: sharp3, label: 'A' },
   4: { uri: sharp4, label: 'E' },
-  5: { uri: sharp5, label: 'B' },
+  5: {
+    uri: 'choose',
+    sharp: {
+      uri: sharp5,
+      label: 'B'
+    },
+    flat: {
+      uri: flat7,
+      label: 'C♭'
+    }
+  },
   6: {
     uri: 'choose',
     sharp: {
