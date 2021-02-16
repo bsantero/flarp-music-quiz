@@ -1,10 +1,15 @@
 :root {
-  --radius: 30vmax;
+  --radius: 50vmin;
   --button-text: calc(1.5 * (var(--radius) / 10));
   --button-padding: calc(1.1 * (var(--button-text) / 5)) calc(.95 * (var(--button-text) / 5));
   --base: calc(var(--radius) / 3.14);
   --button-transform: calc(var(--radius) / 2 + (var(--button-text) / 3) );
 }
+
+.capitalize {
+  text-transform: capitalize;
+}
+
 
 .App {
   background-color: #253555;
@@ -56,8 +61,8 @@
 
 div.Score {
   position: absolute;
-  width: 10vw;
-  height: 10vw;
+  width: calc(var(--button-text) * 2);
+  height: calc(var(--button-text) * 2);
   margin: auto;
   display: flex;
   justify-content: center;
@@ -69,7 +74,7 @@ div.Score {
 }
 
 .Score h5 {
-  font-size: var(--button-text);
+  font-size: calc(var(--button-text) * 1.5);
 }
 
 .Skip-button:hover,
@@ -110,6 +115,14 @@ div.Score {
 
 .App-link {
   color: #61dafb;
+}
+
+.Question-bar .question {
+  font-weight: normal;
+}
+
+.Question-bar .question b {
+  font-size: 1.25em;
 }
 
 .key-img {

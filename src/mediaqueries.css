@@ -1,4 +1,8 @@
 @media only screen and (max-device-height: 4000px) and (orientation: landscape) {
+  :root{
+    --radius: 43vmin;
+  }
+  
   .App-main {
     /* background-color: rgb(74, 191, 74) !important; */
     flex-wrap: wrap;
@@ -30,7 +34,7 @@
   }
 
   .circleOfFifths {
-    flex: 4;
+    flex: 2;
   }
 
   /* .circle {

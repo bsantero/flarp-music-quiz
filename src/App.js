@@ -75,6 +75,16 @@ function App() {
     );
   }
 
+  function QuestionQuality() {
+    if (mode == "major") {
+      return (
+        <b className="capitalize">{mode}</b>
+      )
+      } else {
+        return <b>{mode}</b>
+      }
+  }
+
   function generateQuality(accidental) {
     let first = 'major';
     let second = 'minor';
@@ -166,7 +176,7 @@ function App() {
       </header>
       <main className="App-main">
         <div className="child Question-bar">
-          <h3 className="question">What's the {mode.toUpperCase()} Key?</h3>
+          <h3 className="question">What's the <QuestionQuality /> Key?</h3>
         </div>
         <div className="child skip-container">
           <button className="Skip-button" onClick={handleSkip}>

@@ -30,16 +30,26 @@
 
 .circleOfFifths button {
   padding: var(--button-padding);
-  background: rgba(13, 24, 44, 0.7);
+  background: rgba(21, 36, 53, 0.8);
   color: rgb(158, 245, 233);
   border-radius: 35%;
-  border: rgb(3, 100, 76);
+  border: 2px solid rgb(127 229 204 / 29%);
   font-size: 3.5vmax;
+  box-shadow: 0 0 0.5em -0.13em black;
+}
+
+.circleOfFifths button:hover {
+  background: rgb(7, 17, 34, .8);
 }
 
 .circleOfFifths button:active {
-  top: 1px;
+  outline: 0 !important;
+  position: relative;
+  top: .03em;
+  box-shadow: 0 0 0.7em .03em black;
 }
+
+
 
 .circleOfFiths button:focus {
   outline: 0 !important;
