@@ -7,7 +7,9 @@
   }
 
   .Question-bar {
-    width: 100%;
+    /* width: 100%; */
+    order: 3;
+    flex: 0;
   }
 
   /* .App-main .child:not(:first-child) {
@@ -19,12 +21,12 @@
   }
 
   .image-container {
-    flex-grow: 2;
+    flex-grow: 1;
   }
 
   .image-container,
   .circleOfFifths {
-    margin-bottom: 1em;
+    /* margin-bottom: 1em; */
   }
 
   .circleOfFifths {
@@ -42,7 +44,7 @@
   }
 
   .App-footer .Logo-title {
-      display: none;
+      /* display: none; */
   }
   
 }

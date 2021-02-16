@@ -1,6 +1,7 @@
 :root {
   --radius: 30vmax;
   --button-text: calc(1.5 * (var(--radius) / 10));
+  --button-padding: calc(1.1 * (var(--button-text) / 5)) calc(.95 * (var(--button-text) / 5));
   --base: calc(var(--radius) / 3.14);
   --button-transform: calc(var(--radius) / 2 + (var(--button-text) / 3) );
 }
@@ -111,6 +112,14 @@ div.Score {
   color: #61dafb;
 }
 
+.key-img {
+  order: 2;
+}
+
+.circleOfFifths {
+  order: 4;
+}
+
 .App-footer {
   height: 1.5em;
   font-size: .9em;
@@ -123,7 +132,7 @@ div.Score {
   opacity: 20%;
   left: unset;
   top: unset;
-  bottom: 3vmin;
+  bottom: 5vmin;
   right: 3vmin;
 }
 
@@ -139,7 +148,8 @@ div.Score {
   text-shadow: 4px 4px 10px rgba(1, 2, 1, 0.596);
 }
 
-.credit a:hover {
-  font-size: 18px;
-  font-size-adjust: 2px;
+.credit a:hover,
+.credit a:active,
+.credit a:focus {
+  color: rgb(197, 197, 174);
 }

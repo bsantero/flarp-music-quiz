@@ -6,7 +6,7 @@
     }
   
     .App-main .child:first-child {
-        width: 100%;
+        /* width: 100%; */
     }
 
     .Question-bar {
@@ -23,14 +23,12 @@
     .image-container {
         margin-top: 1em;
         flex-grow: 1;
-        order: 2;
         display: flex;
     }
 
     /* .image-container, */
     .circleOfFifths {
         flex-grow: 6;
-        order:4
     }
 
 }
