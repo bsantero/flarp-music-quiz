@@ -1,6 +1,7 @@
 @media only screen and (max-device-height: 4000px) and (orientation: landscape) {
   :root{
-    --radius: 43vmin;
+    --radius: 27vmax;
+    --button-text: calc(1 * (var(--radius) / 10));
   }
   
   .App-main {
