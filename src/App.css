@@ -77,6 +77,10 @@ div.Score {
   font-size: calc(var(--button-text) * 1.5);
 }
 
+button .loser {
+  outline: 1px solid rgb(138, 36, 36);
+}
+
 .Skip-button:hover,
 .circleOfFifths button:hover {
   background: rgb(80, 127, 221);
