@@ -21,6 +21,13 @@ function Main({ currentQuiz }) {
 
   switch (currentQuiz) {
     case 0:
+      QuizComponent = () => (
+        <div>
+          <h1>Hello.</h1>
+        </div>
+      );
+
+      break;
     case 1:
       QuizComponent = Quiz1;
       break;
@@ -52,10 +59,3 @@ function App() {
 }
 
 export default App;
-
-// const DEFAULT_MODE = 'major';
-// const DEFAULT_MODE_ARRAY = 'majorKeys';
-
-// Handy functions
-
-// React Components

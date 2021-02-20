@@ -1,4 +1,5 @@
 import React from 'react';
+import conLog from '../../utils/conLog';
 
 // const NEW_GAME = 1;
 const DEFAULT_MESSAGE = 'Quiz 2!';
@@ -8,10 +9,13 @@ export function QuizLeftMidRight() {
   const [message, setMessage] = React.useState(DEFAULT_MESSAGE);
   const [answer, setAnswer] = React.useState(getAnswer);
   const [selection, setSelection] = React.useState(null);
+  // conLog(answer);
 
   function getAnswer() {
     const random = require('@aspiesoft/random-number-js');
-    switch (random) {
+    const answer = random(1, 3);
+    // conLog(answer);
+    switch (answer) {
       case 1:
         return 'left';
       case 2:
@@ -25,8 +29,9 @@ export function QuizLeftMidRight() {
 
   function generateNewAnswer() {
     setMessage('Guess, please!');
-    setSelection();
+    setSelection(null);
     console.log(`new answer is:`);
+    console.log(`${answer}`);
     setAnswer(getAnswer);
   }
 
@@ -61,7 +66,7 @@ export function QuizLeftMidRight() {
         <button className="quiz-button" onClick={() => handleClick('left')}>
           Left!
         </button>
-        <button className="quiz-button" onClick={() => handleClick('left')}>
+        <button className="quiz-button" onClick={() => handleClick('middle')}>
           Middle!
         </button>
         <button className="quiz-button" onClick={() => handleClick('right')}>
