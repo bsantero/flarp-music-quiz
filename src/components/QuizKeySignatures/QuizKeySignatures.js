@@ -1,16 +1,17 @@
-import { useState } from 'react';
-import { keySignatures, keyofc, majorKeys, minorKeys } from './Keys';
-import './App.css';
-import './flexbox.css';
+import React, { useState } from 'react';
+import {
+  keyofc,
+  keySignatures,
+  majorKeys,
+  minorKeys
+} from '../../utils/Keys.js';
+import './style.css';
 import './circle.css';
 import './mediaqueries.css';
-import logo from './img/logo.png';
 
-// Constants
-
-const DEFAULT_KEY = 0;
 const DEFAULT_MODE = 'major';
 const DEFAULT_MODE_ARRAY = 'majorKeys';
+const DEFAULT_KEY = 0;
 
 // Handy functions
 
@@ -18,7 +19,7 @@ const DEFAULT_MODE_ARRAY = 'majorKeys';
 
 // App
 
-function App() {
+export function QuizKeySignatures() {
   const [keyId, updateKeyId] = useState(DEFAULT_KEY);
   const [score, updateScore] = useState(0);
   const [mode, updateMode] = useState(DEFAULT_MODE);
@@ -47,7 +48,13 @@ function App() {
   }
 
   function NoteButton({ note, handleClick }) {
-    let noteLabel = '';
+    const [isWrong, setWrong] = useState(false);
+
+    const toggleClass = () => {
+      setWrong(!isWrong);
+    };
+
+    let noteLabel = null;
 
     const i = parseInt(note, 10);
 
@@ -64,8 +71,9 @@ function App() {
       <div className="tick">
         <div className="label">
           <button
-            onClick={function () {
-              handleClick(note);
+            className="themed-button"
+            onClick={function (e) {
+              handleClick(note, e);
             }}
           >
             {noteLabel}
@@ -76,13 +84,11 @@ function App() {
   }
 
   function QuestionQuality() {
-    if (mode == "major") {
-      return (
-        <b className="capitalize">{mode}</b>
-      )
-      } else {
-        return <b>{mode}</b>
-      }
+    if (mode == 'major') {
+      return <b className="capitalize">{mode}</b>;
+    } else {
+      return <b>{mode}</b>;
+    }
   }
 
   function generateQuality(accidental) {
@@ -149,7 +155,7 @@ function App() {
     generateNewKey();
   }
 
-  function handleClick(note) {
+  function handleClick(note, e) {
     const typeOfNote = typeof note;
     const typeOfKeyId = typeof keyId;
 
@@ -162,64 +168,47 @@ function App() {
       generateNewKey();
     } else {
       updateScore(score - 1);
+      console.log(e.target);
       console.log("YOU'RE A FAILURE, HARRY");
     }
   }
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <div className="brand">
-          <img src={logo} className="inline App-logo"></img>
-          <h1 className="inline Logo-title">Flarp!</h1>
+    <main className="Quiz-main">
+      <div className="child Question-bar">
+        <h3 className="question">
+          What's the <QuestionQuality /> Key?
+        </h3>
+      </div>
+      <div className="child image-container">
+        <img src={imgSrc} className="key-img" alt="logo" />
+      </div>
+      <div className="child circleOfFifths">
+        <div className="Score">
+          <h5>{score}</h5>
         </div>
-      </header>
-      <main className="App-main">
-        <div className="child Question-bar">
-          <h3 className="question">What's the <QuestionQuality /> Key?</h3>
+        <div className="circle">
+          <NoteButton note="0" handleClick={handleClick} />
+          <NoteButton note="1" handleClick={handleClick} />
+          <NoteButton note="2" handleClick={handleClick} />
+          <NoteButton note="3" handleClick={handleClick} />
+          <NoteButton note="4" handleClick={handleClick} />
+          <NoteButton note="5" handleClick={handleClick} />
+          <NoteButton note="6" handleClick={handleClick} />
+          <NoteButton note="7" handleClick={handleClick} />
+          <NoteButton note="8" handleClick={handleClick} />
+          <NoteButton note="9" handleClick={handleClick} />
+          <NoteButton note="10" handleClick={handleClick} />
+          <NoteButton note="11" handleClick={handleClick} />
         </div>
-        <div className="child skip-container">
-          <button className="Skip-button" onClick={handleSkip}>
-            Skip!
-          </button>
-        </div>
-        <div className="child image-container">
-          <img src={imgSrc} className="key-img" alt="logo" />
-        </div>
-        <div className="child circleOfFifths">
-          <div className="Score">
-            <h5>{score}</h5>
-          </div>
-          <div className="circle">
-            <NoteButton note="0" handleClick={handleClick} />
-            <NoteButton note="1" handleClick={handleClick} />
-            <NoteButton note="2" handleClick={handleClick} />
-            <NoteButton note="3" handleClick={handleClick} />
-            <NoteButton note="4" handleClick={handleClick} />
-            <NoteButton note="5" handleClick={handleClick} />
-            <NoteButton note="6" handleClick={handleClick} />
-            <NoteButton note="7" handleClick={handleClick} />
-            <NoteButton note="8" handleClick={handleClick} />
-            <NoteButton note="9" handleClick={handleClick} />
-            <NoteButton note="10" handleClick={handleClick} />
-            <NoteButton note="11" handleClick={handleClick} />
-          </div>
-        </div>
-      </main>
-      <footer className="child App-footer">
-        <p className="credit">
-          by <a href="https://github.com/bsantero">BSvdE</a> | <a href="https://github.com/bsantero/flarp-music-quiz">Comments, Suggestions?</a>
-        </p>
-        <div className="brand reflection">
-          <img src={logo} className="inline App-logo"></img>
-          <h1 className="inline Logo-title">Flarp!</h1>
-        </div>
-        {/* <div className="credit-container">
-
-        </div> */}
-      </footer>
-    </div>
+      </div>
+      <span className="child skip-container">
+        <button className="Skip-button themed-button" onClick={handleSkip}>
+          Skip!
+        </button>
+      </span>
+    </main>
   );
 }
 
-export default App;
+export default QuizKeySignatures;

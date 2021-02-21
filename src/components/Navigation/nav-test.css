@@ -1,0 +1,15 @@
+.float-top {
+  width: 100vw;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navigation .themed-button {
+  margin: 0.2em;
+  border-radius: 5%;
+  font-size: 1em;
+  box-shadow: none;
+  border: 1px solid rgba(60, 60, 96, 0.54);
+}

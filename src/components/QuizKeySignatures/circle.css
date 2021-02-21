@@ -1,8 +1,14 @@
+:root {
+  --radius: 42vmin;
+  --button-text: calc(14 * (var(--radius) / 100));
+  --button-padding: calc(6 * (var(--button-text) / 100))
+    calc(16 * (var(--button-text) / 100));
+  --base: calc(var(--radius) / 3.14);
+  --button-transform: calc(var(--radius) / 2 + (var(--button-text) / 3));
+}
+
 .circleOfFifths {
   position: relative;
-  /* width: 100vw; */
-  /* height: 100%; */
-  /* outline: 1px solid rgb(255, 200, 200); */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -22,38 +28,11 @@
 }
 
 .circle .tick {
-  /* display: none; */
-  /* left: calc(var(--radius));
-  top: calc(var(--radius)); */
   position: absolute;
-  }
+}
 
-.circleOfFifths button {
-  padding: var(--button-padding);
-  background: rgba(21, 36, 53, 0.8);
-  color: rgb(158, 245, 233);
+.circleOfFifths .themed-button {
   border-radius: 35%;
-  border: 2px solid rgb(127 229 204 / 29%);
-  font-size: 3.5vmax;
-  box-shadow: 0 0 0.5em -0.13em black;
-}
-
-.circleOfFifths button:hover {
-  background: rgb(7, 17, 34, .8);
-}
-
-.circleOfFifths button:active {
-  outline: 0 !important;
-  position: relative;
-  top: .03em;
-  box-shadow: 0 0 0.7em .03em black;
-}
-
-
-
-.circleOfFiths button:focus {
-  outline: 0 !important;
-  background-color: #224141;
 }
 
 .circle .tick:nth-child(1) {
@@ -133,7 +112,6 @@
 .circle .tick:nth-child(8) .label {
   transform: rotate(-120deg) translate(0px);
 }
-
 
 /*
 

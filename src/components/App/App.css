@@ -1,0 +1,161 @@
+/* Vars */
+
+:root {
+  --bg-blue: #253555;
+  --bg-blue-light: #c5f1ff;
+}
+
+/* Utils */
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.inline {
+  max-height: 50px;
+  display: inline;
+}
+
+/* Theme Customizations */
+
+.themed-button {
+  border-radius: 15%;
+  background: rgba(21, 36, 53, 0.8);
+  color: var(--bg-blue-light);
+  padding: var(--button-padding);
+  box-shadow: 0 0 0.5em -0.13em black;
+  font-size: calc(10.2 * var(--button-text) / 10);
+  border: 1.8px solid rgb(127 229 204 / 29%);
+}
+
+.themed-button:hover {
+  background: rgb(7, 17, 34, 0.8);
+}
+
+.themed-button:active {
+  outline: 0 !important;
+  position: relative;
+  top: 0.03em;
+  box-shadow: 0 0 0.7em 0.03em black;
+}
+
+.themed-button:focus {
+  outline: 0 !important;
+  background-color: #224141;
+}
+/* Page Styles */
+
+.App {
+  min-width: 300px;
+  background-color: var(--bg-blue);
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.App-main {
+  background-color: var(--bg-blue);
+  min-height: calc(100vh - 1.3em);
+  max-height: calc(100vh - 1.5em);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  flex: 1 0 auto;
+}
+
+.App-link {
+  color: var(--bg-blue-light);
+}
+
+.App-footer {
+  height: 1.5em;
+  font-size: 0.9em;
+  color: beige;
+}
+
+.brand {
+  position: absolute;
+  top: 3vmin;
+  left: 3vmin;
+  color: white;
+  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.App-logo {
+  max-height: 2em !important;
+  border-radius: 20%;
+}
+
+.Logo-title {
+  margin: auto;
+  margin-left: 0.1em;
+}
+
+.Title-bar .Logo-title,
+.Footer-bar .Logo-title {
+  font-size: calc(18px + 2vmin) !important;
+}
+
+.key-img {
+  max-height: 35vmax;
+  /* margin-top: 2vh; */
+  pointer-events: none;
+}
+
+button .loser {
+  outline: 1px solid rgb(138, 36, 36);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .key-img {
+    background-color: antiquewhite;
+    padding: 1%;
+    border-radius: 12px;
+    border: 3px solid rgba(82, 46, 5, 0.397);
+    box-shadow: 0 3px 10px 10px rgba(160, 144, 110, 0.1);
+    /* animation: App-logo-spin infinite 20s linear; */
+  }
+}
+
+.reflection {
+  /* position: absolute; */
+  transform: rotate(180deg);
+  opacity: 20%;
+  left: unset;
+  top: unset;
+  bottom: 5vmin;
+  right: 3vmin;
+}
+
+.App-footer p {
+  margin: auto;
+}
+
+.credit a,
+.credit a:visited {
+  font-size: 0.9em;
+  font-weight: 100;
+  color: inherit;
+  text-shadow: 4px 4px 10px rgba(1, 2, 1, 0.596);
+}
+
+.credit a:hover,
+.credit a:active,
+.credit a:focus {
+  color: rgb(197, 197, 174);
+}
+
+@media only screen and (max-device-width: 768px) and (orientation: portrait) {
+  .App-main {
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+}
