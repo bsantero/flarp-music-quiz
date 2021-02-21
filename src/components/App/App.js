@@ -9,7 +9,6 @@ import { QuizLeftMidRight as QuizLMR } from '../Quizzes/QuizLeftMidRight.js';
 
 import './App.css';
 import './App-testing.css';
-import '../../styles/flexbox.css';
 
 // Constants
 

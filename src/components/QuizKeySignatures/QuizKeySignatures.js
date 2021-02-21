@@ -8,7 +8,6 @@ import {
 import './style.css';
 import './circle.css';
 import './mediaqueries.css';
-import '../../styles/flexbox.css';
 
 const DEFAULT_MODE = 'major';
 const DEFAULT_MODE_ARRAY = 'majorKeys';

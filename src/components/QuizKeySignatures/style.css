@@ -37,6 +37,8 @@ div.Score {
   position: absolute;
   top: 2vh;
   right: 2vh;
+  font-size: calc(var(--button-text) * 0.7) !important;
+  border-radius: 10% !important;
 }
 
 .Question-bar .question {
@@ -49,9 +51,7 @@ div.Score {
 
 .key-img {
   flex: 0 1;
-}
-
-.key-img {
+  margin: auto;
   order: 2;
 }
 

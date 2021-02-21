@@ -1,10 +1,9 @@
 @media only screen and (max-device-width: 4000px) and (orientation: landscape) {
   .Quiz-main {
-    background-color: rgb(68, 165, 68) !important;
-
+    /* background-color: rgb(68, 165, 68) !important; */
     flex-wrap: wrap;
     flex-direction: row;
-    /* justify-content: space-around safe; */
+    justify-content: center;
   }
 
   .Question-bar {
@@ -13,42 +12,47 @@
     flex: 0;
   }
 
-  /* .App-main .child:not(:first-child) {
-    flex: 1;
-  } */
+  .Question-bar {
+    flex-grow: 0;
+  }
 
-  .question-bar {
-    flex-grow: 1;
+  .Question-bar h3 {
+    font-size: 3.5vmax;
   }
 
   .image-container {
     flex-grow: 1;
   }
 
-  .image-container,
   .circleOfFifths {
-    /* margin-bottom: 1em; */
-  }
-
-  .circleOfFifths {
-    flex: 2;
-  }
-
-  /* .circle {
-    max-width: 33vmax;
-    max-height: 33vmax;
-}*/
-
-  .circle .tick {
-    /* left: calc(14vmax - .8em) !important;
-    top: calc(14vmax - .8em) !important; */
-  }
-
-  .App-footer .Logo-title {
-    /* display: none; */
+    flex: 1.5;
   }
 }
 
-/* @media only screen and (min-device-width: 768px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1) { */
-@media only screen and (min-device-width: 768px) and (orientation: portrait) {
+@media only screen and (max-device-width: 768px) and (orientation: portrait) {
+  .App-main .child:first-child {
+    /* width: 100%; */
+  }
+
+  .Question-bar {
+    flex-grow: 0;
+    order: 3;
+  }
+
+  .Question-bar .question {
+    margin: auto;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+  }
+
+  .image-container {
+    margin-top: 1em;
+    flex-grow: 1;
+    display: flex;
+  }
+
+  /* .image-container, */
+  .circleOfFifths {
+    flex-grow: 6;
+  }
 }

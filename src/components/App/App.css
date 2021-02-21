@@ -25,7 +25,7 @@
   padding: var(--button-padding);
   box-shadow: 0 0 0.5em -0.13em black;
   font-size: calc(10.2 * var(--button-text) / 10);
-  border: 2px solid rgb(127 229 204 / 29%);
+  border: 1.8px solid rgb(127 229 204 / 29%);
 }
 
 .themed-button:hover {
@@ -150,4 +150,12 @@ button .loser {
 .credit a:active,
 .credit a:focus {
   color: rgb(197, 197, 174);
+}
+
+@media only screen and (max-device-width: 768px) and (orientation: portrait) {
+  .App-main {
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: space-around;
+  }
 }

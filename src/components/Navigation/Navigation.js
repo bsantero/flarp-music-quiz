@@ -15,29 +15,31 @@ function NavButton(props) {
 export function Navigation(props) {
   return (
     <div className="navigation float-top">
-      <NavButton setCurrentQuiz={props.setCurrentQuiz} quiz={0} label="Flarp" />{' '}
       <NavButton
         setCurrentQuiz={props.setCurrentQuiz}
         quiz={'KeySig'}
-        label="Key Sigs."
-      />
-      <NavButton
-        setCurrentQuiz={props.setCurrentQuiz}
-        quiz={'LR'}
-        label="L-R"
-      />
-      <NavButton
-        setCurrentQuiz={props.setCurrentQuiz}
-        quiz={'LMR'}
-        label="L-M-R"
-      />
-      <NavButton
-        setCurrentQuiz={props.setCurrentQuiz}
-        quiz={1}
-        label="Coming Soon!"
+        label="Key Signatures"
       />
     </div>
   );
 }
+
+//   <NavButton setCurrentQuiz={props.setCurrentQuiz} quiz={0} label="Flarp" />{' '} */
+
+// { </div>  <NavButton
+//   setCurrentQuiz={props.setCurrentQuiz}
+//   quiz={'LR'}
+//   label="L-R"
+// />
+// <NavButton
+//   setCurrentQuiz={props.setCurrentQuiz}
+//   quiz={'LMR'}
+//   label="L-M-R"
+// />
+// <NavButton
+//   setCurrentQuiz={props.setCurrentQuiz}
+//   quiz={1}
+//   label="Coming Soon!" }
+// />
 
 export default Navigation;
