@@ -4,6 +4,8 @@ object-assign
 @license MIT
 */
 
+/*! https://github.com/AspieSoft/random-number-js v1.3.2 | (c) aspiesoftweb@gmail.com */
+
 /** @license React v0.20.1
  * scheduler.production.min.js
  *
