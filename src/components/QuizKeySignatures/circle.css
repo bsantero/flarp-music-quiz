@@ -1,8 +1,8 @@
 :root {
-  --radius: 26vmin;
-  --button-text: calc(1.5 * (var(--radius) / 10));
-  --button-padding: calc(1.1 * (var(--button-text) / 10))
-    calc(0.95 * (var(--button-text) / 5));
+  --radius: 42vmin;
+  --button-text: calc(14 * (var(--radius) / 100));
+  --button-padding: calc(6 * (var(--button-text) / 100))
+    calc(16 * (var(--button-text) / 100));
   --base: calc(var(--radius) / 3.14);
   --button-transform: calc(var(--radius) / 2 + (var(--button-text) / 3));
 }
@@ -28,9 +28,6 @@
 }
 
 .circle .tick {
-  /* display: none; */
-  /* left: calc(var(--radius));
-  top: calc(var(--radius)); */
   position: absolute;
 }
 
