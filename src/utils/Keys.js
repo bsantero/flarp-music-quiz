@@ -1,18 +1,18 @@
-import keyofc from './img/keysigs/none.png';
-import sharp1 from './img/keysigs/sharp1.png';
-import sharp2 from './img/keysigs/sharp2.png';
-import sharp3 from './img/keysigs/sharp3.png';
-import sharp4 from './img/keysigs/sharp4.png';
-import sharp5 from './img/keysigs/sharp5.png';
-import sharp6 from './img/keysigs/sharp6.png';
-import sharp7 from './img/keysigs/sharp7.png';
-import flat1 from './img/keysigs/flat1.png';
-import flat2 from './img/keysigs/flat2.png';
-import flat3 from './img/keysigs/flat3.png';
-import flat4 from './img/keysigs/flat4.png';
-import flat5 from './img/keysigs/flat5.png';
-import flat6 from './img/keysigs/flat6.png';
-import flat7 from './img/keysigs/flat7.png';
+import keyofc from '../img/keysigs/none.png';
+import sharp1 from '../img/keysigs/sharp1.png';
+import sharp2 from '../img/keysigs/sharp2.png';
+import sharp3 from '../img/keysigs/sharp3.png';
+import sharp4 from '../img/keysigs/sharp4.png';
+import sharp5 from '../img/keysigs/sharp5.png';
+import sharp6 from '../img/keysigs/sharp6.png';
+import sharp7 from '../img/keysigs/sharp7.png';
+import flat1 from '../img/keysigs/flat1.png';
+import flat2 from '../img/keysigs/flat2.png';
+import flat3 from '../img/keysigs/flat3.png';
+import flat4 from '../img/keysigs/flat4.png';
+import flat5 from '../img/keysigs/flat5.png';
+import flat6 from '../img/keysigs/flat6.png';
+import flat7 from '../img/keysigs/flat7.png';
 
 // F♯/G♭
 

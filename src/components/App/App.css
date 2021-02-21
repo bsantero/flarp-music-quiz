@@ -1,22 +1,80 @@
+/* Vars */
+
 :root {
-  --radius: 50vmin;
-  --button-text: calc(1.5 * (var(--radius) / 10));
-  --button-padding: calc(1.1 * (var(--button-text) / 5)) calc(.95 * (var(--button-text) / 5));
-  --base: calc(var(--radius) / 3.14);
-  --button-transform: calc(var(--radius) / 2 + (var(--button-text) / 3) );
+  --bg-blue: #253555;
+  --bg-blue-light: #c5f1ff;
 }
+
+/* Utils */
 
 .capitalize {
   text-transform: capitalize;
 }
 
+.inline {
+  max-height: 50px;
+  display: inline;
+}
+
+/* Theme Customizations */
+
+.themed-button {
+  border-radius: 15%;
+  background: rgba(21, 36, 53, 0.8);
+  color: var(--bg-blue-light);
+  padding: var(--button-padding);
+  box-shadow: 0 0 0.5em -0.13em black;
+  font-size: calc(10.2 * var(--button-text) / 10);
+  border: 2px solid rgb(127 229 204 / 29%);
+}
+
+.themed-button:hover {
+  background: rgb(7, 17, 34, 0.8);
+}
+
+.themed-button:active {
+  outline: 0 !important;
+  position: relative;
+  top: 0.03em;
+  box-shadow: 0 0 0.7em 0.03em black;
+}
+
+.themed-button:focus {
+  outline: 0 !important;
+  background-color: #224141;
+}
+/* Page Styles */
 
 .App {
-  background-color: #253555;
+  min-width: 300px;
+  background-color: var(--bg-blue);
   text-align: center;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+.App-main {
+  background-color: var(--bg-blue);
+  min-height: calc(100vh - 1.3em);
+  max-height: calc(100vh - 1.5em);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  flex: 1 0 auto;
+}
+
+.App-link {
+  color: var(--bg-blue-light);
+}
+
+.App-footer {
+  height: 1.5em;
+  font-size: 0.9em;
+  color: beige;
 }
 
 .brand {
@@ -30,11 +88,6 @@
   flex-direction: row;
 }
 
-.inline {
-  max-height: 50px;
-  display: inline;
-}
-
 .App-logo {
   max-height: 2em !important;
   border-radius: 20%;
@@ -42,55 +95,22 @@
 
 .Logo-title {
   margin: auto;
+  margin-left: 0.1em;
 }
 
 .Title-bar .Logo-title,
 .Footer-bar .Logo-title {
   font-size: calc(18px + 2vmin) !important;
-  /* position: absolute; */
-  /* margin-top: 0vw; */
-  /* margin-left: 0.5vw; */
 }
 
 .key-img {
-  max-height: 45vmin;
-  min-height: 40vmin;
-  margin-top: 2vh;
+  max-height: 35vmax;
+  /* margin-top: 2vh; */
   pointer-events: none;
-}
-
-div.Score {
-  position: absolute;
-  width: calc(var(--button-text) * 2);
-  height: calc(var(--button-text) * 2);
-  margin: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 3px solid rgba(23, 65, 86, 0.73);
-  border-radius: 35%;
-  background-color: black;
-  box-shadow: 0 8px 30px 22px rgba(4, 12, 14, 0.35);
-}
-
-.Score h5 {
-  font-size: calc(var(--button-text) * 1.5);
 }
 
 button .loser {
   outline: 1px solid rgb(138, 36, 36);
-}
-
-.Skip-button:hover,
-.circleOfFifths button:hover {
-  background: rgb(80, 127, 221);
-  color: rgb(255, 255, 255);
-}
-
-.Skip-button {
-  position: absolute;
-  top: 2vh;
-  right: 2vh;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -102,45 +122,6 @@ button .loser {
     box-shadow: 0 3px 10px 10px rgba(160, 144, 110, 0.1);
     /* animation: App-logo-spin infinite 20s linear; */
   }
-}
-
-.App-main {
-  background-color: #253555;
-  min-height: calc(100vh - 1.3em);
-  max-height: calc(100vh - 1.5em);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  font-size: calc(10px + 2vmin);
-  color: white;
-  flex: 1 0 auto;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-.Question-bar .question {
-  font-weight: normal;
-}
-
-.Question-bar .question b {
-  font-size: 1.25em;
-}
-
-.key-img {
-  order: 2;
-}
-
-.circleOfFifths {
-  order: 4;
-}
-
-.App-footer {
-  height: 1.5em;
-  font-size: .9em;
-  color: beige;
 }
 
 .reflection {
@@ -159,7 +140,7 @@ button .loser {
 
 .credit a,
 .credit a:visited {
-  font-size: .9em;
+  font-size: 0.9em;
   font-weight: 100;
   color: inherit;
   text-shadow: 4px 4px 10px rgba(1, 2, 1, 0.596);

@@ -3,7 +3,10 @@ import './nav-test.css';
 
 function NavButton(props) {
   return (
-    <button onClick={() => props.setCurrentQuiz(props.quiz)}>
+    <button
+      className="themed-button"
+      onClick={() => props.setCurrentQuiz(props.quiz)}
+    >
       {props.label}
     </button>
   );
@@ -11,13 +14,26 @@ function NavButton(props) {
 
 export function Navigation(props) {
   return (
-    <div className="float-top">
-      <NavButton setCurrentQuiz={props.setCurrentQuiz} quiz={0} label="Flarp" />
-      <NavButton setCurrentQuiz={props.setCurrentQuiz} quiz={1} label="L-R" />
-      <NavButton setCurrentQuiz={props.setCurrentQuiz} quiz={2} label="L-M-R" />
+    <div className="navigation float-top">
+      <NavButton setCurrentQuiz={props.setCurrentQuiz} quiz={0} label="Flarp" />{' '}
       <NavButton
         setCurrentQuiz={props.setCurrentQuiz}
-        quiz={3}
+        quiz={'KeySig'}
+        label="Key Sigs."
+      />
+      <NavButton
+        setCurrentQuiz={props.setCurrentQuiz}
+        quiz={'LR'}
+        label="L-R"
+      />
+      <NavButton
+        setCurrentQuiz={props.setCurrentQuiz}
+        quiz={'LMR'}
+        label="L-M-R"
+      />
+      <NavButton
+        setCurrentQuiz={props.setCurrentQuiz}
+        quiz={1}
         label="Coming Soon!"
       />
     </div>

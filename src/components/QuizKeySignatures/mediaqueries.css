@@ -1,11 +1,7 @@
-@media only screen and (max-device-height: 4000px) and (orientation: landscape) {
-  :root{
-    --radius: 27vmax;
-    --button-text: calc(1 * (var(--radius) / 10));
-  }
-  
-  .App-main {
-    /* background-color: rgb(74, 191, 74) !important; */
+@media only screen and (max-device-width: 4000px) and (orientation: landscape) {
+  .Quiz-main {
+    background-color: rgb(68, 165, 68) !important;
+
     flex-wrap: wrap;
     flex-direction: row;
     /* justify-content: space-around safe; */
@@ -43,18 +39,15 @@
     max-height: 33vmax;
 }*/
 
-  .circle .tick {  
+  .circle .tick {
     /* left: calc(14vmax - .8em) !important;
     top: calc(14vmax - .8em) !important; */
   }
 
   .App-footer .Logo-title {
-      /* display: none; */
+    /* display: none; */
   }
-  
 }
-
-
 
 /* @media only screen and (min-device-width: 768px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1) { */
 @media only screen and (min-device-width: 768px) and (orientation: portrait) {

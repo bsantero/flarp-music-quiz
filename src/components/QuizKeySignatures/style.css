@@ -1,0 +1,60 @@
+.Quiz-main {
+  min-height: calc(100vh - 1.3em);
+  max-height: calc(100vh - 1.5em);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  flex: 1 0 auto;
+}
+
+div.Score {
+  position: absolute;
+  width: calc(var(--button-text) * 2);
+  height: calc(var(--button-text) * 2);
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid rgba(23, 65, 86, 0.73);
+  border-radius: 35%;
+  background-color: black;
+  box-shadow: 0 8px 30px 22px rgba(4, 12, 14, 0.35);
+}
+
+.Score h5 {
+  font-size: calc(var(--button-text) * 1.5);
+}
+
+.Skip-button:hover,
+.circleOfFifths button:hover {
+  background: rgb(80, 127, 221);
+  color: rgb(255, 255, 255);
+}
+
+.Skip-button {
+  position: absolute;
+  top: 2vh;
+  right: 2vh;
+}
+
+.Question-bar .question {
+  font-weight: normal;
+}
+
+.Question-bar .question b {
+  font-size: 1.25em;
+}
+
+.key-img {
+  flex: 0 1;
+}
+
+.key-img {
+  order: 2;
+}
+
+.circleOfFifths {
+  order: 4;
+}
