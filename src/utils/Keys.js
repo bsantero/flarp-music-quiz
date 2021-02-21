@@ -16,50 +16,100 @@ import flat7 from '../img/keysigs/flat7.png';
 
 // F♯/G♭
 
-const majorKeys = {
-  0: { uri: keyofc, label: 'C' },
-  1: { uri: sharp1, label: 'G' },
-  2: { uri: sharp2, label: 'D' },
-  3: { uri: sharp3, label: 'A' },
-  4: { uri: sharp4, label: 'E' },
-  5: {
-    uri: 'choose',
+const keySigUris = {
+  0: { uri: keyofc, label: 'C', weighted: 'default' },
+  1: {
     sharp: {
+      uri: sharp7,
+      label: 'C♯',
+      weighted: 'sharp'
+    },
+    default: {
+      uri: flat5,
+      label: 'D♭',
+      weighted: 'flat'
+    }
+  },
+  2: { uri: sharp2, label: 'D', weighted: 'sharp' },
+
+  3: { uri: flat3, label: 'E♭', weighted: 'flat' },
+  4: { uri: sharp4, label: 'E', weighted: 'sharp' },
+  5: { uri: flat1, label: 'F', weighted: 'flat' },
+  6: {
+    sharp: {
+      uri: sharp6,
+      label: 'F♯',
+      weighted: 'sharp'
+    },
+    default: {
+      uri: flat6,
+      label: 'G♭',
+      weighted: 'flat'
+    }
+  },
+  7: { uri: sharp1, label: 'G', weighted: 'sharp' },
+  8: { uri: flat4, label: 'A♭', weighted: 'flat' },
+  9: { uri: sharp3, label: 'A', weighted: 'sharp' },
+  10: { uri: flat2, label: 'B♭', weighted: 'flat' },
+  11: {
+    default: {
       uri: sharp5,
-      label: 'B'
+      label: 'B',
+      default: [0],
+      weighted: 'sharp'
     },
     flat: {
       uri: flat7,
-      label: 'C♭'
+      label: 'C♭',
+      weighted: 'flat'
     }
-  },
-  6: {
-    uri: 'choose',
-    sharp: {
-      uri: sharp6,
-      label: 'F♯'
-    },
-    flat: {
-      uri: flat6,
-      label: 'G♭'
-    }
-  },
-  7: {
-    uri: 'choose',
-    sharp: {
-      uri: sharp7,
-      label: 'C♯'
-    },
-    flat: {
-      uri: flat5,
-      label: 'D♭'
-    }
-  },
-  8: { uri: flat4, label: 'A♭' },
-  9: { uri: flat3, label: 'E♭' },
-  10: { uri: flat2, label: 'B♭' },
-  11: { uri: flat1, label: 'F' }
+  }
 };
+
+const defCircleSignatures = [
+  keySigUris[0], // C
+  keySigUris[7], // G
+  keySigUris[2], // D
+  keySigUris[9], // A
+  keySigUris[4], // E
+  keySigUris[11], // B
+  keySigUris[6], // F#-Gb
+  keySigUris[1], // C#-Db
+  keySigUris[8], // G#-Ab
+  keySigUris[3], // Eb
+  keySigUris[10], // Bb
+  keySigUris[5] // F
+];
+
+const sharpCircleSignatures = [
+  keySigUris[0], // C
+  keySigUris[7], // G
+  keySigUris[2], // D
+  keySigUris[9], // A
+  keySigUris[4], // E
+  keySigUris[11][0], // B
+  keySigUris[6][0], // F#-Gb
+  keySigUris[1][0], // C#-Db
+  keySigUris[8], // G#-Ab
+  keySigUris[3], // Eb
+  keySigUris[10], // Bb
+  keySigUris[5] // F
+];
+
+const flatCircleSignatures = [
+  keySigUris[0], // C
+  keySigUris[7], // G
+  keySigUris[2], // D
+  keySigUris[9], // A
+  keySigUris[4], // E
+  keySigUris[11][1], // B
+  keySigUris[6][1], // F#-Gb
+  keySigUris[1][1], // C#-Db
+  keySigUris[8], // G#-Ab
+  keySigUris[3], // Eb
+  keySigUris[10], // Bb
+  keySigUris[5] // F
+];
 
 const minorKeys = {
   0: { uri: keyofc, label: 'A' },
@@ -68,7 +118,7 @@ const minorKeys = {
   3: { uri: sharp3, label: 'F♯' },
   4: { uri: sharp4, label: 'C♯' },
   5: {
-    uri: 'choose',
+    uri: null,
     sharp: {
       uri: sharp5,
       label: 'G♯'
@@ -79,7 +129,7 @@ const minorKeys = {
     }
   },
   6: {
-    uri: 'choose',
+    uri: null,
     sharp: {
       uri: sharp6,
       label: 'D♯'
@@ -90,7 +140,7 @@ const minorKeys = {
     }
   },
   7: {
-    uri: 'choose',
+    uri: null,
     sharp: {
       uri: sharp7,
       label: 'A♯'
@@ -171,4 +221,10 @@ const keySignatures = {
   }
 };
 
-export { keyofc, keySignatures, majorKeys, minorKeys };
+export {
+  keyofc,
+  keySigUris,
+  defCircleSignatures,
+  sharpCircleSignatures,
+  flatCircleSignatures
+};

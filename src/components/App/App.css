@@ -109,8 +109,8 @@
   pointer-events: none;
 }
 
-button .loser {
-  outline: 1px solid rgb(138, 36, 36);
+button.loser {
+  border: 1px solid rgb(138, 36, 36) !important;
 }
 
 @media (prefers-reduced-motion: no-preference) {

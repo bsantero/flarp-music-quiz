@@ -3,9 +3,9 @@ import conLog from '../../utils/conLog.js';
 import { Header } from '../Header/Header.js';
 import { Footer } from '../Footer/Footer.js';
 
-import { QuizKeySignatures as QuizKeySig } from '../QuizKeySignatures/QuizKeySignatures.js';
-import { QuizLeftRight as QuizLR } from '../Quizzes/QuizLeftRight.js';
-import { QuizLeftMidRight as QuizLMR } from '../Quizzes/QuizLeftMidRight.js';
+import { QuizModule as QuizKeySig } from '../QuizKeySigs/QuizKeySigs.js';
+import { QuizModule as QuizLR } from '../QuizLeftRight/QuizLeftRight.js';
+import { QuizModule as QuizLMR } from '../QuizLeftMidRight/QuizLeftMidRight.js';
 
 import './App.css';
 import './App-testing.css';
