@@ -1,139 +1,100 @@
 import React, { useState } from 'react';
-import {
-  keyofc,
-  keySigUris,
-  defCircleSignatures,
-  sharpCircleSignatures,
-  flatCircleSignatures
-} from '../../utils/Keys.js';
+import { keyofc, chromatic, defCircleSignatures } from '../../utils/Keys.js';
 import conLog from '../../utils/conLog.js';
 import './styles/style.css';
 import './styles/circle.css';
 import './styles/mediaqueries.css';
 
-const DEFAULT_MODE = 'major';
-const DEFAULT_MODE_ARRAY = 'majorKeys';
-const DEFAULT_KEY = 11;
+const random = require('@aspiesoft/random-number-js');
 
-// Handy functions
+// OPTIONS
 
-// React Components
-
-// App
+const DEFAULT_NEW_GAME = true;
+const DEFAULT_ANSWER = 0;
+const DEFAULT_INPUT_MODE = 'circlefifths';
+// const DEFAULT_INPUT_MODE = 'keyboard';
+const DEFAULT_MODE = 'false'; // Major | Minor
+// const DEFAULT_MODE = 'true'; // Only modes
+// const DEFAULT_MODE = 'both'; // modes and "Major" | "Minor"
 
 export function QuizModule() {
-  const [keyId, updateKeyId] = useState(DEFAULT_KEY);
+  const [generated, updateGenerated] = useState(!DEFAULT_NEW_GAME);
   const [score, updateScore] = useState(0);
+  const [keySigs, updateKeySigs] = useState(chromatic);
+  const [answer, setAnswer] = useState(DEFAULT_ANSWER);
+  const [imgSrc, updateImgSrc] = useState(getUri(DEFAULT_ANSWER));
+
+  // Set score, todo: get score from storage
+
   const [mode, updateMode] = useState(DEFAULT_MODE);
-  // const [keySigs, updateKeySigs] = useState(defCircleSignatures);
-  const [imgSrc, updateImgSrc] = useState(keyofc);
-  const [sharpOrFlat, updateSharpOrFlat] = useState('default');
   const [wrongGuesses, updateWrongGuesses] = useState([]);
+  const [inputType, updateInputType] = useState(DEFAULT_INPUT_MODE);
 
-  const keySigs = defCircleSignatures;
-
-  // console.log(`\nApp rerendered:`);
-  // console.log(`\tkeyId: ${keyId}`);
-  // console.log(`\tscore: ${score}`);
-  // console.log(`\tmode: ${mode}`);
-
-  function formatNoteName(index) {
-    const noteToFormat = keySigs[index];
-    // console.log(noteToFormat);
-    if (noteToFormat) {
-      let accidental = noteToFormat[2];
-      if (accidental == 's') {
-        return `${noteToFormat[0]}♯`;
-      } else if (accidental == 'f') {
-        return `${noteToFormat[0]}♭`;
-      } else return noteToFormat;
-    }
-  }
-
-  function QuestionQuality(qual) {
-    if (qual == 'major') {
-      return <b className="capitalize">{mode}</b>;
+  function getUri(index) {
+    let newUri;
+    if (!keySigs[index].uri) {
+      newUri = keySigs[index]['default'].uri;
     } else {
-      return <b>{mode}</b>;
+      newUri = keySigs[index].uri;
     }
+    return newUri;
   }
 
-  function generateQuality(accidental) {
-    let first = 'major';
-    let second = 'minor';
-    if (accidental) {
-      first = 'sharp';
-      second = 'flat';
-    } else {
-      first = 'major';
-      second = 'minor';
-    }
-    return Math.random() >= 0.5 ? first : second;
-  }
-
-  function generateNewKey() {
-    console.log('Winner! Generating a new key.');
-    const modeArrayLength = Object.keys(keySigs).length;
-    let newKeyId = keyId;
+  function generateNewQuestion(oldAnswer) {
+    console.log('Generating a new key.');
+    const keySigsLength = Object.keys(keySigs).length;
+    let newAnswer = oldAnswer;
     let newImgSrc = '';
 
-    while (newKeyId === keyId) {
-      const rand = Math.floor(Math.random() * Math.floor(modeArrayLength));
-      newKeyId = rand;
+    while (newAnswer === oldAnswer) {
+      newAnswer = random(0, 11);
     }
-
-    const majOrMin = generateQuality(mode);
-    // console.log(`Your random number is: ${newKeyId} ${majOrMin}`);
-    updateKeyId(newKeyId);
-
-    // if (majOrMin == 'major') {
-    //   updateMode('major');
-    //   updateKeySigs(majorKeys);
-    //   console.log(`\tmajor key:`);
-    // } else {
-    //   updateMode('minor');
-    //   updateKeySigs(minorKeys);
-    //   console.log(`\tminor key:}`);
-    // }
-
-    let newNoteFromArray = {};
-
-    if (keySigs[newKeyId].uri == 'choose') {
-      const newSharpOrFlat = generateQuality(true);
-      if (newSharpOrFlat == 'sharp') {
-        console.log('generated a sharp key');
-      } else if (newSharpOrFlat == 'flat') {
-        console.log('generated a flat key');
-      } else {
-        console.log('Error: no sharp or flat given');
-      }
-      updateSharpOrFlat(newSharpOrFlat);
-      newNoteFromArray = keySigs[newKeyId][newSharpOrFlat];
-    } else {
-      newNoteFromArray = keySigs[newKeyId];
-    }
-
-    // console.log(Object.values(newNoteFromArray));
-
-    updateImgSrc(newNoteFromArray.uri);
+    setAnswer(newAnswer);
+    updateImgSrc(getUri(newAnswer));
+    console.log('newAnswer is:');
+    console.log(keySigs[newAnswer].label);
   }
 
   function handleSkip() {
-    updateScore(score - 5);
-    generateNewKey();
+    updateScore(score - 1);
   }
 
-  function isCorrect() {
-    console.log('this button was clicked');
+  function handleClick(props) {
+    const btn = props.btnKey;
+    const newWrongs = [...wrongGuesses];
+
+    // Test the input against the keyId
+    if (btn === answer) {
+      // Wins
+      console.log('Winner!');
+      updateScore(score + 1);
+      updateWrongGuesses([]);
+      generateNewQuestion();
+    } else {
+      // Loses
+      console.log("YOU'RE A FAILURE, HARRY");
+      updateScore(score - 1);
+      newWrongs.push(btn);
+      updateWrongGuesses(newWrongs);
+    }
   }
 
   // JSX Components ...
+
+  function QuestionQuality() {
+    const qual = 'major'; // TEMP
+    if (qual == 'major') {
+      return <b>Major</b>;
+    } else {
+      return <b>minor</b>;
+    }
+  }
 
   function QuestionBar() {
     return (
       <div className="child Question-bar">
         <h3 className="question">
-          What's the <QuestionQuality /> Key?
+          What's this key in <QuestionQuality />?
         </h3>
       </div>
     );
@@ -163,28 +124,6 @@ export function QuizModule() {
         <h5>{score}</h5>
       </div>
     );
-  }
-
-  function handleClick(props) {
-    console.log('Button pressed');
-    console.log(props);
-    const btn = props.btnKey;
-    const newWrongs = [...wrongGuesses];
-
-    // Test the input against the keyId
-    if (btn === keyId) {
-      // Wins
-      console.log('Winner!');
-      updateScore(score + 1);
-      updateWrongGuesses([]);
-      generateNewKey();
-    } else {
-      // Loses
-      console.log("YOU'RE A FAILURE, HARRY");
-      updateScore(score - 1);
-      newWrongs.push(btn);
-      updateWrongGuesses(newWrongs);
-    }
   }
 
   function InputButtons({
@@ -248,7 +187,7 @@ export function QuizModule() {
   }
 
   function QuizInput() {
-    console.log(keySigs);
+    // console.log(keySigs);
     return (
       <div className="child circleOfFifths">
         <ScoreBoard />

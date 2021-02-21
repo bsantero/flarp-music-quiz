@@ -6,10 +6,10 @@ const DEFAULT_MESSAGE = `Welcome to Quiz 1. Left? or Right?`;
 export function QuizModule() {
   // const [correct, setCorrect] = useState(true);
   const [message, setMessage] = React.useState(DEFAULT_MESSAGE);
-  const [answer, setAnswer] = React.useState(getAnswer);
+  const [answer, setAnswer] = React.useState(randAnswer);
   const [selection, setSelection] = React.useState();
 
-  function getAnswer() {
+  function randAnswer() {
     return Math.random() >= 0.5 ? 'left' : 'right';
   }
 
@@ -17,7 +17,7 @@ export function QuizModule() {
     setMessage('Guess, please!');
     setSelection();
     console.log(`new answer is:`);
-    setAnswer(getAnswer);
+    setAnswer(randAnswer);
   }
 
   function handleClick(e) {
