@@ -10,23 +10,24 @@ const random = require('@aspiesoft/random-number-js');
 // OPTIONS
 
 const DEFAULT_NEW_GAME = true;
-const DEFAULT_ANSWER = 0;
+const DEFAULT_ANSWER = { pitch: '0', mode: 'major' };
 const DEFAULT_INPUT_MODE = 'circlefifths';
 // const DEFAULT_INPUT_MODE = 'keyboard';
-const DEFAULT_MODE = 'false'; // Major | Minor
-// const DEFAULT_MODE = 'true'; // Only modes
-// const DEFAULT_MODE = 'both'; // modes and "Major" | "Minor"
+const DEFAULT_MODE_PREF = 'false'; // Major | Minor
+// const DEFAULT_MODE_PREF = 'true'; // Only modes
+// const DEFAULT_MODE_PREF = 'both'; // modes and "Major" | "Minor"
 
 export function QuizModule() {
   const [generated, updateGenerated] = useState(!DEFAULT_NEW_GAME);
   const [score, updateScore] = useState(0);
   const [keySigs, updateKeySigs] = useState(chromatic);
-  const [answer, setAnswer] = useState(DEFAULT_ANSWER);
-  const [imgSrc, updateImgSrc] = useState(getUri(DEFAULT_ANSWER));
+  const [answerPitch, setAnswerPitch] = useState(DEFAULT_ANSWER.pitch);
+  const [answerMode, setAnswerMode] = useState(DEFAULT_ANSWER.mode);
+  const [imgSrc, updateImgSrc] = useState(getUri(DEFAULT_ANSWER.pitch));
 
   // Set score, todo: get score from storage
 
-  const [mode, updateMode] = useState(DEFAULT_MODE);
+  const [modePref, updateModePref] = useState(DEFAULT_MODE_PREF);
   const [wrongGuesses, updateWrongGuesses] = useState([]);
   const [inputType, updateInputType] = useState(DEFAULT_INPUT_MODE);
 
@@ -40,6 +41,8 @@ export function QuizModule() {
     return newUri;
   }
 
+  function getMode(modePref) {}
+
   function generateNewQuestion(oldAnswer) {
     console.log('Generating a new key.');
     const keySigsLength = Object.keys(keySigs).length;
@@ -49,10 +52,31 @@ export function QuizModule() {
     while (newAnswer === oldAnswer) {
       newAnswer = random(0, 11);
     }
-    setAnswer(newAnswer);
+    let newMode = random(0, 11);
+
+    switch (modePref) {
+      case 'true':
+        console.log("Mode was generated as 'only modes'.");
+        break;
+      // newMode set to 'only modes'
+      case 'both':
+        console.log("Mode was generated as 'both'.");
+        break;
+      // newMode set to 'all modes + m/m'
+      case 'false':
+        console.log("Mode was generated as 'Major/Minor'.");
+        newMode = parseInt(newMode) % 2 == 0 ? 'major' : 'minor';
+        break;
+      default:
+        console.log("Mode was generated as 'Major/Minor' (default).");
+    }
+
+    setAnswerPitch(newAnswer);
+    setAnswerMode(newMode);
     updateImgSrc(getUri(newAnswer));
-    console.log('newAnswer is:');
+    console.log('newAnswer and Mode are:');
     console.log(keySigs[newAnswer].label);
+    console.log(newMode);
   }
 
   function handleSkip() {
@@ -60,11 +84,12 @@ export function QuizModule() {
   }
 
   function handleClick(props) {
+    console.log(props.btnKey);
     const btn = props.btnKey;
     const newWrongs = [...wrongGuesses];
 
     // Test the input against the keyId
-    if (btn === answer) {
+    if (props.winner === true) {
       // Wins
       console.log('Winner!');
       updateScore(score + 1);
@@ -81,9 +106,15 @@ export function QuizModule() {
 
   // JSX Components ...
 
-  function QuestionQuality() {
-    const qual = 'major'; // TEMP
-    if (qual == 'major') {
+  function ShowAnswer() {
+    return answerPitch;
+  }
+
+  function QuestionQuality({ quality }) {
+    // const an = ''; // TEMP
+    conLog(quality);
+    console.log(quality);
+    if (quality == 'major') {
       return <b>Major</b>;
     } else {
       return <b>minor</b>;
@@ -94,7 +125,7 @@ export function QuizModule() {
     return (
       <div className="child Question-bar">
         <h3 className="question">
-          What's this key in <QuestionQuality />?
+          What's this key in <QuestionQuality quality={answerMode} />?
         </h3>
       </div>
     );
@@ -155,7 +186,13 @@ export function QuizModule() {
     for (let i = 0; i < numOfButtons; i++) {
       let note;
       let name;
+      let isWinner;
 
+      if (i == answerPitch) {
+        isWinner = true;
+      } else {
+        isWinner = false;
+      }
       if (!keySigs[i].label) {
         note = keySigs[i].default;
         // console.log(note.label);
@@ -174,6 +211,7 @@ export function QuizModule() {
       buttons.push(
         <NewButton
           btnKey={i}
+          winner={isWinner}
           wrongs={wrongGuesses}
           updateWrongs={updateWrongGuesses}
           styles={className}
@@ -209,6 +247,7 @@ export function QuizModule() {
 
   return (
     <main className="Quiz-main">
+      <ShowAnswer />
       <QuestionBar />
       <ImageContainer />
       <QuizInput />
