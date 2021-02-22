@@ -45,7 +45,6 @@ const chromatic = {
     }
   },
   2: { uri: sharp2, label: 'D', weighted: 'sharp', mode: 'Dorian' },
-
   3: { uri: flat3, label: 'E♭', weighted: 'flat' },
   4: { uri: sharp4, label: 'E', weighted: 'sharp', mode: 'Phrygian' },
   5: { uri: flat1, label: 'F', weighted: 'flat', mode: 'Lydian' },
@@ -82,18 +81,18 @@ const chromatic = {
 };
 
 const defCircleSignatures = [
-  chromatic[0], // C
-  chromatic[7], // G
-  chromatic[2], // D
-  chromatic[9], // A
-  chromatic[4], // E
-  chromatic[11], // B
-  chromatic[6], // F#-Gb
-  chromatic[1], // C#-Db
-  chromatic[8], // G#-Ab
-  chromatic[3], // Eb
-  chromatic[10], // Bb
-  chromatic[5] // F
+  0, // C
+  7, // G
+  2, // D
+  9, // A
+  4, // E
+  11, // B
+  6, // F#-Gb
+  1, // C#-Db
+  8, // G#-Ab
+  3, // Eb
+  10, // Bb
+  5 // F
 ];
 
 const minorKeys = {

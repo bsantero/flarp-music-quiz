@@ -12,6 +12,14 @@ function NavButton(props) {
   );
 }
 
+function MenuButton({ label, menuState, menuSet }) {
+  return (
+    <button className="themed-button" onClick={() => menuSet(!menuState)}>
+      {label}
+    </button>
+  );
+}
+
 export function Navigation(props) {
   return (
     <div className="navigation float-top">
@@ -19,6 +27,11 @@ export function Navigation(props) {
         setCurrentQuiz={props.setCurrentQuiz}
         quiz={'KeySig'}
         label="Key Signatures"
+      />
+      <MenuButton
+        menuState={props.menuState}
+        menuSet={props.menuSet}
+        label="Settings"
       />
     </div>
   );

@@ -2,6 +2,7 @@ import React from 'react';
 import conLog from '../../utils/conLog.js';
 import { Header } from '../Header/Header.js';
 import { Footer } from '../Footer/Footer.js';
+import { SettingsMenu } from '../Settings/Settings.js';
 
 import { QuizModule as QuizKeySig } from '../QuizKeySigs/QuizKeySigs.js';
 import { QuizModule as QuizLR } from '../QuizLeftRight/QuizLeftRight.js';
@@ -51,10 +52,16 @@ function Main({ currentQuiz }) {
 
 function App() {
   const [currentQuiz, setCurrentQuiz] = React.useState(DEFAULT_QUIZ_ID);
+  const [settingsState, toggleSettings] = React.useState(false);
 
   return (
     <div className="App">
-      <Header setCurrentQuiz={setCurrentQuiz} />
+      <SettingsMenu menuState={settingsState} menuSet={toggleSettings} />
+      <Header
+        setCurrentQuiz={setCurrentQuiz}
+        menuState={settingsState}
+        menuSet={toggleSettings}
+      />
       <Main currentQuiz={currentQuiz} />
       <Footer />
     </div>

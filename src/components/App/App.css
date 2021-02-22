@@ -11,9 +11,22 @@
   text-transform: capitalize;
 }
 
+.hidden {
+  display: none;
+}
+
 .inline {
   max-height: 50px;
   display: inline;
+}
+
+.overlay {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 /* Theme Customizations */
@@ -150,6 +163,14 @@ button.loser {
 .credit a:active,
 .credit a:focus {
   color: rgb(197, 197, 174);
+}
+
+.menu-btn-close {
+  position: absolute;
+  top: 0.5em;
+  right: 0.5em;
+  background-color: rgba(160, 144, 110, 0.1);
+  color: white;
 }
 
 @media only screen and (max-device-width: 768px) and (orientation: portrait) {
