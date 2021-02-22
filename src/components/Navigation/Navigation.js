@@ -25,6 +25,7 @@ export function Navigation(props) {
     <div className="navigation float-top">
       <NavButton
         setCurrentQuiz={props.setCurrentQuiz}
+        setCurrentSettings={props.setCurrentSettings}
         quiz={'KeySig'}
         label="Key Signatures"
       />

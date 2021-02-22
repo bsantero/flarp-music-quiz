@@ -2,7 +2,12 @@ import React from 'react';
 import Navigation from '../../components/Navigation/Navigation';
 import logo from '../../img/logo.png';
 
-export function Header({ setCurrentQuiz, menuState, menuSet }) {
+export function Header({
+  setCurrentQuiz,
+  menuState,
+  menuSet,
+  setCurrentSettings
+}) {
   return (
     <header className="App-header">
       <div className="brand">
@@ -11,6 +16,7 @@ export function Header({ setCurrentQuiz, menuState, menuSet }) {
       </div>
       <Navigation
         setCurrentQuiz={setCurrentQuiz}
+        setCurrentSettings={setCurrentSettings}
         menuState={menuState}
         menuSet={menuSet}
       />

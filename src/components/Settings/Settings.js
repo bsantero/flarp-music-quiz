@@ -2,6 +2,10 @@ import React from 'react';
 import conLog from '../../utils/conLog';
 
 export function SettingsMenu(props) {
+  function SettingsOptions() {
+    return props.currentSettings;
+  }
+
   let newClass;
   if (props.menuState == true) {
     conLog(props.menuState);
@@ -16,7 +20,7 @@ export function SettingsMenu(props) {
       <button className="menu-btn-close" onClick={() => props.menuSet(false)}>
         X
       </button>
-      <button>future button</button>
+      <SettingsOptions />
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+// import Settings from '../Settings/Settings';
 import { keyofc, chromatic, defCircleSignatures } from '../../utils/Keys.js';
 import conLog from '../../utils/conLog.js';
 import { reorder } from './utils/KeySigUtils';
@@ -12,13 +13,23 @@ const random = require('@aspiesoft/random-number-js');
 
 const DEFAULT_NEW_GAME = true;
 const DEFAULT_ANSWER = { pitch: '0', mode: 'major' };
-const DEFAULT_INPUT_TYPE = 'chromatic';
-// const DEFAULT_INPUT_MODE = 'keyboard';
-// const DEFAULT_INPUT_MODE = 'circlefifths';
+const DEFAULT_INPUT_TYPE = 'circlefifths';
+// [ 'chromatic', 'keyboard', 'circlefifths' ]
 const DEFAULT_MODE_PREF = 'qualities'; // Major | Minor
 // const DEFAULT_MODE_PREF = 'modes'; // Only modes
 // const DEFAULT_MODE_PREF = 'both'; // modes and "Major" | "Minor"
 const DEFAULT_ROTATE_PREF = 'false'; // Major | Minor
+
+export function SettingsMenu() {
+  return (
+    <div>
+      <button>2</button>
+      <button>4</button>
+      <button>7</button>
+      <button>3</button>
+    </div>
+  );
+}
 
 export function QuizModule() {
   const [generated, updateGenerated] = useState(!DEFAULT_NEW_GAME);
@@ -33,6 +44,17 @@ export function QuizModule() {
   const [modePref, updateModePref] = useState(DEFAULT_MODE_PREF);
   const [wrongGuesses, updateWrongGuesses] = useState([]);
   const [inputType, updateInputType] = useState(DEFAULT_INPUT_TYPE);
+
+  function getInputType(p) {
+    const arr = ['chromatic', 'keyboard', 'circlefifths'];
+    return arr[p];
+  }
+
+  function switchInputType() {
+    const arr = ['chromatic', 'keyboard', 'circlefifths'];
+    const next = inputType + 1 || 0;
+    updateInputType(arr[next]);
+  }
 
   function getUri(index) {
     let newUri;
@@ -266,25 +288,38 @@ export function QuizModule() {
   }
 
   function QuizInput() {
+    let parentClass;
+    let childClass;
+    let label;
     switch (inputType) {
       case 'circlefifths':
-        return (
-          <div className="child circleOfFifths">
-            <ScoreBoard />
-            <div className="circle">
-              <InputButtons
-                numOfButtons={12}
-                inputType="circlefifths"
-                clickHandler={handleClick}
-              />
-            </div>
-          </div>
-        );
+        parentClass = 'child circleOfFifths';
+        childClass = 'circle';
+        label = 'Circle of Fifths';
+        break;
       case 'keyboard':
-        return <div>KEYBOARD</div>;
+        parentClass = 'child piano-container';
+        childClass = 'piano';
+        label = 'Keyboard';
       case 'chromatic':
-        return <div>chromatic</div>;
+        parentClass = 'child chromatic-container';
+        childClass = 'chromatic';
+        label = 'chromatic';
     }
+
+    return (
+      <div className={parentClass}>
+        <ScoreBoard />
+        <div className={childClass}>
+          <InputButtons
+            numOfButtons={12}
+            inputType={inputType}
+            clickHandler={handleClick}
+            label={label}
+          />
+        </div>
+      </div>
+    );
     // console.log(keySigs);
   }
 
@@ -303,4 +338,4 @@ export function QuizModule() {
   );
 }
 
-export default QuizModule;
+export default { QuizModule, SettingsMenu };
