@@ -13,23 +13,12 @@ const random = require('@aspiesoft/random-number-js');
 
 const DEFAULT_NEW_GAME = true;
 const DEFAULT_ANSWER = { pitch: '0', mode: 'major' };
-const DEFAULT_INPUT_TYPE = 'circlefifths';
+const DEFAULT_INPUT_TYPE = 'chromatic';
 // [ 'chromatic', 'keyboard', 'circlefifths' ]
 const DEFAULT_MODE_PREF = 'qualities'; // Major | Minor
 // const DEFAULT_MODE_PREF = 'modes'; // Only modes
 // const DEFAULT_MODE_PREF = 'both'; // modes and "Major" | "Minor"
 const DEFAULT_ROTATE_PREF = 'false'; // Major | Minor
-
-export function SettingsMenu() {
-  return (
-    <div>
-      <button>2</button>
-      <button>4</button>
-      <button>7</button>
-      <button>3</button>
-    </div>
-  );
-}
 
 export function QuizModule() {
   const [generated, updateGenerated] = useState(!DEFAULT_NEW_GAME);
@@ -200,8 +189,8 @@ export function QuizModule() {
 
   function ScoreBoard() {
     return (
-      <div className="Score">
-        <h5>{score}</h5>
+      <div className="score-container">
+        <h5 className="score">{score}</h5>
       </div>
     );
   }
@@ -245,44 +234,44 @@ export function QuizModule() {
 
     // Ordering Input button logic
 
-    // newKeys.forEach((i) => {
-    //   let note;
-    //   let name;
-    //   let isWinner;
-    //   console.log(`Building ${i} as: ${chromatic[i].label}`);
+    newKeys.forEach((i) => {
+      let note;
+      let name;
+      let isWinner;
+      console.log(`Building ${i} as: ${chromatic[i].label}`);
 
-    //   if (i == answerPitch) {
-    //     isWinner = true;
-    //   } else {
-    //     isWinner = false;
-    //   }
-    //   if (!keySigs[i].label) {
-    //     note = keySigs[i].default;
-    //     // console.log(note.label);
-    //   } else {
-    //     // name = note.label.toLowerCase();
-    //     note = keySigs[i];
-    //   }
-    //   name = note.label;
+      if (i == answerPitch) {
+        isWinner = true;
+      } else {
+        isWinner = false;
+      }
+      if (!keySigs[i].label) {
+        note = keySigs[i].default;
+        // console.log(note.label);
+      } else {
+        // name = note.label.toLowerCase();
+        note = keySigs[i];
+      }
+      name = note.label;
 
-    //   if (wrongGuesses.includes(i)) {
-    //     console.log(`\tis wrong`);
-    //     className = 'themed-button loser';
-    //   } else {
-    //     className = 'themed-button';
-    //   }
-    //   buttons.push(
-    //     <NewButton
-    //       btnKey={i}
-    //       winner={isWinner}
-    //       wrongs={wrongGuesses}
-    //       updateWrongs={updateWrongGuesses}
-    //       styles={className}
-    //       key={i}
-    //       label={name}
-    //     />
-    //   );
-    // });
+      if (wrongGuesses.includes(i)) {
+        console.log(`\tis wrong`);
+        className = 'themed-button loser';
+      } else {
+        className = 'themed-button';
+      }
+      buttons.push(
+        <NewButton
+          btnKey={i}
+          winner={isWinner}
+          wrongs={wrongGuesses}
+          updateWrongs={updateWrongGuesses}
+          styles={className}
+          key={i}
+          label={name}
+        />
+      );
+    });
 
     return buttons;
   }
@@ -293,24 +282,24 @@ export function QuizModule() {
     let label;
     switch (inputType) {
       case 'circlefifths':
-        parentClass = 'child circleOfFifths';
+        parentClass = 'child input-button-container circleOfFifths';
         childClass = 'circle';
         label = 'Circle of Fifths';
         break;
       case 'keyboard':
-        parentClass = 'child piano-container';
+        parentClass = 'child input-button-container piano-container';
         childClass = 'piano';
         label = 'Keyboard';
       case 'chromatic':
-        parentClass = 'child chromatic-container';
+        parentClass = 'child input-button-container chromatic-container';
         childClass = 'chromatic';
         label = 'chromatic';
     }
 
     return (
       <div className={parentClass}>
-        <ScoreBoard />
         <div className={childClass}>
+          <ScoreBoard />
           <InputButtons
             numOfButtons={12}
             inputType={inputType}
@@ -335,6 +324,17 @@ export function QuizModule() {
       <QuizInput />
       <SkipButton />
     </main>
+  );
+}
+
+export function SettingsMenu() {
+  return (
+    <div>
+      <button>Chromatic</button>
+      <button>4</button>
+      <button>7</button>
+      <button>3</button>
+    </div>
   );
 }
 

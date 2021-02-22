@@ -8,23 +8,25 @@
   justify-content: space-evenly;
   flex: 1 0 auto;
 }
-
-div.Score {
-  position: absolute;
-  width: calc(var(--button-text) * 2);
-  height: calc(var(--button-text) * 2);
+.score-container {
   margin: auto;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.score {
+  position: absolute;
+  width: calc(var(--button-text) * 2);
+  height: calc(var(--button-text) * 2);
   border: 3px solid rgba(23, 65, 86, 0.73);
   border-radius: 35%;
-  background-color: black;
+  background-color: #00000073;
+  font-size: calc(var(--button-text) * 1.5);
   box-shadow: 0 8px 30px 22px rgba(4, 12, 14, 0.35);
 }
 
 .Score h5 {
-  font-size: calc(var(--button-text) * 1.5);
 }
 
 .Skip-button:hover,
@@ -55,6 +57,31 @@ div.Score {
   order: 2;
 }
 
-.circleOfFifths {
+.input-button-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   order: 4;
+}
+
+.chromatic-container .score-container {
+  position: relative;
+  grid-column-start: 1;
+  grid-column-end: span 6;
+  grid-row-start: 1;
+  grid-row-end: span 1;
+}
+
+.chromatic-container .chromatic {
+  display: grid;
+  grid-template-columns: 16% 16% 16% 16% 16% 16%;
+  grid-template-rows: 6em 4em 4em;
+}
+
+.chromatic-container .chromatic .tick {
+  /* display: flex; */
+}
+
+.circleOfFifths {
 }
