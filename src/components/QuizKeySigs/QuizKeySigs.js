@@ -13,7 +13,7 @@ const random = require('@aspiesoft/random-number-js');
 
 const DEFAULT_NEW_GAME = true;
 const DEFAULT_ANSWER = { pitch: '0', mode: 'major' };
-const DEFAULT_INPUT_TYPE = 'chromatic';
+const DEFAULT_INPUT_TYPE = 'keyboard';
 // [ 'chromatic', 'keyboard', 'circlefifths' ]
 const DEFAULT_MODE_PREF = 'qualities'; // Major | Minor
 // const DEFAULT_MODE_PREF = 'modes'; // Only modes
@@ -33,6 +33,7 @@ export function QuizModule() {
   const [modePref, updateModePref] = useState(DEFAULT_MODE_PREF);
   const [wrongGuesses, updateWrongGuesses] = useState([]);
   const [inputType, updateInputType] = useState(DEFAULT_INPUT_TYPE);
+  const [userPrefRotate, updatePrefRotate] = useState(DEFAULT_ROTATE_PREF);
 
   function getInputType(p) {
     const arr = ['chromatic', 'keyboard', 'circlefifths'];
@@ -200,30 +201,44 @@ export function QuizModule() {
     console.log(`\t${inputType}`);
     console.log(`\tWrongs: ${wrongGuesses}`);
 
-    let className = 'themed-button';
+    let className = '';
+    let keyClassName;
 
     function NewButton(props) {
-      return (
-        <div className="tick">
-          <div className="label">
+      if (inputType == 'keyboard') {
+        return (
+          <div className={props.containerStyle}>
+            {/* <div className="label"> */}
+            <button
+              className={props.styles}
+              onClick={() => handleClick(props)}
+            ></button>
+            {/* </div> */}
+          </div>
+        );
+      } else {
+        return (
+          <div className={props.containerStyle}>
+            {/* <div className="label"> */}
             <button className={props.styles} onClick={() => handleClick(props)}>
               {props.label}
             </button>
+            {/* </div> */}
           </div>
-        </div>
-      );
+        );
+      }
     }
 
     // Generate new array of inputs
     const chromaticKeys = Object.keys(keySigs);
     console.log(chromaticKeys); // ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'];
     let newKeys;
-    switch (answerMode) {
-      case 'major':
+    switch (userPrefRotate) {
+      case 'false':
         newKeys = chromaticKeys;
         console.log(newKeys);
         break;
-      case 'minor':
+      case 'true':
         newKeys = reorder(chromaticKeys, 9); // ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'];
         console.log(newKeys);
         break;
@@ -238,7 +253,6 @@ export function QuizModule() {
       let note;
       let name;
       let isWinner;
-      console.log(`Building ${i} as: ${chromatic[i].label}`);
 
       if (i == answerPitch) {
         isWinner = true;
@@ -256,10 +270,37 @@ export function QuizModule() {
 
       if (wrongGuesses.includes(i)) {
         console.log(`\tis wrong`);
-        className = 'themed-button loser';
+        className = className + ' loser';
+      }
+
+      if (inputType == 'keyboard') {
+        switch (parseInt(i)) {
+          case 0:
+          case 2:
+          case 4:
+          case 5:
+          case 7:
+          case 9:
+          case 11:
+            console.log(`key ${i} is white`);
+            keyClassName = `piano-key white key-${i}`;
+            className = 'white-btn';
+            break;
+          case 1:
+          case 3:
+          case 6:
+          case 8:
+          case 10:
+            console.log(`key ${i} is black`);
+            keyClassName = `piano-key black key-${i}`;
+            className = 'black-btn';
+            break;
+        }
       } else {
         className = 'themed-button';
+        keyClassName = `tick key-${i}`;
       }
+
       buttons.push(
         <NewButton
           btnKey={i}
@@ -267,6 +308,7 @@ export function QuizModule() {
           wrongs={wrongGuesses}
           updateWrongs={updateWrongGuesses}
           styles={className}
+          containerStyle={keyClassName}
           key={i}
           label={name}
         />
@@ -280,6 +322,8 @@ export function QuizModule() {
     let parentClass;
     let childClass;
     let label;
+    console.log('inputType will be:');
+    console.log(inputType);
     switch (inputType) {
       case 'circlefifths':
         parentClass = 'child input-button-container circleOfFifths';
@@ -287,13 +331,15 @@ export function QuizModule() {
         label = 'Circle of Fifths';
         break;
       case 'keyboard':
-        parentClass = 'child input-button-container piano-container';
+        parentClass = 'child input-button-container keyboard-container';
         childClass = 'piano';
         label = 'Keyboard';
+        break;
       case 'chromatic':
         parentClass = 'child input-button-container chromatic-container';
         childClass = 'chromatic';
         label = 'chromatic';
+        break;
     }
 
     return (

@@ -26,9 +26,6 @@
   box-shadow: 0 8px 30px 22px rgba(4, 12, 14, 0.35);
 }
 
-.Score h5 {
-}
-
 .Skip-button:hover,
 .circleOfFifths button:hover {
   background: rgb(80, 127, 221);
@@ -58,6 +55,7 @@
 }
 
 .input-button-container {
+  min-width: 50%;
   position: relative;
   display: flex;
   align-items: center;
@@ -65,6 +63,7 @@
   order: 4;
 }
 
+.keyboard-container .score-container,
 .chromatic-container .score-container {
   position: relative;
   grid-column-start: 1;
@@ -75,12 +74,120 @@
 
 .chromatic-container .chromatic {
   display: grid;
-  grid-template-columns: 16% 16% 16% 16% 16% 16%;
-  grid-template-rows: 6em 4em 4em;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 6em 3.5em 4.5em;
 }
 
-.chromatic-container .chromatic .tick {
-  /* display: flex; */
+.keyboard-container .piano {
+  display: grid;
+  width: 95%;
+  grid-template-columns: repeat(42, 1fr);
+  grid-template-rows: 6em 5em 8em;
+}
+
+.key-0,
+.key-2,
+.key-4,
+.key-5,
+.key-7,
+.key-9,
+.key-11 {
+  grid-row-start: 3;
+  grid-row-end: 3;
+}
+
+.key-0 {
+  grid-column-start: 1;
+  grid-column-end: 7;
+}
+.key-2 {
+  grid-column-start: 7;
+  grid-column-end: 13;
+}
+.key-4 {
+  grid-column-start: 13;
+  grid-column-end: 19;
+}
+.key-5 {
+  grid-column-start: 19;
+  grid-column-end: 25;
+}
+.key-7 {
+  grid-column-start: 25;
+  grid-column-end: 31;
+}
+.key-9 {
+  grid-column-start: 31;
+  grid-column-end: 37;
+}
+.key-11 {
+  grid-column-start: 37;
+  grid-column-end: 43;
+}
+
+// Black keys
+.key-1,
+.key-3,
+.key-6,
+.key-8,
+.key-10 {
+  grid-row-start: 2;
+  grid-row-end: 2;
+}
+
+.key-1 {
+  grid-column-start: 5;
+  grid-column-end: 9;
+}
+.key-3 {
+  grid-column-start: 11;
+  grid-column-end: 15;
+}
+.key-6 {
+  grid-column-start: 22;
+  grid-column-end: 26;
+  left: 10%;
+}
+.key-8 {
+  grid-column-start: 29;
+  grid-column-end: 33;
+}
+.key-10 {
+  grid-column-start: 36;
+  grid-column-end: 40;
+  right: 10%;
+}
+
+.piano-key.white {
+  z-index: 4;
+  position: relative;
+  bottom: 5em;
+}
+
+.piano-key.white label,
+.piano-key.white .white-btn {
+  background-color: ivory;
+  height: 100%;
+  width: 99%;
+}
+
+.piano-key.black {
+  z-index: 5;
+}
+
+.piano-key.black label,
+.piano-key.black .black-btn {
+  background-color: #000000;
+  height: 100%;
+  width: 90%;
+}
+
+.keyboard-container .score-container {
+  grid-column-end: end;
+}
+
+.keyboard-container .keyboard {
+  background-color: ivory;
 }
 
 .circleOfFifths {
