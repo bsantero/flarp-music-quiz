@@ -22,11 +22,14 @@
 
 .overlay {
   position: absolute;
-  top: 10%;
-  left: 10%;
-  width: 80%;
-  height: 80%;
-  background-color: rgba(0, 0, 0, 0.3);
+  top: 10vh;
+  left: 4vw;
+  height: 80vh;
+  width: 90vw;
+  background-color: rgba(26, 26, 26, 0.8);
+  border-radius: 0.5em;
+  box-shadow: 0 0 2em 0px black;
+  z-index: 1000;
 }
 
 /* Theme Customizations */
@@ -166,11 +169,18 @@ button.loser {
 }
 
 .menu-btn-close {
+  font-size: 2em;
   position: absolute;
   top: 0.5em;
-  right: 0.5em;
-  background-color: rgba(160, 144, 110, 0.1);
+  left: 0.5em;
+  background-color: rgb(109, 24, 24);
+  border-radius: 0.25em;
   color: white;
+}
+
+.menu-btn-close:hover,
+.menu-btn-close:active {
+  background-color: rgb(65, 12, 12);
 }
 
 @media only screen and (max-device-width: 768px) and (orientation: portrait) {
