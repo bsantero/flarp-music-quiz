@@ -125,10 +125,6 @@
   pointer-events: none;
 }
 
-button.loser {
-  border: 1px solid rgb(138, 36, 36) !important;
-}
-
 @media (prefers-reduced-motion: no-preference) {
   .key-img {
     background-color: antiquewhite;

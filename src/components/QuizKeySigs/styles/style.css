@@ -1,3 +1,18 @@
+/* Quiz Settings settings */
+
+.quiz-settings-container {
+  display: grid;
+}
+
+.quiz-settings-container .options-header {
+  color: ivory;
+}
+
+.quiz-settings-container .quiz-option {
+  margin: 0.5em;
+  font-size: 2.5em;
+}
+
 .Quiz-main {
   min-height: calc(100vh - 1.3em);
   max-height: calc(100vh - 1.5em);
@@ -8,11 +23,34 @@
   justify-content: space-evenly;
   flex: 1 0 auto;
 }
+
 .score-container {
   margin: auto;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.loser {
+  border-color: rgba(128, 14, 14, 1) !important;
+}
+.chromatic .loser,
+.circleOfFifths .loser {
+  border-width: 2px;
+  border-style: solid;
+}
+
+.piano .loser {
+  border-style: 0;
+  border-width: 0;
+}
+
+.piano .loser button {
+  background-color: rgb(165, 22, 22) !important;
+}
+
+.piano .loser button.black-btn {
+  background-color: rgb(168, 85, 85) !important;
 }
 
 .score {
@@ -63,6 +101,10 @@
   order: 4;
 }
 
+.input-button-container.keyboard-container {
+  flex: 2.5 1;
+}
+
 .keyboard-container .score-container,
 .chromatic-container .score-container {
   position: relative;
@@ -75,84 +117,113 @@
 .chromatic-container .chromatic {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: 6em 3.5em 4.5em;
+  grid-template-rows: 6em 3em 3em;
+}
+.chromatic .tick {
+  margin: 0.15em;
 }
 
-.keyboard-container .piano {
-  display: grid;
-  width: 95%;
-  grid-template-columns: repeat(42, 1fr);
-  grid-template-rows: 6em 5em 8em;
+.chromatic .tick button {
+  height: 100%;
+  width: 100%;
 }
 
-.key-0,
-.key-2,
-.key-4,
-.key-5,
-.key-7,
-.key-9,
-.key-11 {
+.chromatic .key-0,
+.chromatic .key-1,
+.chromatic .key-2,
+.chromatic .key-3,
+.chromatic .key-4,
+.chromatic .key-5 {
+  grid-row-start: 2;
+  grid-row-end: 2;
+}
+
+.chromatic .key-6,
+.chromatic .key-7,
+.chromatic .key-8,
+.chromatic .key-9,
+.chromatic .key-10,
+.chromatic .key-11 {
   grid-row-start: 3;
   grid-row-end: 3;
 }
 
-.key-0 {
+.keyboard-container .piano {
+  display: grid;
+  max-width: 13em;
+  min-width: 8em;
+  grid-template-columns: repeat(42, 1fr);
+  grid-template-rows: 6em 4.5em 8em;
+}
+
+.piano .key-0,
+.piano .key-2,
+.piano .key-4,
+.piano .key-5,
+.piano .key-7,
+.piano .key-9,
+.piano .key-11 {
+  grid-row-start: 3;
+  grid-row-end: 3;
+}
+
+.piano .key-0 {
   grid-column-start: 1;
   grid-column-end: 7;
 }
-.key-2 {
+.piano .key-2 {
   grid-column-start: 7;
   grid-column-end: 13;
 }
-.key-4 {
+.piano .key-4 {
   grid-column-start: 13;
   grid-column-end: 19;
 }
-.key-5 {
+.piano .key-5 {
   grid-column-start: 19;
   grid-column-end: 25;
 }
-.key-7 {
+.piano .key-7 {
   grid-column-start: 25;
   grid-column-end: 31;
 }
-.key-9 {
+.piano .key-9 {
   grid-column-start: 31;
   grid-column-end: 37;
 }
-.key-11 {
+.piano .key-11 {
   grid-column-start: 37;
   grid-column-end: 43;
 }
 
 // Black keys
-.key-1,
-.key-3,
-.key-6,
-.key-8,
-.key-10 {
+.piano .key-1,
+.piano .key-3,
+.piano .key-6,
+.piano .key-8,
+.piano .key-10 {
   grid-row-start: 2;
   grid-row-end: 2;
 }
 
-.key-1 {
+.piano .key-1 {
   grid-column-start: 5;
   grid-column-end: 9;
 }
-.key-3 {
+.piano .key-3 {
   grid-column-start: 11;
   grid-column-end: 15;
 }
-.key-6 {
+.piano .key-6 {
   grid-column-start: 22;
   grid-column-end: 26;
   left: 10%;
 }
-.key-8 {
+.piano .key-8 {
   grid-column-start: 29;
   grid-column-end: 33;
 }
-.key-10 {
+.piano .key-10 {
   grid-column-start: 36;
   grid-column-end: 40;
   right: 10%;
@@ -161,7 +232,8 @@
 .piano-key.white {
   z-index: 4;
   position: relative;
-  bottom: 5em;
+  bottom: 4.5em;
+  width: 2.2em;
 }
 
 .piano-key.white label,

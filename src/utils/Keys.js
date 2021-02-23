@@ -31,50 +31,139 @@ const keyboard = [
 ];
 
 const chromatic = {
-  0: { uri: keyofc, label: 'C', weighted: 'default', mode: 'Ionian' },
+  0: {
+    default: 'nosig',
+    sharp: 'c',
+    flat: 'c',
+    mode: 'Ionian',
+    nosig: { uri: keyofc, label: 'c', weighted: 'default' }
+  },
   1: {
+    default: 'flat',
+    sharp: 'c#',
+    flat: 'd♭',
+    flat: {
+      uri: flat5,
+      label: 'd♭',
+      weighted: 'flat'
+    },
     sharp: {
       uri: sharp7,
-      label: 'C♯',
+      label: 'c♯',
       weighted: 'sharp'
-    },
-    default: {
-      uri: flat5,
-      label: 'D♭',
+    }
+  },
+  2: {
+    default: 'sharp',
+    sharp: 'd',
+    flat: 'd',
+    mode: ['Dorian'],
+    sharp: { uri: sharp2, label: 'd', weighted: 'sharp' }
+  },
+  3: {
+    default: 'flat',
+    sharp: 'd#',
+    flat: 'e♭',
+    flat: {
+      uri: flat3,
+      label: 'e♭',
       weighted: 'flat'
     }
   },
-  2: { uri: sharp2, label: 'D', weighted: 'sharp', mode: 'Dorian' },
-  3: { uri: flat3, label: 'E♭', weighted: 'flat' },
-  4: { uri: sharp4, label: 'E', weighted: 'sharp', mode: 'Phrygian' },
-  5: { uri: flat1, label: 'F', weighted: 'flat', mode: 'Lydian' },
+  4: {
+    default: 'sharp',
+    sharp: 'e',
+    flat: 'e',
+    mode: ['Phrygian'],
+    sharp: {
+      uri: sharp4,
+      label: 'e',
+      weighted: 'sharp'
+    }
+  },
+  5: {
+    default: 'flat',
+    sharp: 'f',
+    flat: 'f',
+    mode: ['Lydian'],
+    flat: {
+      uri: flat1,
+      label: 'f',
+      weighted: 'flat'
+    }
+  },
   6: {
+    default: 'sharp',
+    sharp: 'f#',
+    flat: 'g♭',
+    flat: {
+      uri: flat6,
+      label: 'g♭',
+      weighted: 'flat',
+      weightedQuality: 'major'
+    },
     sharp: {
       uri: sharp6,
-      label: 'F♯',
+      label: 'f♯',
+      weighted: 'sharp',
+      weightedQuality: 'minor'
+    }
+  },
+  7: {
+    default: 'sharp',
+    sharp: 'g',
+    flat: 'g',
+    mode: ['Mixolydian'],
+    sharp: {
+      uri: sharp1,
+      label: 'g',
       weighted: 'sharp'
-    },
-    default: {
-      uri: flat6,
-      label: 'G♭',
+    }
+  },
+  8: {
+    default: 'flat',
+    sharp: 'g#',
+    flat: 'a♭',
+    flat: {
+      uri: flat4,
+      label: 'a♭',
       weighted: 'flat'
     }
   },
-  7: { uri: sharp1, label: 'G', weighted: 'sharp', mode: 'Mixolydian' },
-  8: { uri: flat4, label: 'A♭', weighted: 'flat' },
-  9: { uri: sharp3, label: 'A', weighted: 'sharp', mode: 'Aeolian' },
-  10: { uri: flat2, label: 'B♭', weighted: 'flat' },
+  9: {
+    default: 'sharp',
+    sharp: 'a',
+    flat: 'a',
+    mode: ['minor', 'Aeolian'],
+    sharp: {
+      uri: sharp3,
+      label: 'a',
+      weighted: 'sharp'
+    }
+  },
+  10: {
+    default: 'flat',
+    sharp: 'a#',
+    flat: 'b♭',
+    flat: {
+      uri: flat2,
+      label: 'b♭',
+      weighted: 'flat'
+    }
+  },
   11: {
-    default: {
+    default: 'sharp',
+    sharp: 'b',
+    flat: 'c♭',
+    mode: 'Locrian',
+    sharp: {
       uri: sharp5,
-      label: 'B',
-      default: [0],
-      weighted: 'sharp',
-      mode: 'Locrian'
+      label: 'b',
+      weighted: 'sharp'
     },
     flat: {
       uri: flat7,
-      label: 'C♭',
+      label: 'c♭',
       weighted: 'flat'
     }
   }

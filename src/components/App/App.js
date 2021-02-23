@@ -20,7 +20,7 @@ const DEFAULT_QUIZ_ID = 'KeySig';
 const DEFAULT_QUIZ_SETTINGS = KeySigSettings;
 
 function Main({ currentQuiz }) {
-  conLog(currentQuiz);
+  // conLog(currentQuiz);
 
   let QuizComponent = null;
 

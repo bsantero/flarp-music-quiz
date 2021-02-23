@@ -17,7 +17,7 @@
   }
 
   .Question-bar {
-    flex-grow: 0;
+    flex-grow: 1;
   }
 
   .Question-bar h3 {
@@ -25,7 +25,7 @@
   }
 
   .image-container {
-    flex-grow: 1;
+    flex-grow: 0.75;
   }
 
   .image-container .key-img {
