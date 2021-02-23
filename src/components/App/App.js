@@ -2,10 +2,14 @@ import React from 'react';
 import conLog from '../../utils/conLog.js';
 import { Header } from '../Header/Header.js';
 import { Footer } from '../Footer/Footer.js';
+import { SettingsMenu } from '../Settings/Settings.js';
 
-import { QuizKeySignatures as QuizKeySig } from '../QuizKeySignatures/QuizKeySignatures.js';
-import { QuizLeftRight as QuizLR } from '../Quizzes/QuizLeftRight.js';
-import { QuizLeftMidRight as QuizLMR } from '../Quizzes/QuizLeftMidRight.js';
+import {
+  QuizModule as QuizKeySig,
+  SettingsMenu as KeySigSettings
+} from '../QuizKeySigs/QuizKeySigs.js';
+import { QuizModule as QuizLR } from '../QuizLeftRight/QuizLeftRight.js';
+import { QuizModule as QuizLMR } from '../QuizLeftMidRight/QuizLeftMidRight.js';
 
 import './App.css';
 import './App-testing.css';
@@ -13,9 +17,10 @@ import './App-testing.css';
 // Constants
 
 const DEFAULT_QUIZ_ID = 'KeySig';
+const DEFAULT_QUIZ_SETTINGS = KeySigSettings;
 
 function Main({ currentQuiz }) {
-  conLog(currentQuiz);
+  // conLog(currentQuiz);
 
   let QuizComponent = null;
 
@@ -51,10 +56,24 @@ function Main({ currentQuiz }) {
 
 function App() {
   const [currentQuiz, setCurrentQuiz] = React.useState(DEFAULT_QUIZ_ID);
+  const [currentSettings, setCurrentSettings] = React.useState(
+    DEFAULT_QUIZ_SETTINGS
+  );
+  const [settingsState, toggleSettings] = React.useState(false);
 
   return (
     <div className="App">
-      <Header setCurrentQuiz={setCurrentQuiz} />
+      <SettingsMenu
+        currentSettings={currentSettings}
+        menuState={settingsState}
+        menuSet={toggleSettings}
+      />
+      <Header
+        setCurrentQuiz={setCurrentQuiz}
+        setCurrentSettings={setCurrentSettings}
+        menuState={settingsState}
+        menuSet={toggleSettings}
+      />
       <Main currentQuiz={currentQuiz} />
       <Footer />
     </div>

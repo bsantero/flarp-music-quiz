@@ -7,13 +7,6 @@
   --button-transform: calc(var(--radius) / 2 + (var(--button-text) / 3));
 }
 
-.circleOfFifths {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .circle {
   width: var(--radius);
   height: var(--radius);

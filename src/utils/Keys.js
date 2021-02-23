@@ -15,51 +15,174 @@ import flat6 from '../img/keysigs/flat6.png';
 import flat7 from '../img/keysigs/flat7.png';
 
 // F♯/G♭
+const keyboard = [
+  { c: { base: 0 } },
+  { 'c+': { base: 1 } },
+  { d: { base: 2 } },
+  { 'e-': { base: 3 } },
+  { e: { base: 4 } },
+  { f: { base: 5 } },
+  { 'f+': { base: 6 } },
+  { g: { base: 7 } },
+  { 'g+': { base: 8 } },
+  { a: { base: 9 } },
+  { 'b-': { base: 10 } },
+  { b: { base: 11 } }
+];
 
-const majorKeys = {
-  0: { uri: keyofc, label: 'C' },
-  1: { uri: sharp1, label: 'G' },
-  2: { uri: sharp2, label: 'D' },
-  3: { uri: sharp3, label: 'A' },
-  4: { uri: sharp4, label: 'E' },
-  5: {
-    uri: 'choose',
-    sharp: {
-      uri: sharp5,
-      label: 'B'
-    },
+const chromatic = {
+  0: {
+    default: 'nosig',
+    sharp: 'c',
+    flat: 'c',
+    mode: 'Ionian',
+    nosig: { uri: keyofc, label: 'c', weighted: 'default' }
+  },
+  1: {
+    default: 'flat',
+    sharp: 'c#',
+    flat: 'd♭',
     flat: {
-      uri: flat7,
-      label: 'C♭'
+      uri: flat5,
+      label: 'd♭',
+      weighted: 'flat'
+    },
+    sharp: {
+      uri: sharp7,
+      label: 'c♯',
+      weighted: 'sharp'
+    }
+  },
+  2: {
+    default: 'sharp',
+    sharp: 'd',
+    flat: 'd',
+    mode: ['Dorian'],
+    sharp: { uri: sharp2, label: 'd', weighted: 'sharp' }
+  },
+  3: {
+    default: 'flat',
+    sharp: 'd#',
+    flat: 'e♭',
+    flat: {
+      uri: flat3,
+      label: 'e♭',
+      weighted: 'flat'
+    }
+  },
+  4: {
+    default: 'sharp',
+    sharp: 'e',
+    flat: 'e',
+    mode: ['Phrygian'],
+    sharp: {
+      uri: sharp4,
+      label: 'e',
+      weighted: 'sharp'
+    }
+  },
+  5: {
+    default: 'flat',
+    sharp: 'f',
+    flat: 'f',
+    mode: ['Lydian'],
+    flat: {
+      uri: flat1,
+      label: 'f',
+      weighted: 'flat'
     }
   },
   6: {
-    uri: 'choose',
-    sharp: {
-      uri: sharp6,
-      label: 'F♯'
-    },
+    default: 'sharp',
+    sharp: 'f#',
+    flat: 'g♭',
     flat: {
       uri: flat6,
-      label: 'G♭'
+      label: 'g♭',
+      weighted: 'flat',
+      weightedQuality: 'major'
+    },
+    sharp: {
+      uri: sharp6,
+      label: 'f♯',
+      weighted: 'sharp',
+      weightedQuality: 'minor'
     }
   },
   7: {
-    uri: 'choose',
+    default: 'sharp',
+    sharp: 'g',
+    flat: 'g',
+    mode: ['Mixolydian'],
     sharp: {
-      uri: sharp7,
-      label: 'C♯'
-    },
-    flat: {
-      uri: flat5,
-      label: 'D♭'
+      uri: sharp1,
+      label: 'g',
+      weighted: 'sharp'
     }
   },
-  8: { uri: flat4, label: 'A♭' },
-  9: { uri: flat3, label: 'E♭' },
-  10: { uri: flat2, label: 'B♭' },
-  11: { uri: flat1, label: 'F' }
+  8: {
+    default: 'flat',
+    sharp: 'g#',
+    flat: 'a♭',
+    flat: {
+      uri: flat4,
+      label: 'a♭',
+      weighted: 'flat'
+    }
+  },
+  9: {
+    default: 'sharp',
+    sharp: 'a',
+    flat: 'a',
+    mode: ['minor', 'Aeolian'],
+    sharp: {
+      uri: sharp3,
+      label: 'a',
+      weighted: 'sharp'
+    }
+  },
+  10: {
+    default: 'flat',
+    sharp: 'a#',
+    flat: 'b♭',
+    flat: {
+      uri: flat2,
+      label: 'b♭',
+      weighted: 'flat'
+    }
+  },
+  11: {
+    default: 'sharp',
+    sharp: 'b',
+    flat: 'c♭',
+    mode: 'Locrian',
+    sharp: {
+      uri: sharp5,
+      label: 'b',
+      weighted: 'sharp'
+    },
+    flat: {
+      uri: flat7,
+      label: 'c♭',
+      weighted: 'flat'
+    }
+  }
 };
+
+const defCircleSignatures = [
+  0, // C
+  7, // G
+  2, // D
+  9, // A
+  4, // E
+  11, // B
+  6, // F#-Gb
+  1, // C#-Db
+  8, // G#-Ab
+  3, // Eb
+  10, // Bb
+  5 // F
+];
 
 const minorKeys = {
   0: { uri: keyofc, label: 'A' },
@@ -68,7 +191,7 @@ const minorKeys = {
   3: { uri: sharp3, label: 'F♯' },
   4: { uri: sharp4, label: 'C♯' },
   5: {
-    uri: 'choose',
+    uri: null,
     sharp: {
       uri: sharp5,
       label: 'G♯'
@@ -79,7 +202,7 @@ const minorKeys = {
     }
   },
   6: {
-    uri: 'choose',
+    uri: null,
     sharp: {
       uri: sharp6,
       label: 'D♯'
@@ -90,7 +213,7 @@ const minorKeys = {
     }
   },
   7: {
-    uri: 'choose',
+    uri: null,
     sharp: {
       uri: sharp7,
       label: 'A♯'
@@ -171,4 +294,4 @@ const keySignatures = {
   }
 };
 
-export { keyofc, keySignatures, majorKeys, minorKeys };
+export { keyboard, keyofc, chromatic, defCircleSignatures };

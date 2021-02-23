@@ -11,9 +11,25 @@
   text-transform: capitalize;
 }
 
+.hidden {
+  display: none;
+}
+
 .inline {
   max-height: 50px;
   display: inline;
+}
+
+.overlay {
+  position: absolute;
+  top: 10vh;
+  left: 4vw;
+  height: 80vh;
+  width: 90vw;
+  background-color: rgba(26, 26, 26, 0.8);
+  border-radius: 0.5em;
+  box-shadow: 0 0 2em 0px black;
+  z-index: 1000;
 }
 
 /* Theme Customizations */
@@ -109,10 +125,6 @@
   pointer-events: none;
 }
 
-button .loser {
-  outline: 1px solid rgb(138, 36, 36);
-}
-
 @media (prefers-reduced-motion: no-preference) {
   .key-img {
     background-color: antiquewhite;
@@ -150,6 +162,21 @@ button .loser {
 .credit a:active,
 .credit a:focus {
   color: rgb(197, 197, 174);
+}
+
+.menu-btn-close {
+  font-size: 2em;
+  position: absolute;
+  top: 0.5em;
+  left: 0.5em;
+  background-color: rgb(109, 24, 24);
+  border-radius: 0.25em;
+  color: white;
+}
+
+.menu-btn-close:hover,
+.menu-btn-close:active {
+  background-color: rgb(65, 12, 12);
 }
 
 @media only screen and (max-device-width: 768px) and (orientation: portrait) {
