@@ -98,6 +98,7 @@
   /* order: 2; */
   /* flex: 0 1; */
   height: 100%;
+  max-width: 100%;
   /* margin: auto; */
   pointer-events: none;
   grid-area: imgc;
