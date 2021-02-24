@@ -14,21 +14,22 @@
 }
 
 .Quiz-main {
-  min-height: calc(100vh - 1.3em);
+  /* min-height: calc(100vh - 1.3em);
   max-height: calc(100vh - 1.5em);
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  flex: 1 0 auto;
-}
-
-.score-container {
-  margin: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  flex: 1 0 auto; */
+  display: grid;
+  grid-template-columns: 30% 40% 30%;
+  /* grid-template-columns: auto; */
+  grid-template-rows: 48% 12% 40%;
+  grid-template-areas:
+    'imgl imgc imgr'
+    'question question question'
+    'input input input';
 }
 
 .loser {
@@ -53,15 +54,22 @@
   background-color: rgb(168, 85, 85) !important;
 }
 
+.score-container {
+  margin: auto;
+  grid-area: imgl;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .score {
-  position: absolute;
   width: calc(var(--button-text) * 2);
   height: calc(var(--button-text) * 2);
   border: 3px solid rgba(23, 65, 86, 0.73);
   border-radius: 35%;
   background-color: #00000073;
   font-size: calc(var(--button-text) * 1.5);
-  box-shadow: 0 8px 30px 22px rgba(4, 12, 14, 0.35);
+  box-shadow: 0 8px 30px 10px rgba(4, 12, 14, 0.35);
 }
 
 .Skip-button:hover,
@@ -78,6 +86,34 @@
   border-radius: 10% !important;
 }
 
+.image-container {
+  grid-area: imgc;
+  /* display: grid; */
+  /* grid-template-areas: 'imgl imgc imgr'; */
+  /* grid-template-columns: 30% 40% 30%; */
+  /* grid-template-rows: auto; */
+}
+
+.key-img {
+  /* order: 2; */
+  /* flex: 0 1; */
+  height: 100%;
+  /* margin: auto; */
+  pointer-events: none;
+  grid-area: imgc;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .key-img {
+    background-color: antiquewhite;
+    padding: 1%;
+    border-radius: 12px;
+    border: 3px solid rgba(82, 46, 5, 0.397);
+    box-shadow: 0 3px 10px 10px rgba(160, 144, 110, 0.1);
+    /* animation: App-logo-spin infinite 20s linear; */
+  }
+}
+
 .Question-bar .question {
   font-weight: normal;
 }
@@ -86,23 +122,25 @@
   font-size: 1.25em;
 }
 
-.key-img {
-  flex: 0 1;
-  margin: auto;
-  order: 2;
+.Question-bar {
+  grid-area: question;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.input-button-container {
-  min-width: 50%;
+.input-container {
+  grid-area: input;
+  /* min-width: 50%; */
   position: relative;
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
-  order: 4;
+  /* order: 4; */
 }
 
-.input-button-container.keyboard-container {
-  flex: 2.5 1;
+.input-container.keyboard-container {
+  /* flex: 2.5 1; */
 }
 
 .keyboard-container .score-container,
@@ -148,12 +186,19 @@
   grid-row-end: 3;
 }
 
+.input-container {
+  /* display: grid; */
+  grid-template-rows: 3em 8em;
+  /* margin-bottom: -4em; */
+}
+
 .keyboard-container .piano {
   display: grid;
-  max-width: 13em;
+  height: min-content;
+  max-width: 90vw;
   min-width: 8em;
   grid-template-columns: repeat(42, 1fr);
-  grid-template-rows: 6em 4.5em 8em;
+  grid-template-rows: 4.5em 8em;
 }
 
 .piano .key-0,
@@ -163,8 +208,8 @@
 .piano .key-7,
 .piano .key-9,
 .piano .key-11 {
-  grid-row-start: 3;
-  grid-row-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 2;
 }
 
 .piano .key-0 {
@@ -217,7 +262,7 @@
 .piano .key-6 {
   grid-column-start: 22;
   grid-column-end: 26;
-  left: 10%;
+  position: relative;
 }
 .piano .key-8 {
   grid-column-start: 29;
@@ -226,36 +271,54 @@
 .piano .key-10 {
   grid-column-start: 36;
   grid-column-end: 40;
+  right: 15%;
+}
+
+.piano .key-3,
+.piano .key-6 {
+  left: 10%;
+  position: relative;
+}
+
+.piano .key-1,
+.piano .key-10 {
   right: 10%;
+  position: relative;
 }
 
 .piano-key.white {
   z-index: 4;
   position: relative;
-  bottom: 4.5em;
-  width: 2.2em;
+  bottom: 2.25em;
 }
 
-.piano-key.white label,
 .piano-key.white .white-btn {
   background-color: ivory;
   height: 100%;
   width: 99%;
 }
 
-.piano-key.black {
-  z-index: 5;
+.piano-key.white .white-btn:active {
+  background-color: rgb(121, 121, 116);
+  border: 5px inset rgb(80, 127, 221);
+  outline: 1px inset rgba(160, 144, 110, 0.4);
 }
 
-.piano-key.black label,
+.piano-key.black {
+  z-index: 5;
+  height: 4.5em;
+  position: relative;
+  top: 2.25em;
+}
+
 .piano-key.black .black-btn {
   background-color: #000000;
   height: 100%;
-  width: 90%;
+  width: calc(90vw / 12);
 }
 
 .keyboard-container .score-container {
-  grid-column-end: end;
+  /* grid-column-end: end; */
 }
 
 .keyboard-container .keyboard {
@@ -263,4 +326,15 @@
 }
 
 .circleOfFifths {
+}
+
+/* Adjustments/ Corrections */
+
+.input-container {
+  /* margin-bottom: -4em; */
+}
+
+.score {
+  box-sizing: content-box;
+  /* margin-top: -1.5em; */
 }

@@ -206,9 +206,9 @@ export function QuizModule() {
   function QuestionBar() {
     return (
       <div className="child Question-bar">
-        <h3 className="question">
+        <span className="question">
           What's this key in <QuestionQuality quality={answerMode} />?
-        </h3>
+        </span>
       </div>
     );
   }
@@ -403,17 +403,17 @@ export function QuizModule() {
     // console.log(inputType);
     switch (inputType) {
       case 'circlefifths':
-        parentClass = 'child input-button-container circleOfFifths';
+        parentClass = 'child input-container circleOfFifths';
         childClass = 'circle';
         label = 'Circle of Fifths';
         break;
       case 'keyboard':
-        parentClass = 'child input-button-container keyboard-container';
+        parentClass = 'child input-container keyboard-container';
         childClass = 'piano';
         label = 'Keyboard';
         break;
       case 'chromatic':
-        parentClass = 'child input-button-container chromatic-container';
+        parentClass = 'child input-container chromatic-container';
         childClass = 'chromatic';
         label = 'chromatic';
         break;
@@ -422,7 +422,6 @@ export function QuizModule() {
     return (
       <div className={parentClass}>
         <div className={childClass}>
-          <ScoreBoard />
           <InputButtons
             numOfButtons={12}
             inputType={inputType}
@@ -441,13 +440,12 @@ export function QuizModule() {
 
   return (
     <>
-      <main className="Quiz-main">
-        {/* <ShowAnswer /> */}
-        <QuestionBar />
-        <ImageContainer />
-        <QuizInput />
-        <SkipButton />
-      </main>
+      {/* <ShowAnswer /> */}
+      <SkipButton />
+      <ScoreBoard />
+      <QuizInput />
+      <ImageContainer />
+      <QuestionBar />
     </>
   );
 }

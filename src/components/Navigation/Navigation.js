@@ -14,7 +14,11 @@ function NavButton(props) {
 
 function MenuButton({ label, menuState, menuSet }) {
   return (
-    <button className="themed-button" onClick={() => menuSet(!menuState)}>
+    <button
+      alt="settings"
+      className="themed-button"
+      onClick={() => menuSet(!menuState)}
+    >
       {label}
     </button>
   );
@@ -32,7 +36,7 @@ export function Navigation(props) {
       <MenuButton
         menuState={props.menuState}
         menuSet={props.menuSet}
-        label="Settings"
+        label="⚙️"
       />
     </div>
   );
