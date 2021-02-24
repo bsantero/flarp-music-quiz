@@ -1,3 +1,17 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+}
+html {
+  height: -webkit-fill-available;
+}
+
 /* Vars */
 
 :root {
@@ -62,25 +76,36 @@
 /* Page Styles */
 
 .App {
-  min-width: 300px;
+  width: 100vw;
+  height: 100vh;
   background-color: var(--bg-blue);
   text-align: center;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  /* grid-template-columns: 3em auto 3em; */
+  grid-template-rows: 3.5em calc(100% - 5em) 1.5em;
+  grid-template-areas:
+    'header header header'
+    'main main main'
+    'footer footer footer';
+}
+
+.App-header {
+  grid-area: header;
+  height: 15%;
 }
 
 .App-main {
   background-color: var(--bg-blue);
-  min-height: calc(100vh - 1.3em);
-  max-height: calc(100vh - 1.5em);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
+  /* min-height: calc(100vh - 1.3em); */
+  /* max-height: calc(100vh - 1.5em); */
+  /* align-items: center; */
+  /* justify-content: space-evenly; */
   font-size: calc(10px + 2vmin);
   color: white;
-  flex: 1 0 auto;
+  grid-area: main;
+  /* flex: 1 0 auto; */
+  /* flex-direction: column; */
+  /* display: flex; */
 }
 
 .App-link {
@@ -91,6 +116,7 @@
   height: 1.5em;
   font-size: 0.9em;
   color: beige;
+  grid-area: footer;
 }
 
 .brand {
@@ -109,6 +135,22 @@
   border-radius: 20%;
 }
 
+.navigation.float-top {
+  width: 70vw;
+  margin: 2vh 15vw 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navigation .themed-button {
+  margin: 0.2em;
+  border-radius: 5%;
+  font-size: 1em;
+  box-shadow: none;
+  border: 1px solid rgba(60, 60, 96, 0.54);
+}
+
 .Logo-title {
   margin: auto;
   margin-left: 0.1em;
@@ -117,23 +159,6 @@
 .Title-bar .Logo-title,
 .Footer-bar .Logo-title {
   font-size: calc(18px + 2vmin) !important;
-}
-
-.key-img {
-  max-height: 35vmax;
-  /* margin-top: 2vh; */
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .key-img {
-    background-color: antiquewhite;
-    padding: 1%;
-    border-radius: 12px;
-    border: 3px solid rgba(82, 46, 5, 0.397);
-    box-shadow: 0 3px 10px 10px rgba(160, 144, 110, 0.1);
-    /* animation: App-logo-spin infinite 20s linear; */
-  }
 }
 
 .reflection {
@@ -181,8 +206,5 @@
 
 @media only screen and (max-device-width: 768px) and (orientation: portrait) {
   .App-main {
-    flex-wrap: nowrap;
-    flex-direction: column;
-    justify-content: space-around;
   }
 }

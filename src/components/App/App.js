@@ -48,7 +48,7 @@ function Main({ currentQuiz }) {
   }
 
   return (
-    <main className="App-main">
+    <main className="App-main Quiz-main">
       <QuizComponent />
     </main>
   );
