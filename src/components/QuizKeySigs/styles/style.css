@@ -14,18 +14,9 @@
 }
 
 .Quiz-main {
-  /* min-height: calc(100vh - 1.3em);
-  max-height: calc(100vh - 1.5em);
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  flex: 1 0 auto; */
   display: grid;
   grid-template-columns: 30% 40% 30%;
-  /* grid-template-columns: auto; */
-  grid-template-rows: 48% 12% 40%;
+  grid-template-rows: 50% 8% 42%;
   grid-template-areas:
     'imgl imgc imgr'
     'question question question'
@@ -88,18 +79,15 @@
 
 .image-container {
   grid-area: imgc;
-  /* display: grid; */
-  /* grid-template-areas: 'imgl imgc imgr'; */
-  /* grid-template-columns: 30% 40% 30%; */
-  /* grid-template-rows: auto; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .key-img {
-  /* order: 2; */
-  /* flex: 0 1; */
-  height: 100%;
+  height: max-content;
   max-width: 100%;
-  /* margin: auto; */
+  max-height: 100%;
   pointer-events: none;
   grid-area: imgc;
 }
@@ -115,29 +103,24 @@
   }
 }
 
-.Question-bar .question {
+.question-container .question {
   font-weight: normal;
 }
 
-.Question-bar .question b {
+.question-container .question b {
   font-size: 1.25em;
 }
 
-.Question-bar {
+.question-container {
   grid-area: question;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  align-self: end;
 }
 
 .input-container {
   grid-area: input;
-  /* min-width: 50%; */
   position: relative;
   display: flex;
-  /* align-items: center; */
   justify-content: center;
-  /* order: 4; */
 }
 
 .input-container.keyboard-container {
@@ -188,9 +171,16 @@
 }
 
 .input-container {
-  /* display: grid; */
-  grid-template-rows: 3em 8em;
-  /* margin-bottom: -4em; */
+  display: flex;
+  align-items: center;
+}
+
+/*  Keyboard variables */
+:root {
+  --whitekey-width: calc(90vmin / 7);
+  --whitekey-height: calc(var(--whitekey-width) * 3.4);
+  --blackkey-width: calc(var(--whitekey-width) * 0.64);
+  --blackkey-height: calc(var(--whitekey-height) * 0.55);
 }
 
 .keyboard-container .piano {
@@ -199,7 +189,7 @@
   max-width: 90vw;
   min-width: 8em;
   grid-template-columns: repeat(42, 1fr);
-  grid-template-rows: 4.5em 8em;
+  grid-template-rows: var(--whitekey-height) var(--whitekey-height);
 }
 
 .piano .key-0,
@@ -290,13 +280,13 @@
 .piano-key.white {
   z-index: 4;
   position: relative;
-  bottom: 2.25em;
+  bottom: calc(var(--whitekey-height) / 2);
 }
 
 .piano-key.white .white-btn {
   background-color: ivory;
   height: 100%;
-  width: 99%;
+  width: var(--whitekey-width);
 }
 
 .piano-key.white .white-btn:active {
@@ -307,15 +297,15 @@
 
 .piano-key.black {
   z-index: 5;
-  height: 4.5em;
+  height: var(--blackkey-height);
   position: relative;
-  top: 2.25em;
+  top: calc(var(--whitekey-height) / 2);
 }
 
 .piano-key.black .black-btn {
   background-color: #000000;
   height: 100%;
-  width: calc(90vw / 12);
+  width: var(--blackkey-width);
 }
 
 .keyboard-container .score-container {
@@ -326,16 +316,8 @@
   background-color: ivory;
 }
 
-.circleOfFifths {
-}
-
 /* Adjustments/ Corrections */
-
-.input-container {
-  /* margin-bottom: -4em; */
-}
 
 .score {
   box-sizing: content-box;
-  /* margin-top: -1.5em; */
 }

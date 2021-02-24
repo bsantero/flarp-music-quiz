@@ -1,6 +1,6 @@
 {
   "name": "flarp-music-quiz",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "private": true,
   "dependencies": {
     "@aspiesoft/random-number-js": "^1.3.2",

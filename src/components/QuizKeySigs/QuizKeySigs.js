@@ -205,7 +205,7 @@ export function QuizModule() {
 
   function QuestionBar() {
     return (
-      <div className="child Question-bar">
+      <div className="child question-container">
         <span className="question">
           What's this key in <QuestionQuality quality={answerMode} />?
         </span>
