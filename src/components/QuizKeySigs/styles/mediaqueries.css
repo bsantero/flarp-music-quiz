@@ -1,6 +1,10 @@
 @media only screen and (max-device-width: 4000px) and (orientation: landscape) {
   :root {
     --radius: 27vmax !important;
+    --whitekey-width: calc(90vmin / 7);
+    --whitekey-height: calc(var(--whitekey-width) * 3.4);
+    --blackkey-width: calc(var(--whitekey-width) * 0.64);
+    --blackkey-height: calc(var(--whitekey-height) * 0.55);
   }
 
   .App {
@@ -9,36 +13,21 @@
   }
 
   .Quiz-main {
-    /* background-color: rgb(68, 165, 68) !important; */
-    /* flex-wrap: wrap; */
-    /* flex-direction: row; */
-    /* justify-content: center; */
     grid-template-columns: 26% 18% 56%;
     grid-template-rows: auto;
-    /* grid-template-areas: */
-    /* 'image score input' */
-    /* 'image question input'; */
-
-    /* grid-template-columns: 30% 40% 30%; */
-    /* grid-template-columns: auto; */
-    grid-template-rows: 30% 30% 40%;
+    grid-template-rows: 42% 58%;
     grid-template-areas:
-      'img question input'
       'img question input'
       'img score input';
   }
 
-  .Question-bar {
-    /* width: 100%; */
-    /* order: 3; */
-    /* flex: 0; */
+  .question-container {
   }
 
-  .Question-bar {
-    /* flex-grow: 1; */
+  .question-container {
   }
 
-  .Question-bar h3 {
+  .question-container h3 {
     font-size: 3.5vmax;
   }
 
@@ -50,7 +39,6 @@
   }
 
   .image-container .key-img {
-    /* margin-right: -7vw; */
     height: 70vh;
   }
 
@@ -63,42 +51,36 @@
     align-items: center;
   }
 
+  .input-container .piano {
+    max-width: 90%;
+  }
+
   .piano-key.white {
   }
 
   .piano-key.white .white-btn {
-    width: calc(52vw / 7);
+    /* width: calc(52vw / 7); */
   }
 
   .piano-key.black .black-btn {
-    width: calc(52vw / 12);
+    /* width: calc(52vw / 12); */
   }
 }
 
 @media only screen and (max-device-width: 767px) and (orientation: portrait) {
   .App-main .child:first-child {
-    /* width: 100%; */
   }
 
-  .Question-bar {
-    /* flex-grow: 0; */
-    /* order: 3; */
+  .question-container {
   }
 
-  .Question-bar .question {
-    /* margin: auto; */
-    /* margin-bottom: -4.5vh; */
+  .question-container .question {
   }
 
   .image-container {
-    /* flex-grow: 1.3;
-    margin-bottom: -6.5vh;
-    display: flex; */
   }
 
-  /* .image-container, */
   .circleOfFifths {
-    /* flex-grow: 1.3; */
   }
 }
 
@@ -107,7 +89,7 @@
     --radius: 35vmin !important;
   }
 
-  .Question-bar .question {
+  .question-container .question {
     margin-bottom: -1.5vh;
   }
 }

@@ -81,7 +81,6 @@ html {
   background-color: var(--bg-blue);
   text-align: center;
   display: grid;
-  /* grid-template-columns: 3em auto 3em; */
   grid-template-rows: 3.5em calc(100% - 5em) 1.5em;
   grid-template-areas:
     'header header header'
@@ -96,16 +95,9 @@ html {
 
 .App-main {
   background-color: var(--bg-blue);
-  /* min-height: calc(100vh - 1.3em); */
-  /* max-height: calc(100vh - 1.5em); */
-  /* align-items: center; */
-  /* justify-content: space-evenly; */
   font-size: calc(10px + 2vmin);
   color: white;
   grid-area: main;
-  /* flex: 1 0 auto; */
-  /* flex-direction: column; */
-  /* display: flex; */
 }
 
 .App-link {
@@ -162,7 +154,6 @@ html {
 }
 
 .reflection {
-  /* position: absolute; */
   transform: rotate(180deg);
   opacity: 20%;
   left: unset;
