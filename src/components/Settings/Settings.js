@@ -4,20 +4,20 @@ import conLog from '../../utils/conLog';
 
 export function SettingsContainer(props) {
   console.log(props);
-
+  const menuOpenStyle = 'settings-main-container float-top overlay';
   let newClass;
   // console.log(wtfState);
   if (props.show == true) {
     // conLog(props.menuState);
     // debugger;
-    newClass = 'settings-main-container float-top overlay';
+    newClass = menuOpenStyle;
     console.log('Settings open for bidnis.');
   } else if (props.show == false) {
-    newClass = 'settings-main-container float-top overlay hidden';
+    newClass = menuOpenStyle + ' hidden';
     console.log('Settings lykket.');
   } else {
     // debugger;
-    newClass = 'settings-main-container float-top overlay hidden';
+    newClass = menuOpenStyle + ' failed';
     console.log('Settings FAILED.');
   }
 
