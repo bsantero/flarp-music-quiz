@@ -130,7 +130,7 @@ html {
 .navigation.float-top {
   width: 70vw;
   margin: 2vh 15vw 0;
-  display: flex;
+  position: absolute;
   align-items: center;
   justify-content: center;
 }
