@@ -37,7 +37,7 @@ export function View(props) {
     case 'KeySig':
       QuizComponent = QuizKeySig;
       QuizOptions = KeySigOptions;
-      console.log(QuizOptions);
+      // console.log(QuizOptions);
       // debugger;
       break;
     case 'LR':
@@ -69,13 +69,7 @@ export function View(props) {
 
 function App() {
   const [currentQuiz, setCurrentQuiz] = React.useState(DEFAULT_QUIZ_ID);
-  const [currentOptions, setCurrentOptions] = React.useState(
-    DEFAULT_QUIZ_OPTIONS
-  );
   const [settingsShow, toggleSettings] = React.useState(false);
-  const [settingsClass, changeSettingsClass] = React.useState(
-    'settings-main-container float-top overlay hidden'
-  );
 
   // changeSettingsClass(newClass);
 
@@ -91,7 +85,6 @@ function App() {
         currentQuiz={currentQuiz}
         show={settingsShow}
         menuSet={toggleSettings}
-        changeSettingsClass={changeSettingsClass}
       />
       <Footer />
     </div>

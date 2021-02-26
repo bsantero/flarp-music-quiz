@@ -37,11 +37,7 @@ export function InputPanel({ inputType, handleClick, loading, octaves }) {
       inputButtons = ChromaticButton('C');
       break;
     default:
-      return (
-        <span>
-          {octaves * 12} buttons in {inputType} style.
-        </span>
-      );
+      return <span>No input defined.</span>;
   }
 
   return loading ? (

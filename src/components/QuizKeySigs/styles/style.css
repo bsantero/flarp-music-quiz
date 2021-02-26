@@ -1,7 +1,7 @@
 /* Quiz Settings settings */
 
-.quiz-settings-container {
-  display: grid;
+.input-choices {
+  grid-area: left;
 }
 
 .quiz-settings-container .options-header {
@@ -10,7 +10,8 @@
 
 .quiz-settings-container .quiz-option {
   margin: 0.5em;
-  font-size: 2.5em;
+  padding: 0.5em;
+  font-size: 1em;
 }
 
 .Quiz-main {

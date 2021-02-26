@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './styles.css';
 
 export function SettingsContainer(props) {
   const menuOpenStyle = 'settings-main-container float-top overlay';
@@ -9,14 +10,14 @@ export function SettingsContainer(props) {
     // console.log(props);
     // debugger;
     newClass = menuOpenStyle;
-    console.log('Settings open for bidnis.');
+    // console.log('Settings open for bidnis.');
   } else if (props.show == false) {
     newClass = menuOpenStyle + ' hidden';
-    console.log('Settings lykket.');
+    // console.log('Settings lykket.');
   } else {
     // debugger;
     newClass = menuOpenStyle + ' failed';
-    console.log('Settings FAILED.');
+    // console.log('Settings FAILED.');
   }
 
   return (
@@ -24,7 +25,10 @@ export function SettingsContainer(props) {
       <button className="menu-btn-close" onClick={() => props.menuSet(false)}>
         {'X'}
       </button>
-      <props.QuizOptions />
+      <props.QuizOptions
+        switchInputType={props.switchInputType}
+        changeInputType={props.changeInputType}
+      />
     </div>
   );
 }

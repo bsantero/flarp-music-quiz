@@ -39,18 +39,14 @@ export function QuizModule(props) {
 
   const [modePref, updateModePref] = useState(DEFAULT_MODE_PREF);
   const [wrongGuesses, updateWrongGuesses] = useState([]);
-  const [inputType, updateInputType] = useState(DEFAULT_INPUT_TYPE);
+  const [inputType, changeInputType] = useState(DEFAULT_INPUT_TYPE);
   const [userPrefRotate, updatePrefRotate] = useState(DEFAULT_ROTATE_PREF);
 
-  function getInputType(p) {
+  function switchInputType(type) {
     const arr = ['chromatic', 'keyboard', 'circlefifths'];
-    return arr[p];
-  }
-
-  function switchInputType() {
-    const arr = ['chromatic', 'keyboard', 'circlefifths'];
-    const next = inputType + 1 || 0;
-    updateInputType(arr[next]);
+    type
+      ? changeInputType(type)
+      : changeInputType(arr[arr.indexOf(inputType) + 1]);
   }
 
   function getNoteData(index, data, weighted = 'default') {
@@ -223,6 +219,7 @@ export function QuizModule(props) {
         show={props.show}
         menuSet={props.menuSet}
         QuizOptions={QuizOptions}
+        switchInputType={changeInputType}
       />
       <SkipButton />
       <ScoreBoard />
@@ -242,28 +239,29 @@ export function QuizModule(props) {
 
 export function QuizOptions(props) {
   return (
-    <div className="quiz-settings-container">
+    <div className="quiz-settings-container input-choices">
       <h1 className="options-header">Input Method</h1>
+
       <button
         className="quiz-option"
-        disabled
-        onClick={() => props.changeInput('chromatic')}
+        // disabled
+        onClick={() => props.switchInputType('chromatic')}
       >
         Chromatic
       </button>
       <button
         className="quiz-option"
-        disabled
-        onClick={() => props.changeInput('keyboard')}
+        // disabled
+        onClick={() => props.switchInputType('keyboard')}
       >
         Keyboard
       </button>
       <button
         className="quiz-option"
-        disabled
-        onClick={() => props.changeInput('circlefifths')}
+        // disabled
+        onClick={() => props.switchInputType('circlefifths')}
       >
-        Keyboard
+        Circle of Fifths
       </button>
     </div>
   );
