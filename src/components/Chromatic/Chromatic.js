@@ -1,14 +1,20 @@
 import React from 'react';
-import './keyboard.css';
+import './chromatic.css';
 
-export function Keyboard({ octaves, currentNote, handleClick, wrongEntries }) {
+const DEFAULT_CONTAINER_STYLE = 'tick key-${i}';
+const DEFAULT_BUTTON_STYLE = 'themed-button';
+
+export function Chromatic({ octaves, currentNote, handleClick, wrongEntries }) {
   function NewButton({ note, containerStyle, buttonStyle }) {
+    let name = note;
+    if (note[1] == '♮') {
+      name = note[0];
+    }
     return (
       <div key={note} className={containerStyle}>
-        <button
-          className={buttonStyle}
-          onClick={() => handleClick(note)}
-        ></button>
+        <button className={buttonStyle} onClick={() => handleClick(note)}>
+          {name}
+        </button>
       </div>
     );
   }
@@ -33,18 +39,18 @@ export function Keyboard({ octaves, currentNote, handleClick, wrongEntries }) {
 
   for (const [key, value] of Object.entries(whiteBlackKeys)) {
     currentNote = value[0];
-    if (value[1] == 'white') {
-      containerStyle = `piano-key white key-${key}`;
-      buttonStyle = 'white-btn';
-    } else if (value[1] == 'black') {
-      containerStyle = `piano-key black key-${key}`;
-      buttonStyle = 'black-btn';
-    } else {
-      console.log(`Err: Key {${key}} doesn't have white/black value.`);
-    }
+    // if (value[1] == 'white') {
+    containerStyle = DEFAULT_CONTAINER_STYLE;
+    buttonStyle = DEFAULT_BUTTON_STYLE;
+    // } else if (value[1] == 'black') {
+    // containerStyle = `piano-key black key-${key}`;
+    // buttonStyle = 'black-btn';
+    // } else {
+    // console.log(`Err: Key {${key}} doesn't have white/black value.`);
+    // }
     if (wrongEntries.includes(parseInt(key))) {
       console.log(`\tis wrong`);
-      containerStyle = containerStyle + ' loser';
+      buttonStyle = buttonStyle + ' loser';
     }
 
     buttons.push(
@@ -60,4 +66,4 @@ export function Keyboard({ octaves, currentNote, handleClick, wrongEntries }) {
   return buttons;
 }
 
-export default Keyboard;
+export default Chromatic;

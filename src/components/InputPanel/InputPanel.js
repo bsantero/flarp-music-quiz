@@ -1,10 +1,7 @@
 import './styles.css';
 import { chromatic } from '../../utils/Keys';
 import { Keyboard } from '../Keyboard/Keyboard';
-
-function ChromaticButton(starting) {
-  return <div>chromatic-12-buttons starting on {starting}</div>;
-}
+import { Chromatic } from '../Chromatic/Chromatic';
 
 function Circle(dir) {
   return <div>circle of {dir} with 12 buttons.</div>;
@@ -47,7 +44,14 @@ export function InputPanel({
     case 'chromatic':
       parentClass = 'child input-container chromatic-container';
       childClass = 'chromatic';
-      inputButtons = ChromaticButton('C');
+      inputButtons = (
+        <Chromatic
+          octaves={octaves}
+          currentNote={currentNote}
+          handleClick={handleClick}
+          wrongEntries={wrongEntries}
+        />
+      );
       break;
     default:
       return <span>No input defined.</span>;
