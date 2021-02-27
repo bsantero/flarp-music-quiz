@@ -39,7 +39,7 @@
   }
 
   .image-container .key-img {
-    height: 70vh;
+    max-width: 90%;
   }
 
   .score-container {
