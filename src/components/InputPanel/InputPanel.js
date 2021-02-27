@@ -1,39 +1,81 @@
+import React, { useState } from 'react';
 import './styles.css';
 import { chromatic } from '../../utils/Keys';
 import { Keyboard } from '../Keyboard/Keyboard';
 import { Chromatic } from '../Chromatic/Chromatic';
+import { Circle } from '../CircleInput/Circleinput.js';
 
-function Circle(dir) {
-  return <div>circle of {dir} with 12 buttons.</div>;
-}
+// function setSchema({ clockwise }) {}
+
+const inputSchemaTypes = {
+  chromatic: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+  cw5ths: [0, 7, 2, 9, 4, 11, 6, 1, 8, 3, 5, 10],
+  cw4ths: [0, 5, 10, 3, 8, 1, 6, 11, 4, 9, 2, 7]
+};
 
 export function InputPanel({
   inputType,
   handleClick,
   loading,
-  octaves,
+  numOctaves,
   currentNote,
   wrongEntries
 }) {
   let parentClass;
   let childClass;
-  let label;
   let inputButtons;
-  // console.log('inputType will be:');
-  // console.log(inputType);
   switch (inputType) {
+    case 'circlechromatic':
+      console.log(inputSchemaTypes['chromatic']);
+      parentClass = 'child input-container circle-container';
+      childClass = 'circle';
+      inputButtons = (
+        <Circle
+          clockwise="chromatic"
+          currentInputSchema={inputSchemaTypes['chromatic']}
+          octaves={numOctaves}
+          currentNote={currentNote}
+          wrongEntries={wrongEntries}
+          handleClick={handleClick}
+        />
+      );
+      break;
+    case 'circlefourths':
+      console.log(inputSchemaTypes['cw4ths']);
+      parentClass = 'child input-container circle-container';
+      childClass = 'circle';
+      inputButtons = (
+        <Circle
+          clockwise="cw4ths"
+          currentInputSchema={inputSchemaTypes['cw4ths']}
+          octaves={numOctaves}
+          currentNote={currentNote}
+          wrongEntries={wrongEntries}
+          handleClick={handleClick}
+        />
+      );
+      break;
     case 'circlefifths':
-      parentClass = 'child input-container circleOfFifths';
-      childClass = 'circlefifths';
-      inputButtons = Circle('fifths');
+      console.log(inputSchemaTypes['cw5ths']);
+      parentClass = 'child input-container circle-container';
+      childClass = 'circle';
+      inputButtons = (
+        <Circle
+          clockwise="cw5ths"
+          currentInputSchema={inputSchemaTypes['cw5ths']}
+          octaves={numOctaves}
+          currentNote={currentNote}
+          wrongEntries={wrongEntries}
+          handleClick={handleClick}
+        />
+      );
       break;
     case 'keyboard':
       parentClass = 'child input-container keyboard-container';
       childClass = 'piano';
-      const params = [];
       inputButtons = (
         <Keyboard
-          octaves={octaves}
+          octaves={numOctaves}
           currentNote={currentNote}
           handleClick={handleClick}
           wrongEntries={wrongEntries}
@@ -46,7 +88,7 @@ export function InputPanel({
       childClass = 'chromatic';
       inputButtons = (
         <Chromatic
-          octaves={octaves}
+          octaves={numOctaves}
           currentNote={currentNote}
           handleClick={handleClick}
           wrongEntries={wrongEntries}

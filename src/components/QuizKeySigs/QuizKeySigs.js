@@ -10,7 +10,7 @@ import {
 import conLog from '../../utils/conLog.js';
 import { reorder, capitalizeFirstLetter } from './utils/KeySigUtils';
 import './styles/style.css';
-import './styles/circle.css';
+// import './styles/circle.css';
 import './styles/mediaqueries.css';
 import SettingsContainer from '../Settings/Settings';
 import { render } from '@testing-library/react';
@@ -21,8 +21,8 @@ const random = require('@aspiesoft/random-number-js');
 
 const DEFAULT_NEW_GAME = true;
 const DEFAULT_ANSWER = { pitch: '0', mode: 'major' };
-const DEFAULT_INPUT_TYPE = 'keyboard';
-// [ 'chromatic', 'keyboard', 'circlefifths' ]
+const DEFAULT_INPUT_TYPE = 'circlefourths';
+// [ 'chromatic', 'keyboard', 'circlechromatic', 'circlefifths', 'circlefourths' ]
 const DEFAULT_MODE_PREF = 'qualities'; // [qualities: Major | Minor, modes, both,]
 
 const DEFAULT_ROTATE_PREF = 'false';
@@ -48,7 +48,13 @@ export function QuizModule(props) {
   const [userPrefRotate, updatePrefRotate] = useState(DEFAULT_ROTATE_PREF);
 
   function switchInputType(type) {
-    const arr = ['chromatic', 'keyboard', 'circlefifths'];
+    const arr = [
+      'chromatic',
+      'keyboard',
+      'circlechromatic',
+      'circlefifths',
+      'circlefourths'
+    ];
     type
       ? changeInputType(type)
       : changeInputType(arr[arr.indexOf(inputType) + 1]);
@@ -230,7 +236,7 @@ export function QuizModule(props) {
       <SkipButton />
       <ScoreBoard />
       <InputPanel
-        octaves={1}
+        numOctaves={1}
         possibleEntries={12}
         handleClick={handleClick}
         inputType={inputType}
@@ -262,6 +268,20 @@ export function QuizOptions(props) {
         onClick={() => props.switchInputType('keyboard')}
       >
         Keyboard
+      </button>
+      <button
+        className="quiz-option"
+        // disabled
+        onClick={() => props.switchInputType('circlechromatic')}
+      >
+        Chromatic Circle
+      </button>
+      <button
+        className="quiz-option"
+        // disabled
+        onClick={() => props.switchInputType('circlefourths')}
+      >
+        Circle of Fourths
       </button>
       <button
         className="quiz-option"

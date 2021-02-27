@@ -1,24 +1,29 @@
-import React from 'react';
-import './chromatic.css';
+import React, { useState } from 'react';
+import './circle.css';
 
 const DEFAULT_CONTAINER_STYLE = 'tick key-';
 const DEFAULT_BUTTON_STYLE = 'themed-button';
 
-export function Chromatic({ octaves, currentNote, handleClick, wrongEntries }) {
-  function NewButton({ note, containerStyle, buttonStyle }) {
-    let name = note;
-    if (note[1] == '♮') {
-      name = note[0];
-    }
-    return (
-      <div key={note} className={containerStyle}>
-        <button className={buttonStyle} onClick={() => handleClick(note)}>
-          {name}
-        </button>
-      </div>
-    );
+function NewButton({ note, containerStyle, buttonStyle, handleClick }) {
+  let name = note;
+  if (note[1] == '♮') {
+    name = note[0];
   }
+  return (
+    <div key={note} className={containerStyle}>
+      <button className={buttonStyle} onClick={() => handleClick(note)}>
+        {name}
+      </button>
+    </div>
+  );
+}
 
+export function Circle({
+  currentInputSchema,
+  currentNote,
+  handleClick,
+  wrongEntries
+}) {
   let buttons = [];
 
   let containerStyle, buttonStyle;
@@ -37,19 +42,19 @@ export function Chromatic({ octaves, currentNote, handleClick, wrongEntries }) {
     11: ['b♮', 'white']
   };
 
-  for (const [key, value] of Object.entries(whiteBlackKeys)) {
+  const layout = currentInputSchema.map((i) => {
+    console.log(`building ${i}`);
+    // debugger;
+    return [i, whiteBlackKeys[i]];
+  });
+  console.log(layout);
+
+  for (const [key, value] of layout) {
     const keyInt = parseInt(key);
     currentNote = value[0];
-    // if (value[1] == 'white') {
     containerStyle = `${DEFAULT_CONTAINER_STYLE}${keyInt}`;
     buttonStyle = DEFAULT_BUTTON_STYLE;
-    // } else if (value[1] == 'black') {
-    // containerStyle = `piano-key black key-${key}`;
-    // buttonStyle = 'black-btn';
-    // } else {
-    // console.log(`Err: Key {${key}} doesn't have white/black value.`);
-    // }
-    if (wrongEntries.includes(keyInt)) {
+    if (wrongEntries.includes(parseInt(key))) {
       console.log(`\tis wrong`);
       buttonStyle = buttonStyle + ' loser';
     }
@@ -60,6 +65,7 @@ export function Chromatic({ octaves, currentNote, handleClick, wrongEntries }) {
         containerStyle={containerStyle}
         key={key}
         note={currentNote}
+        handleClick={handleClick}
       />
     );
   }
@@ -67,4 +73,4 @@ export function Chromatic({ octaves, currentNote, handleClick, wrongEntries }) {
   return buttons;
 }
 
-export default Chromatic;
+export default Circle;
