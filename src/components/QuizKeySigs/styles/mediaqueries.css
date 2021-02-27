@@ -59,7 +59,7 @@
   }
 
   .piano-key.white .white-btn {
-    /* width: calc(52vw / 7); */
+    width: 99%;
   }
 
   .piano-key.black .black-btn {

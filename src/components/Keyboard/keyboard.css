@@ -7,9 +7,6 @@
   --blackkey-height: calc(var(--whitekey-height) * 0.55);
 }
 
-.keyboard-container .keyboard {
-}
-
 .piano .loser {
   border-style: none;
   border-width: 0;
@@ -25,6 +22,7 @@
 
 .keyboard-container .piano {
   display: grid;
+  max-height: var(--whitekey-height);
   height: min-content;
   max-width: 90vw;
   min-width: 8em;
@@ -120,7 +118,7 @@
 .piano-key.white {
   z-index: 4;
   position: relative;
-  bottom: calc(var(--whitekey-height) / 2);
+  bottom: var(--whitekey-height);
 }
 
 .piano-key.white .white-btn {
@@ -139,7 +137,6 @@
   z-index: 5;
   height: var(--blackkey-height);
   position: relative;
-  top: calc(var(--whitekey-height) / 2);
 }
 
 .piano-key.black .black-btn {

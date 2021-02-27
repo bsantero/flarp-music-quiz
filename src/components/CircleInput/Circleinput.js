@@ -43,7 +43,7 @@ export function Circle({
   };
 
   const layout = currentInputSchema.map((i) => {
-    console.log(`building ${i}`);
+    // console.log(`building ${i}`);
     // debugger;
     return [i, whiteBlackKeys[i]];
   });
