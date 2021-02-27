@@ -1,8 +1,0 @@
-.settings-main-container {
-  display: grid;
-  grid-template-rows: 2em auto;
-  grid-template-columns: 2em auto 35% 35%;
-  grid-template-areas:
-    'X header header header'
-    'left left middle right';
-}

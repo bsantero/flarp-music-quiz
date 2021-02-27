@@ -8,6 +8,7 @@ body {
   min-height: 100vh;
   min-height: -webkit-fill-available;
 }
+
 html {
   height: -webkit-fill-available;
 }
@@ -15,6 +16,13 @@ html {
 /* Vars */
 
 :root {
+  --radius: 42vmin;
+  --button-text: calc(14 * (var(--radius) / 100));
+  --button-padding: calc(6 * (var(--button-text) / 100))
+    calc(16 * (var(--button-text) / 100));
+  --base: calc(var(--radius) / 3.14);
+  --button-transform: calc(var(--radius) / 2 + (var(--button-text) / 3));
+  /* Colors */
   --bg-blue: #253555;
   --bg-blue-light: #c5f1ff;
 }
@@ -73,6 +81,7 @@ html {
   outline: 0 !important;
   background-color: #224141;
 }
+
 /* Page Styles */
 
 .App {
@@ -95,7 +104,7 @@ html {
 
 .App-main {
   background-color: var(--bg-blue);
-  font-size: calc(10px + 2vmin);
+  font-size: var(--button-text);
   color: white;
   grid-area: main;
 }

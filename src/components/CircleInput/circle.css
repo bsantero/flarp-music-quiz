@@ -1,12 +1,3 @@
-:root {
-  --radius: 42vmin;
-  --button-text: calc(14 * (var(--radius) / 100));
-  --button-padding: calc(6 * (var(--button-text) / 100))
-    calc(16 * (var(--button-text) / 100));
-  --base: calc(var(--radius) / 3.14);
-  --button-transform: calc(var(--radius) / 2 + (var(--button-text) / 3));
-}
-
 .circle-container .themed-button {
   border-radius: 25%;
 }

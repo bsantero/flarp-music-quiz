@@ -12,15 +12,6 @@
     grid-template-rows: 3em auto 3em;
   }
 
-  .Quiz-main {
-    grid-template-columns: 26% 18% 56%;
-    grid-template-rows: auto;
-    grid-template-rows: 42% 58%;
-    grid-template-areas:
-      'img question input'
-      'img score input';
-  }
-
   .question-container {
   }
 

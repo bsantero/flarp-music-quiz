@@ -2,7 +2,7 @@
 
 :root {
   --whitekey-width: calc(90vmin / 7);
-  --whitekey-height: calc(var(--whitekey-width) * 3.4);
+  --whitekey-height: calc(var(--whitekey-width) * 3.2);
   --blackkey-width: calc(var(--whitekey-width) * 0.64);
   --blackkey-height: calc(var(--whitekey-height) * 0.55);
 }

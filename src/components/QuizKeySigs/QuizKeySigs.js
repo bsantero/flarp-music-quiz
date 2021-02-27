@@ -7,13 +7,10 @@ import {
   enharmonics,
   defCircleSignatures
 } from '../../utils/Keys.js';
-import conLog from '../../utils/conLog.js';
 import { reorder, capitalizeFirstLetter } from './utils/KeySigUtils';
-import './styles/style.css';
-// import './styles/circle.css';
+import './styles/keysigs.css';
 import './styles/mediaqueries.css';
 import SettingsContainer from '../Settings/Settings';
-import { render } from '@testing-library/react';
 
 const random = require('@aspiesoft/random-number-js');
 
