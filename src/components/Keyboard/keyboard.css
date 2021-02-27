@@ -1,0 +1,149 @@
+/*  Keyboard variables */
+
+:root {
+  --whitekey-width: calc(90vmin / 7);
+  --whitekey-height: calc(var(--whitekey-width) * 3.4);
+  --blackkey-width: calc(var(--whitekey-width) * 0.64);
+  --blackkey-height: calc(var(--whitekey-height) * 0.55);
+}
+
+.keyboard-container .keyboard {
+}
+
+.piano .loser {
+  border-style: none;
+  border-width: 0;
+}
+
+.piano .loser button {
+  background-color: rgb(165, 22, 22) !important;
+}
+
+.piano .loser button.black-btn {
+  background-color: rgb(168, 85, 85) !important;
+}
+
+.keyboard-container .piano {
+  display: grid;
+  height: min-content;
+  max-width: 90vw;
+  min-width: 8em;
+  grid-template-columns: repeat(42, 1fr);
+  grid-template-rows: var(--whitekey-height) var(--whitekey-height);
+}
+
+.piano .key-0,
+.piano .key-2,
+.piano .key-4,
+.piano .key-5,
+.piano .key-7,
+.piano .key-9,
+.piano .key-11 {
+  grid-row-start: 2;
+  grid-row-end: 2;
+}
+
+.piano .key-0 {
+  grid-column-start: 1;
+  grid-column-end: 7;
+}
+.piano .key-2 {
+  grid-column-start: 7;
+  grid-column-end: 13;
+}
+.piano .key-4 {
+  grid-column-start: 13;
+  grid-column-end: 19;
+}
+.piano .key-5 {
+  grid-column-start: 19;
+  grid-column-end: 25;
+}
+.piano .key-7 {
+  grid-column-start: 25;
+  grid-column-end: 31;
+}
+.piano .key-9 {
+  grid-column-start: 31;
+  grid-column-end: 37;
+}
+.piano .key-11 {
+  grid-column-start: 37;
+  grid-column-end: 43;
+}
+
+// Black keys
+.piano .key-1,
+.piano .key-3,
+.piano .key-6,
+.piano .key-8,
+.piano .key-10 {
+  grid-row-start: 2;
+  grid-row-end: 2;
+}
+
+.piano .key-1 {
+  grid-column-start: 5;
+  grid-column-end: 9;
+}
+.piano .key-3 {
+  grid-column-start: 11;
+  grid-column-end: 15;
+}
+.piano .key-6 {
+  grid-column-start: 22;
+  grid-column-end: 26;
+  position: relative;
+}
+.piano .key-8 {
+  grid-column-start: 29;
+  grid-column-end: 33;
+}
+.piano .key-10 {
+  grid-column-start: 36;
+  grid-column-end: 40;
+  right: 15%;
+}
+
+.piano .key-3,
+.piano .key-6 {
+  left: 10%;
+  position: relative;
+}
+
+.piano .key-1,
+.piano .key-10 {
+  right: 10%;
+  position: relative;
+}
+
+.piano-key.white {
+  z-index: 4;
+  position: relative;
+  bottom: calc(var(--whitekey-height) / 2);
+}
+
+.piano-key.white .white-btn {
+  background-color: ivory;
+  height: 100%;
+  width: var(--whitekey-width);
+}
+
+.piano-key.white .white-btn:active {
+  background-color: rgb(121, 121, 116);
+  border: 5px inset rgb(80, 127, 221);
+  outline: 1px inset rgba(160, 144, 110, 0.4);
+}
+
+.piano-key.black {
+  z-index: 5;
+  height: var(--blackkey-height);
+  position: relative;
+  top: calc(var(--whitekey-height) / 2);
+}
+
+.piano-key.black .black-btn {
+  background-color: #000000;
+  height: 100%;
+  width: var(--blackkey-width);
+}

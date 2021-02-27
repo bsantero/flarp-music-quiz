@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { InputPanel } from '../InputPanel/InputPanel';
-import { keyofc, chromatic, defCircleSignatures } from '../../utils/Keys.js';
+import {
+  keyofc,
+  chromatic,
+  enharmonics,
+  defCircleSignatures
+} from '../../utils/Keys.js';
 import conLog from '../../utils/conLog.js';
 import { reorder, capitalizeFirstLetter } from './utils/KeySigUtils';
 import './styles/style.css';
@@ -38,7 +43,7 @@ export function QuizModule(props) {
   // Set score, todo: get score from storage
 
   const [modePref, updateModePref] = useState(DEFAULT_MODE_PREF);
-  const [wrongGuesses, updateWrongGuesses] = useState([]);
+  const [wrongEntries, updateWrongEntries] = useState([]);
   const [inputType, changeInputType] = useState(DEFAULT_INPUT_TYPE);
   const [userPrefRotate, updatePrefRotate] = useState(DEFAULT_ROTATE_PREF);
 
@@ -134,24 +139,25 @@ export function QuizModule(props) {
     updateScore(score - 1);
   }
 
-  function handleClick(props) {
-    console.log(props.btnKey);
-    const btn = props.btnKey;
-    const newWrongs = [...wrongGuesses];
+  function handleClick(entry) {
+    console.log(`${entry} entered, expected: ${answerPitch}`);
+    const guess = enharmonics[entry];
+    console.log(guess);
+    const newWrongs = [...wrongEntries];
 
     // Test the input against the keyId
-    if (props.winner === true) {
+    if (guess == answerPitch) {
       // Wins
       console.log('Winner!');
       updateScore(score + 1);
-      updateWrongGuesses([]);
+      updateWrongEntries([]);
       generateNewQuestion(answerPitch);
     } else {
       // Loses
       console.log("YOU'RE A FAILURE, HARRY");
       updateScore(score - 1);
-      newWrongs.push(btn);
-      updateWrongGuesses(newWrongs);
+      newWrongs.push(guess);
+      updateWrongEntries(newWrongs);
     }
   }
 
@@ -229,7 +235,8 @@ export function QuizModule(props) {
         handleClick={handleClick}
         inputType={inputType}
         loading={false}
-        wrongEntries={wrongGuesses}
+        wrongEntries={wrongEntries}
+        currentNote={answerPitch}
       />
       <ImageContainer />
       <QuestionBar />

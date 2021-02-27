@@ -1,8 +1,6 @@
 import './styles.css';
-
-function PianoKeyboard(octaves) {
-  return <div>piano-{octaves}-octave</div>;
-}
+import { chromatic } from '../../utils/Keys';
+import { Keyboard } from '../Keyboard/Keyboard';
 
 function ChromaticButton(starting) {
   return <div>chromatic-12-buttons starting on {starting}</div>;
@@ -12,7 +10,14 @@ function Circle(dir) {
   return <div>circle of {dir} with 12 buttons.</div>;
 }
 
-export function InputPanel({ inputType, handleClick, loading, octaves }) {
+export function InputPanel({
+  inputType,
+  handleClick,
+  loading,
+  octaves,
+  currentNote,
+  wrongEntries
+}) {
   let parentClass;
   let childClass;
   let label;
@@ -28,7 +33,15 @@ export function InputPanel({ inputType, handleClick, loading, octaves }) {
     case 'keyboard':
       parentClass = 'child input-container keyboard-container';
       childClass = 'piano';
-      inputButtons = PianoKeyboard(octaves);
+      const params = [];
+      inputButtons = (
+        <Keyboard
+          octaves={octaves}
+          currentNote={currentNote}
+          handleClick={handleClick}
+          wrongEntries={wrongEntries}
+        />
+      );
       // console.log(inputButtons);
       break;
     case 'chromatic':
@@ -188,19 +201,19 @@ export function InputPanel({ inputType, handleClick, loading, octaves }) {
 //       }
 //     }
 
-//     buttons
-//       .push
-//       // <NewButton
-//       //   btnKey={i}
-//       //   winner={isWinner}
-//       //   wrongs={wrongGuesses}
-//       //   updateWrongs={updateWrongGuesses}
-//       //   styles={className}
-//       //   containerStyle={keyClassName}
-//       //   key={i}
-//       //   label={name}
-//       // />
-//       ();
+// buttons
+//   .push
+//   // <NewButton
+//   //   btnKey={i}
+//   //   winner={isWinner}
+//   //   wrongs={wrongGuesses}
+//   //   updateWrongs={updateWrongGuesses}
+//   //   styles={className}
+//   //   containerStyle={keyClassName}
+//   //   key={i}
+//   //   label={name}
+//   // />
+//   ();
 //   });
 
 //   return buttons;

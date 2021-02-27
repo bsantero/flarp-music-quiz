@@ -30,6 +30,30 @@ const keyboard = [
   { b: { base: 11 } }
 ];
 
+const enharmonics = {
+  'c♮': 0,
+  'c♯': 1,
+  'd♭': 1,
+  'd♮': 2,
+  'd♯': 3,
+  'e♭': 3,
+  'e♮': 4,
+  'e♯': 5,
+  'f♭': 4,
+  'f♮': 5,
+  'f♯': 6,
+  'g♭': 6,
+  'g♮': 7,
+  'g♯': 8,
+  'a♭': 8,
+  'a♮': 9,
+  'a♯': 10,
+  'b♭': 10,
+  'b♮': 11,
+  'b♯': 0,
+  'c♭': 11
+};
+
 const chromatic = {
   0: {
     default: 'nosig',
@@ -294,4 +318,4 @@ const keySignatures = {
   }
 };
 
-export { keyboard, keyofc, chromatic, defCircleSignatures };
+export { keyboard, keyofc, chromatic, enharmonics, defCircleSignatures };
