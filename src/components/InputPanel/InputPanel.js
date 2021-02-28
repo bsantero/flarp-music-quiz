@@ -9,7 +9,7 @@ import { Circle } from '../CircleInput/Circleinput.js';
 
 const inputSchemaTypes = {
   chromatic: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
-  cw5ths: [0, 7, 2, 9, 4, 11, 6, 1, 8, 3, 5, 10],
+  cw5ths: [0, 7, 2, 9, 4, 11, 6, 1, 8, 3, 10, 5],
   cw4ths: [0, 5, 10, 3, 8, 1, 6, 11, 4, 9, 2, 7]
 };
 
@@ -18,7 +18,7 @@ export function InputPanel({
   handleClick,
   loading,
   numOctaves,
-  currentNote,
+  currentAnswer,
   wrongEntries
 }) {
   let parentClass;
@@ -26,7 +26,7 @@ export function InputPanel({
   let inputButtons;
   switch (inputType) {
     case 'circlechromatic':
-      console.log(inputSchemaTypes['chromatic']);
+      // console.log(inputSchemaTypes['chromatic']);
       parentClass = 'child input-container circle-container';
       childClass = 'circle';
       inputButtons = (
@@ -34,14 +34,14 @@ export function InputPanel({
           clockwise="chromatic"
           currentInputSchema={inputSchemaTypes['chromatic']}
           octaves={numOctaves}
-          currentNote={currentNote}
+          currentAnswer={currentAnswer}
           wrongEntries={wrongEntries}
           handleClick={handleClick}
         />
       );
       break;
     case 'circlefourths':
-      console.log(inputSchemaTypes['cw4ths']);
+      // console.log(inputSchemaTypes['cw4ths']);
       parentClass = 'child input-container circle-container';
       childClass = 'circle';
       inputButtons = (
@@ -49,14 +49,14 @@ export function InputPanel({
           clockwise="cw4ths"
           currentInputSchema={inputSchemaTypes['cw4ths']}
           octaves={numOctaves}
-          currentNote={currentNote}
+          currentAnswer={currentAnswer}
           wrongEntries={wrongEntries}
           handleClick={handleClick}
         />
       );
       break;
     case 'circlefifths':
-      console.log(inputSchemaTypes['cw5ths']);
+      // console.log(inputSchemaTypes['cw5ths']);
       parentClass = 'child input-container circle-container';
       childClass = 'circle';
       inputButtons = (
@@ -64,7 +64,7 @@ export function InputPanel({
           clockwise="cw5ths"
           currentInputSchema={inputSchemaTypes['cw5ths']}
           octaves={numOctaves}
-          currentNote={currentNote}
+          currentAnswer={currentAnswer}
           wrongEntries={wrongEntries}
           handleClick={handleClick}
         />
@@ -76,7 +76,7 @@ export function InputPanel({
       inputButtons = (
         <Keyboard
           octaves={numOctaves}
-          currentNote={currentNote}
+          currentNote={currentAnswer}
           handleClick={handleClick}
           wrongEntries={wrongEntries}
         />
@@ -89,7 +89,7 @@ export function InputPanel({
       inputButtons = (
         <Chromatic
           octaves={numOctaves}
-          currentNote={currentNote}
+          currentNote={currentAnswer}
           handleClick={handleClick}
           wrongEntries={wrongEntries}
         />

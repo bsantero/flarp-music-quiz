@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { InputPanel } from '../InputPanel/InputPanel';
 import {
-  keyofc,
   chromatic,
-  enharmonics,
-  defCircleSignatures
+  modeTransposition,
+  accidentalKeys,
+  majorKeysAvoid,
+  minorKeysAvoid,
+  enharmonics
 } from '../../utils/Keys.js';
 import { reorder, capitalizeFirstLetter } from './utils/KeySigUtils';
 import './styles/keysigs.css';
@@ -17,32 +19,97 @@ const random = require('@aspiesoft/random-number-js');
 // OPTIONS
 
 const DEFAULT_NEW_GAME = true;
-const DEFAULT_ANSWER = { pitch: '0', mode: 'major' };
-const DEFAULT_INPUT_TYPE = 'circlefourths';
+const DEFAULT_ANSWER = {
+  pitch: 0,
+  pitchName: 'c♮',
+  mode: 'major',
+  accidental: 'mixed'
+};
+const DEFAULT_INPUT_TYPE = 'circlefifths';
 // [ 'chromatic', 'keyboard', 'circlechromatic', 'circlefifths', 'circlefourths' ]
-const DEFAULT_MODE_PREF = 'qualities'; // [qualities: Major | Minor, modes, both,]
-
 const DEFAULT_ROTATE_PREF = 'false';
+const DEFAULT_MODE_PREF = 'qualities'; // [qualities, modes, both,]
+const singleenharmonics = enharmonics.list;
+const enharmonicsToIndex = enharmonics.enhToInd;
+const enharmonicsFromIndex = enharmonics.indToEnh;
+
+// {
+//     0: ['c♮', 'b♯'],
+//     1: ['c♯', 'd♭'],
+//     2: ['d♮'],
+//     3: ['e♭', 'd♯'],
+//     4: ['e♮', 'f♭'],
+//     5: ['e♯', 'f♮'],
+//     6: ['f♯', 'g♭'],
+//     7: ['g♮'],
+//     8: ['g♯', 'a♭'],
+//     9: ['a♮'],
+//     10: ['a♯', 'b♭'],
+//     11: ['b♮', 'c♭']
+// }
+
+const PITCH_OPTIONS = {
+  major: singleenharmonics.filter((note) => !majorKeysAvoid.includes(note)),
+  minor: singleenharmonics.filter((note) => !minorKeysAvoid.includes(note))
+};
+// console.log(PITCH_OPTIONS.major);
+// console.log(PITCH_OPTIONS.minor);
+const MODE_OPTIONS = {
+  qualities: ['major', 'minor'],
+  modes: {
+    Ionian: 'major',
+    Dorian: 'minor',
+    Phrygian: 'minor',
+    Lydian: 'major',
+    Mixolydian: 'major',
+    Aeolian: 'minor',
+    Locrian: 'minor'
+  },
+  both: [
+    'major',
+    'minor',
+    'Ionian',
+    'Dorian',
+    'Phrygian',
+    'Lydian',
+    'Mixolydian',
+    'Aeolian',
+    'Locrian'
+  ]
+};
+const INPUT_OPTIONS = [
+  'chromatic',
+  'keyboard',
+  'circlechromatic',
+  'circlefifths',
+  'circlefourths'
+];
 
 export function QuizModule(props) {
-  // debugger;
-
   const [generated, updateGenerated] = useState(!DEFAULT_NEW_GAME);
   const [score, updateScore] = useState(0);
   const [keySigs, updateKeySigs] = useState(chromatic);
-  const [answerPitch, setAnswerPitch] = useState(DEFAULT_ANSWER.pitch);
-  const [answerMode, setAnswerMode] = useState(DEFAULT_ANSWER.mode);
+  const [answerPitch, setAnswer] = useState(DEFAULT_ANSWER);
+  // const [answerMode, setAnswerMode] = useState(DEFAULT_ANSWER.mode);
   const [imgSrc, updateImgSrc] = useState(
     getNoteData(DEFAULT_ANSWER.pitch, 'uri')
   );
   const [accidental, updateAccidental] = useState('default');
-
-  // Set score, todo: get score from storage
-
   const [modePref, updateModePref] = useState(DEFAULT_MODE_PREF);
   const [wrongEntries, updateWrongEntries] = useState([]);
   const [inputType, changeInputType] = useState(DEFAULT_INPUT_TYPE);
   const [userPrefRotate, updatePrefRotate] = useState(DEFAULT_ROTATE_PREF);
+  const [gameHistory, updateGameHistory] = useState([DEFAULT_ANSWER]);
+
+  // console.log(answerPitch);
+  // console.log(gameHistory);
+  // console.log(gameHistory[gameHistory.length - 1]);
+  // debugger;
+
+  function setNewAnswer(ans) {
+    setAnswer(ans);
+    console.log(ans);
+  }
 
   function switchInputType(type) {
     const arr = [
@@ -70,91 +137,134 @@ export function QuizModule(props) {
     return newData;
   }
 
-  function getMode(modePref) {}
-
-  function generateNewQuestion(oldAnswer) {
-    console.log('Generating a new key.');
-    const keySigsLength = Object.keys(keySigs).length;
-    let newAnswer = oldAnswer;
-    let newImgSrc = '';
-
-    while (newAnswer === oldAnswer) {
-      newAnswer = random(0, 11);
-      console.log(`Old: ${oldAnswer}. New: ${newAnswer}`);
+  function generateNewNote() {
+    const modeOptions = MODE_OPTIONS[modePref];
+    console.log(`can generate out of {${modeOptions}} mode options.`);
+    const mode = modeOptions[random(0, modeOptions.length - 1)];
+    const pitchOptions = PITCH_OPTIONS[mode];
+    const base =
+      enharmonicsToIndex[pitchOptions[random(0, pitchOptions.length)]];
+    // console.log('base, ' + base);
+    // console.log('mode, ' + modeTransposition[mode]);
+    // console.log(modeTransposition);
+    let pitch = base + modeTransposition[mode];
+    // console.log(pitch);
+    // debugger;
+    if (pitch > 11) {
+      pitch = pitch - 12;
     }
-    let modeRandomInt = null;
-    let newMode = null;
-    // generate new Mode
-    switch (modePref) {
-      case 'both':
-        modeRandomInt = random(0, 8);
-        console.log("Mode was then generated as 'both'.");
-        break;
-      case 'modes':
-        console.log("Mode was generated as 'only modes'.");
-        if (!modeRandomInt) {
-          modeRandomInt = random(0, 6);
-        }
-        // newMode set to 'only modes'
-        switch (modeRandomInt) {
-          case 0:
-            newMode = 'Ionian';
-          case 1:
-            newMode = 'Dorian';
-          case 2:
-            newMode = 'Phrygian';
-          case 3:
-            newMode = 'Lydian';
-          case 4:
-            newMode = 'Mixolydian';
-          case 5:
-            newMode = 'Aeolian';
-          case 6:
-            newMode = 'Locrian';
-          case 7:
-            newMode = 'minor';
-          case 8:
-            newMode = 'Major';
-        }
-        break;
-      // newMode set to 'all modes + m/m'
-      case 'qualities':
-        if (!modeRandomInt) {
-          modeRandomInt = random(0, 8);
-        }
-        console.log(`Mode was generated as 'Major/Minor'.${modeRandomInt}`);
-        newMode = modeRandomInt % 2 == 0 ? 'major' : 'minor';
-        console.log(`Mode was changed.${newMode}`);
-        break;
-      default:
-        console.log("Mode was generated as 'Major/Minor' (default).");
-    }
-
-    setAnswerPitch(newAnswer);
-    setAnswerMode(newMode);
-    updateImgSrc(getNoteData(newAnswer, 'uri'));
-    console.log('newAnswer and Mode are:');
+    console.log(`pitch: ${pitch}`);
+    const pitchName = (function () {
+      const pitches = enharmonicsFromIndex[pitch];
+      console.log(pitches);
+      console.log(pitchOptions);
+      const val = pitches.isArray
+        ? pitchOptions.includes(pitches[0])
+          ? pitches[0]
+          : pitches[1]
+        : pitches[0];
+      return val;
+    })();
+    console.log(pitchName);
+    updateImgSrc();
+    const newAnswer = {
+      uri: base,
+      pitch: pitch,
+      pitchName: pitchName,
+      mode: mode,
+      accidental: accidentalKeys(pitchName)
+    };
     console.log(newAnswer);
-    console.log(newMode);
+    setAnswer(newAnswer);
+    // debugger;
   }
+  // function generateNewQuestion(oldAnswer) {
+  //   console.log('Generating a new key.');
+  //   const keySigsLength = Object.keys(keySigs).length;
+  //   let newAnswer = oldAnswer;
+  //   let newImgSrc = '';
+
+  //   while (newAnswer === oldAnswer) {
+  //     newAnswer = random(0, 11);
+  //     console.log(`Old: ${oldAnswer}. New: ${newAnswer}`);
+  //   }
+  //   let modeRandomInt = null;
+  //   let newMode = null;
+  //   // generate new Mode
+  //   switch (modePref) {
+  //     case 'both':
+  //       modeRandomInt = random(0, 8);
+  //       console.log("Mode was then generated as 'both'.");
+  //       break;
+  //     case 'modes':
+  //       console.log("Mode was generated as 'only modes'.");
+  //       if (!modeRandomInt) {
+  //         modeRandomInt = random(0, 6);
+  //       }
+  //       // newMode set to 'only modes'
+  //       switch (modeRandomInt) {
+  //         case 0:
+  //           newMode = 'Ionian';
+  //         case 1:
+  //           newMode = 'Dorian';
+  //         case 2:
+  //           newMode = 'Phrygian';
+  //         case 3:
+  //           newMode = 'Lydian';
+  //         case 4:
+  //           newMode = 'Mixolydian';
+  //         case 5:
+  //           newMode = 'Aeolian';
+  //         case 6:
+  //           newMode = 'Locrian';
+  //         case 7:
+  //           newMode = 'minor';
+  //         case 8:
+  //           newMode = 'Major';
+  //       }
+  //       break;
+  //     // newMode set to 'all modes + m/m'
+  //     case 'qualities':
+  //       if (!modeRandomInt) {
+  //         modeRandomInt = random(0, 8);
+  //       }
+  //       console.log(`Mode was generated as 'Major/Minor'.${modeRandomInt}`);
+  //       newMode = modeRandomInt % 2 == 0 ? 'major' : 'minor';
+  //       console.log(`Mode was changed.${newMode}`);
+  //       break;
+  //     default:
+  //       console.log("Mode was generated as 'Major/Minor' (default).");
+  //   }
+
+  //   setAnswerPitch(newAnswer);
+  //   setAnswerMode(newMode);
+  //   updateImgSrc(getNoteData(newAnswer, 'uri'));
+  //   console.log('newAnswer and Mode are:');
+  //   console.log(newAnswer);
+  //   // console.log(newMode);
+  // }
 
   function handleSkip() {
     updateScore(score - 1);
   }
 
-  function handleClick(entry) {
-    console.log(`${entry} entered, expected: ${answerPitch}`);
-    const guess = enharmonics[entry];
-    console.log(guess);
+  function handleClick(entry, oldAnswer) {
+    console.log(entry, typeof entry);
+    const guess = enharmonicsToIndex[entry];
+    console.log(`${guess} entered, expected: ${answerPitch.pitch}`);
     const newWrongs = [...wrongEntries];
 
     // Test the input against the keyId
-    if (guess == answerPitch) {
+    if (guess == answerPitch.pitch) {
       // Wins
       console.log('Winner!');
       updateScore(score + 1);
       updateWrongEntries([]);
-      generateNewQuestion(answerPitch);
+      updateGameHistory((...gameHistory) =>
+        Object.assign({}, gameHistory, { [gameHistory.length]: answerPitch })
+      );
+      // generateNewQuestion(answerPitch);
+      generateNewNote(gameHistory, modePref, updateGameHistory);
     } else {
       // Loses
       console.log("YOU'RE A FAILURE, HARRY");
@@ -185,7 +295,7 @@ export function QuizModule(props) {
     return (
       <div className="child question-container">
         <span className="question">
-          What's this key in <QuestionQuality quality={answerMode} />?
+          What's this key in <QuestionQuality quality={answerPitch.mode} />?
         </span>
       </div>
     );
@@ -239,7 +349,8 @@ export function QuizModule(props) {
         inputType={inputType}
         loading={false}
         wrongEntries={wrongEntries}
-        currentNote={answerPitch}
+        currentAnswer={answerPitch}
+        userRotate={userPrefRotate}
       />
       <ImageContainer />
       <QuestionBar />

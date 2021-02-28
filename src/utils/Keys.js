@@ -30,28 +30,106 @@ const keyboard = [
   { b: { base: 11 } }
 ];
 
+const modeTransposition = {
+  major: 0,
+  minor: 9,
+  Ionian: 0,
+  Dorian: 2,
+  Phrygian: 4,
+  Lydian: 5,
+  Mixolydian: 7,
+  Aeolian: 9,
+  Locrian: 11
+};
+
+const accidentalKeys = function (pitch) {
+  switch (pitch) {
+    case 'e♭':
+    case 'a♭':
+    case 'd♭':
+    case 'g♭':
+    case 'c♭':
+      return 'flat';
+    case 'a♮':
+    case 'e♮':
+    case 'b♮':
+    case 'f♯':
+      return 'sharp';
+    case 'c♮':
+    case 'f♮':
+    case 'g♮':
+    case 'b♭':
+    case 'd♮':
+      return 'mixed';
+    default:
+      return 'error';
+  }
+};
+
+const majorKeysAvoid = ['d♯', 'e♯', 'f♭', 'g♯', 'b♯'];
+const minorKeysAvoid = ['d♭', 'e♯', 'f♭', 'g♭', 'b♯', 'c♭'];
+
 const enharmonics = {
-  'c♮': 0,
-  'c♯': 1,
-  'd♭': 1,
-  'd♮': 2,
-  'd♯': 3,
-  'e♭': 3,
-  'e♮': 4,
-  'e♯': 5,
-  'f♭': 4,
-  'f♮': 5,
-  'f♯': 6,
-  'g♭': 6,
-  'g♮': 7,
-  'g♯': 8,
-  'a♭': 8,
-  'a♮': 9,
-  'a♯': 10,
-  'b♭': 10,
-  'b♮': 11,
-  'b♯': 0,
-  'c♭': 11
+  list: [
+    'c♮',
+    'c♯',
+    'd♭',
+    'd♮',
+    'd♯',
+    'e♭',
+    'e♮',
+    'e♯',
+    'f♭',
+    'f♮',
+    'f♯',
+    'g♭',
+    'g♮',
+    'g♯',
+    'a♭',
+    'a♮',
+    'a♯',
+    'b♭',
+    'b♮',
+    'b♯',
+    'c♭'
+  ],
+  enhToInd: {
+    'c♮': 0,
+    'c♯': 1,
+    'd♭': 1,
+    'd♮': 2,
+    'd♯': 3,
+    'e♭': 3,
+    'e♮': 4,
+    'e♯': 5,
+    'f♭': 4,
+    'f♮': 5,
+    'f♯': 6,
+    'g♭': 6,
+    'g♮': 7,
+    'g♯': 8,
+    'a♭': 8,
+    'a♮': 9,
+    'a♯': 10,
+    'b♭': 10,
+    'b♮': 11,
+    'b♯': 0,
+    'c♭': 11
+  },
+  indToEnh: {
+    0: ['c♮', 'b♯'],
+    1: ['c♯', 'd♭'],
+    2: ['d♮'],
+    3: ['e♭', 'd♯'],
+    4: ['e♮', 'f♭'],
+    5: ['f♮', 'e♯'],
+    6: ['f♯', 'g♭'],
+    7: ['g♮'],
+    8: ['a♭', 'g♯'],
+    9: ['a♮'],
+    10: ['a♯', 'b♭'],
+    11: ['b♮', 'c♭']
+  }
 };
 
 const chromatic = {
@@ -318,4 +396,14 @@ const keySignatures = {
   }
 };
 
-export { keyboard, keyofc, chromatic, enharmonics, defCircleSignatures };
+export {
+  keyboard,
+  keyofc,
+  chromatic,
+  modeTransposition,
+  accidentalKeys,
+  majorKeysAvoid,
+  minorKeysAvoid,
+  enharmonics,
+  defCircleSignatures
+};
