@@ -59,14 +59,14 @@ function NewButton({
 }) {
   // console.log(note, typeof note);
   // debugger;
-  if (note[1] == '♮') {
-    note = note[0];
-  }
+  // if (note[1] == '♮') {
+  //   name = note[0];
+  // }
   // const btn = enharmonicsToIndex[note];
   return (
     <div key={note} className={containerStyle}>
       <button className={buttonStyle} onClick={() => handleClick(note)}>
-        {note}
+        {note[1] == '♮' ? note[0] : note}
       </button>
     </div>
   );
@@ -108,7 +108,7 @@ export function Circle({
     // debugger;
     return [i, whiteBlackKeys[flarpiness][i]];
   });
-  console.log(layout);
+  // console.log(layout);
 
   for (const [key, value] of layout) {
     // console.log(key, value);
@@ -116,7 +116,8 @@ export function Circle({
     currentNote = value;
     containerStyle = `${DEFAULT_CONTAINER_STYLE}${keyInt}`;
     buttonStyle = DEFAULT_BUTTON_STYLE;
-    if (wrongEntries.includes(parseInt(key))) {
+    if (wrongEntries.includes(value)) {
+      // if (wrongEntries.includes(parseInt(key))) {
       console.log(`\tis wrong`);
       buttonStyle = buttonStyle + ' loser';
     }

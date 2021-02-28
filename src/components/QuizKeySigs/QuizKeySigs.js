@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { InputPanel } from '../InputPanel/InputPanel';
 import {
+  keyofc,
   chromatic,
   modeTransposition,
   accidentalKeys,
@@ -20,10 +21,12 @@ const random = require('@aspiesoft/random-number-js');
 
 const DEFAULT_NEW_GAME = true;
 const DEFAULT_ANSWER = {
+  base: 0,
   pitch: 0,
-  pitchName: 'c♮',
+  pitchName: 'c♮', // ♭, ♮, ♯
   mode: 'major',
-  accidental: 'mixed'
+  accidental: 'mixed',
+  uri: keyofc
 };
 const DEFAULT_INPUT_TYPE = 'circlefifths';
 // [ 'chromatic', 'keyboard', 'circlechromatic', 'circlefifths', 'circlefourths' ]
@@ -52,6 +55,16 @@ const PITCH_OPTIONS = {
   major: singleenharmonics.filter((note) => !majorKeysAvoid.includes(note)),
   minor: singleenharmonics.filter((note) => !minorKeysAvoid.includes(note))
 };
+
+const SHARP_KEYS = {
+  major: ['g♮', 'd♮', 'a♮', 'e♮', 'b♮', 'f♯', 'c♯'],
+  minor: ['e♮', 'b♮', 'f♯', 'c♯', 'g♯', 'd♯', 'a♯']
+}; //♭, ♮, ♯
+const FLAT_KEYS = {
+  major: ['f♮', 'b♭', 'e♭', 'a♭', 'd♭', 'g♭', 'c♭'],
+  minor: ['d♮', 'g♮', 'c♮', 'f♮', 'b♭', 'e♭', 'a♭']
+}; //♭, ♮, ♯
+
 // console.log(PITCH_OPTIONS.major);
 // console.log(PITCH_OPTIONS.minor);
 const MODE_OPTIONS = {
@@ -91,9 +104,9 @@ export function QuizModule(props) {
   const [keySigs, updateKeySigs] = useState(chromatic);
   const [answerPitch, setAnswer] = useState(DEFAULT_ANSWER);
   // const [answerMode, setAnswerMode] = useState(DEFAULT_ANSWER.mode);
-  const [imgSrc, updateImgSrc] = useState(
-    getNoteData(DEFAULT_ANSWER.pitch, 'uri')
-  );
+  // const [imgSrc, updateImgSrc] = useState(
+  //   getNoteData(DEFAULT_ANSWER.base, 'uri')
+  // );
   const [accidental, updateAccidental] = useState('default');
   const [modePref, updateModePref] = useState(DEFAULT_MODE_PREF);
   const [wrongEntries, updateWrongEntries] = useState([]);
@@ -124,138 +137,111 @@ export function QuizModule(props) {
       : changeInputType(arr[arr.indexOf(inputType) + 1]);
   }
 
-  function getNoteData(index, data, weighted = 'default') {
-    let newData;
-    if (!keySigs[index][weighted][data]) {
-      let newPitchObject = keySigs[index];
-      let newDefault = newPitchObject[weighted];
-      newData = newPitchObject[newDefault][data];
+  function getNoteData(
+    index,
+    query,
+    noteName = null,
+    flarpiness,
+    mode = DEFAULT_ANSWER.mode,
+    lookat = 'default'
+  ) {
+    noteName
+      ? console.log(`noteName entered as: {${noteName}}`)
+      : console.log('noteName is null');
+    console.log(index, query, flarpiness, mode);
+    const baseNote = keySigs[index];
+    // const pointer = keySigs[index][lookat];
+
+    // console.log('before: baseNote[sharp]:', baseNote['sharp']);
+    // console.log('before: baseNote[flat]:', baseNote['flat']);
+    // console.log(noteName[1]);
+
+    let flarp;
+    if (baseNote['default'] == 'flarp') {
+      console.log('pointer was flarp');
+      if (SHARP_KEYS[mode].includes(noteName)) {
+        flarp = baseNote['sharp'][query][mode];
+      } else if (FLAT_KEYS[mode].includes(noteName)) {
+        flarp = baseNote['flat'][query][mode];
+      }
     } else {
-      newData = keySigs[index][data];
+      console.log('pointer was not flarp');
+      const pointer = baseNote['default'];
+      flarp = baseNote[pointer][query][mode];
     }
-    // console.log(newData);
-    return newData;
+
+    console.log(flarp);
+    // console.log('Pointer is now:', pointer.toString());
+    // console.log('pointer:query', pointer[query]);
+    // console.log('uri:', pointer[query][mode]);
+
+    // debugger;
+    // const flarp =
+    //   pointer == 'sharp' || pointer == 'flat'
+    //     ? baseNote[pointer][query][mode]
+    //     : baseNote[baseNote[pointer]][query][mode];
+    // console.log(flarp);
+
+    return flarp;
   }
 
   function generateNewNote() {
     const modeOptions = MODE_OPTIONS[modePref];
-    console.log(`can generate out of {${modeOptions}} mode options.`);
+    console.log(`can generate out of ${modeOptions} mode options.`);
     const mode = modeOptions[random(0, modeOptions.length - 1)];
     const pitchOptions = PITCH_OPTIONS[mode];
-    const base =
-      enharmonicsToIndex[pitchOptions[random(0, pitchOptions.length)]];
-    // console.log('base, ' + base);
-    // console.log('mode, ' + modeTransposition[mode]);
-    // console.log(modeTransposition);
-    let pitch = base + modeTransposition[mode];
-    // console.log(pitch);
-    // debugger;
-    if (pitch > 11) {
-      pitch = pitch - 12;
+    let locked = true;
+    let rand;
+    while (locked) {
+      rand = pitchOptions[random(0, pitchOptions.length)];
+      console.log('got random:', rand);
+      // debugger;
+      pitchOptions.includes(rand) ? (locked = false) : (locked = true);
     }
+
+    const pitchName = rand;
+
+    // const pitchName = 'd♮'; // debug a single note after win
+    const offset = 12 - modeTransposition[mode];
+    console.log('transposing', offset);
+    //  enharmonicsToIndex[];
+
+    // console.log('base:', base);
+    // console.log('mode, ' + modeTransposition[mode]);
+    const pitch = enharmonicsToIndex[pitchName];
+    const base = pitch + offset < 11 ? pitch + offset : pitch - 12 + offset;
+    console.log('base, pitch', base, pitch);
+    // debugger;
+    // if (pitch > 11) {
+    //   pitch = pitch - 12;
+    // }
     console.log(`pitch: ${pitch}`);
-    const pitchName = (function () {
-      const pitches = enharmonicsFromIndex[pitch];
-      console.log(pitches);
-      console.log(pitchOptions);
-      const val = pitches.isArray
-        ? pitchOptions.includes(pitches[0])
-          ? pitches[0]
-          : pitches[1]
-        : pitches[0];
-      return val;
-    })();
-    console.log(pitchName);
-    updateImgSrc();
+    console.log('pitchName is:', pitchName);
+    const flarpiness = accidentalKeys(pitchName);
     const newAnswer = {
-      uri: base,
+      base: base,
       pitch: pitch,
       pitchName: pitchName,
       mode: mode,
-      accidental: accidentalKeys(pitchName)
+      flarpiness: accidentalKeys(pitchName),
+      uri: getNoteData(pitch, 'uri', pitchName, flarpiness, mode)
     };
     console.log(newAnswer);
     setAnswer(newAnswer);
     // debugger;
   }
-  // function generateNewQuestion(oldAnswer) {
-  //   console.log('Generating a new key.');
-  //   const keySigsLength = Object.keys(keySigs).length;
-  //   let newAnswer = oldAnswer;
-  //   let newImgSrc = '';
-
-  //   while (newAnswer === oldAnswer) {
-  //     newAnswer = random(0, 11);
-  //     console.log(`Old: ${oldAnswer}. New: ${newAnswer}`);
-  //   }
-  //   let modeRandomInt = null;
-  //   let newMode = null;
-  //   // generate new Mode
-  //   switch (modePref) {
-  //     case 'both':
-  //       modeRandomInt = random(0, 8);
-  //       console.log("Mode was then generated as 'both'.");
-  //       break;
-  //     case 'modes':
-  //       console.log("Mode was generated as 'only modes'.");
-  //       if (!modeRandomInt) {
-  //         modeRandomInt = random(0, 6);
-  //       }
-  //       // newMode set to 'only modes'
-  //       switch (modeRandomInt) {
-  //         case 0:
-  //           newMode = 'Ionian';
-  //         case 1:
-  //           newMode = 'Dorian';
-  //         case 2:
-  //           newMode = 'Phrygian';
-  //         case 3:
-  //           newMode = 'Lydian';
-  //         case 4:
-  //           newMode = 'Mixolydian';
-  //         case 5:
-  //           newMode = 'Aeolian';
-  //         case 6:
-  //           newMode = 'Locrian';
-  //         case 7:
-  //           newMode = 'minor';
-  //         case 8:
-  //           newMode = 'Major';
-  //       }
-  //       break;
-  //     // newMode set to 'all modes + m/m'
-  //     case 'qualities':
-  //       if (!modeRandomInt) {
-  //         modeRandomInt = random(0, 8);
-  //       }
-  //       console.log(`Mode was generated as 'Major/Minor'.${modeRandomInt}`);
-  //       newMode = modeRandomInt % 2 == 0 ? 'major' : 'minor';
-  //       console.log(`Mode was changed.${newMode}`);
-  //       break;
-  //     default:
-  //       console.log("Mode was generated as 'Major/Minor' (default).");
-  //   }
-
-  //   setAnswerPitch(newAnswer);
-  //   setAnswerMode(newMode);
-  //   updateImgSrc(getNoteData(newAnswer, 'uri'));
-  //   console.log('newAnswer and Mode are:');
-  //   console.log(newAnswer);
-  //   // console.log(newMode);
-  // }
 
   function handleSkip() {
     updateScore(score - 1);
   }
 
   function handleClick(entry, oldAnswer) {
-    console.log(entry, typeof entry);
-    const guess = enharmonicsToIndex[entry];
-    console.log(`${guess} entered, expected: ${answerPitch.pitch}`);
+    // console.log(entry, typeof entry);
+    // console.log(`${entry} entered, expected: ${answerPitch.pitchName}`);
     const newWrongs = [...wrongEntries];
 
-    // Test the input against the keyId
-    if (guess == answerPitch.pitch) {
+    // Test the input against the current pitch
+    if (entry == answerPitch.pitchName) {
       // Wins
       console.log('Winner!');
       updateScore(score + 1);
@@ -263,13 +249,12 @@ export function QuizModule(props) {
       updateGameHistory((...gameHistory) =>
         Object.assign({}, gameHistory, { [gameHistory.length]: answerPitch })
       );
-      // generateNewQuestion(answerPitch);
       generateNewNote(gameHistory, modePref, updateGameHistory);
     } else {
       // Loses
       console.log("YOU'RE A FAILURE, HARRY");
       updateScore(score - 1);
-      newWrongs.push(guess);
+      newWrongs.push(entry);
       updateWrongEntries(newWrongs);
     }
   }
@@ -301,10 +286,13 @@ export function QuizModule(props) {
     );
   }
 
-  function ImageContainer() {
+  function ImageContainer({ debug }) {
     return (
       <div className="child image-container">
-        <img src={imgSrc} className="key-img" alt="logo" />
+        <span className={debug ? 'debug' : 'debug hidden'}>
+          {answerPitch.pitchName}
+        </span>
+        <img src={answerPitch.uri} className="key-img" alt="logo" />
       </div>
     );
   }
@@ -352,7 +340,7 @@ export function QuizModule(props) {
         currentAnswer={answerPitch}
         userRotate={userPrefRotate}
       />
-      <ImageContainer />
+      <ImageContainer debug={false} />
       <QuestionBar />
     </>
   );

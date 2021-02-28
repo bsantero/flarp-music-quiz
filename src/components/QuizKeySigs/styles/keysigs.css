@@ -82,6 +82,11 @@
   justify-content: center;
 }
 
+.image-container .debug {
+  position: absolute;
+  color: darkred;
+}
+
 .key-img {
   height: max-content;
   max-width: 100%;
