@@ -1,28 +1,36 @@
 import React from 'react';
-import conLog from '../../utils/conLog';
+import PropTypes from 'prop-types';
+import './settings-menu.css';
 
-export function SettingsMenu(props) {
-  function SettingsOptions() {
-    return props.currentSettings;
-  }
-
+export function SettingsContainer(props) {
+  const menuOpenStyle = 'settings-main-container float-top overlay';
   let newClass;
-  if (props.menuState == true) {
-    conLog(props.menuState);
-    newClass = 'float-top overlay';
-    console.log('Settings open for bidnis.');
+
+  if (props.show == true) {
+    // console.log(props);
+    // debugger;
+    newClass = menuOpenStyle;
+    // console.log('Settings open for bidnis.');
+  } else if (props.show == false) {
+    newClass = menuOpenStyle + ' hidden';
+    // console.log('Settings lykket.');
   } else {
-    newClass = 'float-top overlay hidden';
-    console.log('Settings lykket.');
+    // debugger;
+    newClass = menuOpenStyle + ' failed';
+    // console.log('Settings FAILED.');
   }
+
   return (
     <div className={newClass}>
       <button className="menu-btn-close" onClick={() => props.menuSet(false)}>
-        X
+        {'X'}
       </button>
-      <SettingsOptions />
+      <props.QuizOptions
+        switchInputType={props.switchInputType}
+        changeInputType={props.changeInputType}
+      />
     </div>
   );
 }
 
-export default SettingsMenu;
+export default SettingsContainer;

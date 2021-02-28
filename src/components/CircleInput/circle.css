@@ -1,10 +1,5 @@
-:root {
-  --radius: 42vmin;
-  --button-text: calc(14 * (var(--radius) / 100));
-  --button-padding: calc(6 * (var(--button-text) / 100))
-    calc(16 * (var(--button-text) / 100));
-  --base: calc(var(--radius) / 3.14);
-  --button-transform: calc(var(--radius) / 2 + (var(--button-text) / 3));
+.circle-container .themed-button {
+  border-radius: 25%;
 }
 
 .circle {
@@ -24,85 +19,81 @@
   position: absolute;
 }
 
-.circleOfFifths .themed-button {
-  border-radius: 35%;
-}
-
 .circle .tick:nth-child(1) {
   transform: rotate(-90deg) translate(var(--button-transform));
 }
-.circle .tick:nth-child(1) .label {
+.circle .tick:nth-child(1) button {
   transform: rotate(90deg) translate(0px);
 }
 .circle .tick:nth-child(7) {
   transform: rotate(90deg) translate(var(--button-transform));
 }
-.circle .tick:nth-child(7) .label {
+.circle .tick:nth-child(7) button {
   transform: rotate(-90deg) translate(0px);
 }
 
 .circle .tick:nth-child(2) {
   transform: rotate(-60deg) translate(var(--button-transform));
 }
-.circle .tick:nth-child(2) .label {
+.circle .tick:nth-child(2) button {
   transform: rotate(60deg) translate(0px);
 }
 .circle .tick:nth-child(12) {
   transform: rotate(240deg) translate(var(--button-transform));
 }
-.circle .tick:nth-child(12) .label {
+.circle .tick:nth-child(12) button {
   transform: rotate(-240deg) translate(0px);
 }
 
 .circle .tick:nth-child(3) {
   transform: rotate(-30deg) translate(var(--button-transform));
 }
-.circle .tick:nth-child(3) .label {
+.circle .tick:nth-child(3) button {
   transform: rotate(30deg) translate(0px);
 }
 .circle .tick:nth-child(11) {
   transform: rotate(210deg) translate(var(--button-transform));
 }
-.circle .tick:nth-child(11) .label {
+.circle .tick:nth-child(11) button {
   transform: rotate(-210deg) translate(0px);
 }
 
 .circle .tick:nth-child(4) {
   transform: rotate(0deg) translate(var(--button-transform));
 }
-.circle .tick:nth-child(4) .label {
+.circle .tick:nth-child(4) button {
   transform: rotate(0deg) translate(0px);
 }
 .circle .tick:nth-child(10) {
   transform: rotate(180deg) translate(var(--button-transform));
 }
-.circle .tick:nth-child(10) .label {
+.circle .tick:nth-child(10) button {
   transform: rotate(-180deg) translate(0px);
 }
 
 .circle .tick:nth-child(5) {
   transform: rotate(30deg) translate(var(--button-transform));
 }
-.circle .tick:nth-child(5) .label {
+.circle .tick:nth-child(5) button {
   transform: rotate(-30deg) translate(0px);
 }
 .circle .tick:nth-child(9) {
   transform: rotate(150deg) translate(var(--button-transform));
 }
-.circle .tick:nth-child(9) .label {
+.circle .tick:nth-child(9) button {
   transform: rotate(-150deg) translate(0px);
 }
 
 .circle .tick:nth-child(6) {
   transform: rotate(60deg) translate(var(--button-transform));
 }
-.circle .tick:nth-child(6) .label {
+.circle .tick:nth-child(6) button {
   transform: rotate(-60deg) translate(0px);
 }
 .circle .tick:nth-child(8) {
   transform: rotate(120deg) translate(var(--button-transform));
 }
-.circle .tick:nth-child(8) .label {
+.circle .tick:nth-child(8) button {
   transform: rotate(-120deg) translate(0px);
 }
 
@@ -112,78 +103,78 @@
 .circle .tick:nth-child(1) {
   transform: rotate(-90deg) translate(17vh);
 }
-.circle .tick:nth-child(1) .label {
+.circle .tick:nth-child(1) button {
   transform: rotate(90deg) translate(0px);
 }
 .circle .tick:nth-child(7) {
   transform: rotate(90deg) translate(17vh);
 }
-.circle .tick:nth-child(7) .label {
+.circle .tick:nth-child(7) button {
   transform: rotate(-90deg) translate(0px);
 }
 
 .circle .tick:nth-child(2) {
   transform: rotate(-60deg) translate(17vh);
 }
-.circle .tick:nth-child(2) .label {
+.circle .tick:nth-child(2) button {
   transform: rotate(60deg) translate(0px);
 }
 .circle .tick:nth-child(12) {
   transform: rotate(240deg) translate(17vh);
 }
-.circle .tick:nth-child(12) .label {
+.circle .tick:nth-child(12) button {
   transform: rotate(-240deg) translate(0px);
 }
 
 .circle .tick:nth-child(3) {
   transform: rotate(-30deg) translate(17vh);
 }
-.circle .tick:nth-child(3) .label {
+.circle .tick:nth-child(3) button {
   transform: rotate(30deg) translate(0px);
 }
 .circle .tick:nth-child(11) {
   transform: rotate(210deg) translate(17vh);
 }
-.circle .tick:nth-child(11) .label {
+.circle .tick:nth-child(11) button {
   transform: rotate(-210deg) translate(0px);
 }
 
 .circle .tick:nth-child(4) {
   transform: rotate(0deg) translate(17vh);
 }
-.circle .tick:nth-child(4) .label {
+.circle .tick:nth-child(4) button {
   transform: rotate(0deg) translate(0px);
 }
 .circle .tick:nth-child(10) {
   transform: rotate(180deg) translate(17vh);
 }
-.circle .tick:nth-child(10) .label {
+.circle .tick:nth-child(10) button {
   transform: rotate(-180deg) translate(0px);
 }
 
 .circle .tick:nth-child(5) {
   transform: rotate(30deg) translate(17vh);
 }
-.circle .tick:nth-child(5) .label {
+.circle .tick:nth-child(5) button {
   transform: rotate(-30deg) translate(0px);
 }
 .circle .tick:nth-child(9) {
   transform: rotate(150deg) translate(17vh);
 }
-.circle .tick:nth-child(9) .label {
+.circle .tick:nth-child(9) button {
   transform: rotate(-150deg) translate(0px);
 }
 
 .circle .tick:nth-child(6) {
   transform: rotate(60deg) translate(17vh);
 }
-.circle .tick:nth-child(6) .label {
+.circle .tick:nth-child(6) button {
   transform: rotate(-60deg) translate(0px);
 }
 .circle .tick:nth-child(8) {
   transform: rotate(120deg) translate(17vh);
 }
-.circle .tick:nth-child(8) .label {
+.circle .tick:nth-child(8) button {
   transform: rotate(-120deg) translate(0px);
 }
 

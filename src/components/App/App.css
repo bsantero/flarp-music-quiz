@@ -8,6 +8,7 @@ body {
   min-height: 100vh;
   min-height: -webkit-fill-available;
 }
+
 html {
   height: -webkit-fill-available;
 }
@@ -15,6 +16,13 @@ html {
 /* Vars */
 
 :root {
+  --radius: 42vmin;
+  --button-text: calc(14 * (var(--radius) / 100));
+  --button-padding: calc(6 * (var(--button-text) / 100))
+    calc(16 * (var(--button-text) / 100));
+  --base: calc(var(--radius) / 3.14);
+  --button-transform: calc(var(--radius) / 2 + (var(--button-text) / 3));
+  /* Colors */
   --bg-blue: #253555;
   --bg-blue-light: #c5f1ff;
 }
@@ -73,6 +81,7 @@ html {
   outline: 0 !important;
   background-color: #224141;
 }
+
 /* Page Styles */
 
 .App {
@@ -95,7 +104,7 @@ html {
 
 .App-main {
   background-color: var(--bg-blue);
-  font-size: calc(10px + 2vmin);
+  font-size: var(--button-text);
   color: white;
   grid-area: main;
 }
@@ -130,7 +139,7 @@ html {
 .navigation.float-top {
   width: 70vw;
   margin: 2vh 15vw 0;
-  display: flex;
+  position: absolute;
   align-items: center;
   justify-content: center;
 }
@@ -181,10 +190,11 @@ html {
 }
 
 .menu-btn-close {
-  font-size: 2em;
-  position: absolute;
-  top: 0.5em;
-  left: 0.5em;
+  font-size: 1.5em;
+  grid-area: X;
+  position: relative;
+  top: -0.35em;
+  left: -0.35em;
   background-color: rgb(109, 24, 24);
   border-radius: 0.25em;
   color: white;

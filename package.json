@@ -16,7 +16,7 @@
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build -r https://$GH_TOKEN@github.com/bsantero/flarp-music-quiz.git",
-    "start": "cross-env PORT=3660 react-scripts start",
+    "start": "GENERATE_SOURCEMAP=true cross-env PORT=3660 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

@@ -1,12 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import conLog from '../../utils/conLog.js';
 import { Header } from '../Header/Header.js';
 import { Footer } from '../Footer/Footer.js';
-import { SettingsMenu } from '../Settings/Settings.js';
-
+import { NavigationOne } from '../Navigation/Navigation.js';
 import {
   QuizModule as QuizKeySig,
-  SettingsMenu as KeySigSettings
+  QuizOptions as KeySigOptions
 } from '../QuizKeySigs/QuizKeySigs.js';
 import { QuizModule as QuizLR } from '../QuizLeftRight/QuizLeftRight.js';
 import { QuizModule as QuizLMR } from '../QuizLeftMidRight/QuizLeftMidRight.js';
@@ -17,14 +17,15 @@ import './App-testing.css';
 // Constants
 
 const DEFAULT_QUIZ_ID = 'KeySig';
-const DEFAULT_QUIZ_SETTINGS = KeySigSettings;
+const DEFAULT_QUIZ_OPTIONS = KeySigOptions;
 
-function Main({ currentQuiz }) {
+export function View(props) {
   // conLog(currentQuiz);
 
   let QuizComponent = null;
+  let QuizOptions = null;
 
-  switch (currentQuiz) {
+  switch (props.currentQuiz) {
     case 0:
       QuizComponent = () => (
         <div>
@@ -35,6 +36,9 @@ function Main({ currentQuiz }) {
       break;
     case 'KeySig':
       QuizComponent = QuizKeySig;
+      QuizOptions = KeySigOptions;
+      // console.log(QuizOptions);
+      // debugger;
       break;
     case 'LR':
       QuizComponent = QuizLR;
@@ -46,35 +50,42 @@ function Main({ currentQuiz }) {
       console.log('Err: no quiz selected.');
       QuizComponent = () => <div>No quiz here, sorry!</div>;
   }
+  // console.log();
+  // console.log(settingsState, toggleSettings);
+
+  // SettingsContainer.propTypes = {
+  //   wtfState: PropTypes.bool,
+  //   wtfSet: PropTypes.func,
+  //   QuizOptions: PropTypes.func,
+  //   newClass: PropTypes.string
+  // };
 
   return (
     <main className="App-main Quiz-main">
-      <QuizComponent />
+      <QuizComponent show={props.show} menuSet={props.menuSet} />
     </main>
   );
 }
 
 function App() {
   const [currentQuiz, setCurrentQuiz] = React.useState(DEFAULT_QUIZ_ID);
-  const [currentSettings, setCurrentSettings] = React.useState(
-    DEFAULT_QUIZ_SETTINGS
-  );
-  const [settingsState, toggleSettings] = React.useState(false);
+  const [settingsShow, toggleSettings] = React.useState(false);
+
+  // changeSettingsClass(newClass);
 
   return (
     <div className="App">
-      <SettingsMenu
-        currentSettings={currentSettings}
-        menuState={settingsState}
-        menuSet={toggleSettings}
-      />
-      <Header
+      <Header setCurrentQuiz={setCurrentQuiz} />
+      <NavigationOne
         setCurrentQuiz={setCurrentQuiz}
-        setCurrentSettings={setCurrentSettings}
-        menuState={settingsState}
+        menuState={settingsShow}
         menuSet={toggleSettings}
       />
-      <Main currentQuiz={currentQuiz} />
+      <View
+        currentQuiz={currentQuiz}
+        show={settingsShow}
+        menuSet={toggleSettings}
+      />
       <Footer />
     </div>
   );

@@ -13,6 +13,9 @@ function NavButton(props) {
 }
 
 function MenuButton({ label, menuState, menuSet }) {
+  // console.log(`MenuButton created`);
+  // console.log(menuState);
+  // console.log(menuSet);
   return (
     <button
       alt="settings"
@@ -24,20 +27,15 @@ function MenuButton({ label, menuState, menuSet }) {
   );
 }
 
-export function Navigation(props) {
+export function NavigationOne({ setCurrentQuiz, menuState, menuSet }) {
   return (
     <div className="navigation float-top">
       <NavButton
-        setCurrentQuiz={props.setCurrentQuiz}
-        setCurrentSettings={props.setCurrentSettings}
+        setCurrentQuiz={setCurrentQuiz}
         quiz={'KeySig'}
         label="Key Signatures"
       />
-      <MenuButton
-        menuState={props.menuState}
-        menuSet={props.menuSet}
-        label="⚙️"
-      />
+      <MenuButton menuState={menuState} menuSet={menuSet} label="⚙️" />
     </div>
   );
 }
@@ -60,4 +58,4 @@ export function Navigation(props) {
 //   label="Coming Soon!" }
 // />
 
-export default Navigation;
+export default NavigationOne;

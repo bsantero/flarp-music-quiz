@@ -1,0 +1,27 @@
+.settings-main-container {
+  display: grid;
+  grid-template-rows: 2em auto;
+  grid-template-columns: 2em auto 35% 35%;
+  grid-template-areas:
+    'X header header header'
+    'left left middle right';
+}
+
+.quiz-settings-container .options-header {
+  font-size: 20px;
+}
+
+.quiz-settings-container .quiz-option {
+  font-size: 12px;
+}
+
+@media only screen and (min-device-width: 768px) and (orientation: landscape) {
+  .quiz-settings-container .options-header {
+    font-size: 30pt;
+  }
+  .quiz-settings-container .quiz-option {
+    font-size: 18pt;
+    margin: 0.5pt;
+    padding: 4pt 2pt;
+  }
+}
