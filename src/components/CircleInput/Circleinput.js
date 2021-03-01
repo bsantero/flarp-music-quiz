@@ -5,57 +5,12 @@ import { enharmonicsToIndex } from '../../utils/Keys';
 const DEFAULT_CONTAINER_STYLE = 'tick key-';
 const DEFAULT_BUTTON_STYLE = 'themed-button';
 
-const whiteBlackKeys = {
-  sharp: {
-    0: 'c♮',
-    1: 'c♯',
-    2: 'd♮',
-    3: 'd♯',
-    4: 'e♮',
-    5: 'f♮',
-    6: 'f♯',
-    7: 'g♮',
-    8: 'g♯',
-    9: 'a♮',
-    10: 'a♯',
-    11: 'b♮'
-  },
-  flat: {
-    0: 'c♮',
-    1: 'd♭',
-    2: 'd♮',
-    3: 'e♭',
-    4: 'e♮',
-    5: 'f♮',
-    6: 'g♭',
-    7: 'g♮',
-    8: 'a♭',
-    9: 'a♮',
-    10: 'b♭',
-    11: 'c♭'
-  },
-  mixed: {
-    0: 'c♮',
-    1: 'c♯',
-    2: 'd♮',
-    3: 'e♭',
-    4: 'e♮',
-    5: 'f♮',
-    6: 'f♯',
-    7: 'g♮',
-    8: 'a♭',
-    9: 'a♮',
-    10: 'b♭',
-    11: 'b♮'
-  }
-};
-
 function NewButton({
   note,
   containerStyle,
   buttonStyle,
   handleClick,
-  sharpFlatMixed
+  keyProp
 }) {
   // console.log(note, typeof note);
   // debugger;
@@ -63,8 +18,9 @@ function NewButton({
   //   name = note[0];
   // }
   // const btn = enharmonicsToIndex[note];
+
   return (
-    <div key={note} className={containerStyle}>
+    <div key={keyProp} className={containerStyle}>
       <button className={buttonStyle} onClick={() => handleClick(note)}>
         {note[1] == '♮' ? note[0] : note}
       </button>
@@ -72,29 +28,18 @@ function NewButton({
   );
 }
 
-function handleFlarpFlip(setFlarp) {
-  // setFlarpiness();
-  setFlarp(
-    (flarpiness) => {
-      const arr = Object.keys(whiteBlackKeys);
-      console.log(Object.keys(whiteBlackKeys));
-      const nextFlarpiness = arr[arr.indexOf(flarpiness) + 1] || arr[0];
-      console.log(`current flarp: ${flarpiness}`);
-      console.log(`next flarp: ${nextFlarpiness}`);
-      return nextFlarpiness;
-    }
-    // });
-  );
-}
-
 export function Circle({
   currentInputSchema,
   currentAnswer,
   handleClick,
-  wrongEntries
+  wrongEntries,
+  mode,
+  whiteBlackKeys,
+  flarpiness,
+  setFlarpiness,
+  FlirpButton,
+  handleFlarpFlip
 }) {
-  const [flarpiness, setFlarpiness] = useState('mixed');
-
   console.log(currentAnswer);
   let buttons = [];
 
@@ -110,12 +55,15 @@ export function Circle({
   });
   // console.log(layout);
 
+  console.log('mode:', mode);
+
   for (const [key, value] of layout) {
     // console.log(key, value);
     const keyInt = parseInt(key);
     currentNote = value;
     containerStyle = `${DEFAULT_CONTAINER_STYLE}${keyInt}`;
     buttonStyle = DEFAULT_BUTTON_STYLE;
+    mode == 'major' ? (buttonStyle += ' capitalize') : (buttonStyle += '');
     if (wrongEntries.includes(value)) {
       // if (wrongEntries.includes(parseInt(key))) {
       console.log(`\tis wrong`);
@@ -126,22 +74,20 @@ export function Circle({
       <NewButton
         buttonStyle={buttonStyle}
         containerStyle={containerStyle}
-        key={key}
+        keyProp={key}
         note={currentNote}
         handleClick={handleClick}
         sharpFlatMixed={flarpiness}
+        mode={mode}
       />
     );
   }
   buttons.push(
-    <div key="flarpSwitch" className="flarp-it-up">
-      <button
-        className={buttonStyle}
-        onClick={() => handleFlarpFlip(setFlarpiness)}
-      >
-        Flirp!
-      </button>
-    </div>
+    <FlirpButton
+      buttonStyle={buttonStyle}
+      handleFlarpFlip={handleFlarpFlip}
+      setFlarpiness={setFlarpiness}
+    />
   );
   return buttons;
 }

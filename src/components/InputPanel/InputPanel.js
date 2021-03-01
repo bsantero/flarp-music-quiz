@@ -13,14 +13,92 @@ const inputSchemaTypes = {
   cw4ths: [0, 5, 10, 3, 8, 1, 6, 11, 4, 9, 2, 7]
 };
 
+const whiteBlackKeys = new (function () {
+  this.sharp = {
+    0: 'c♮',
+    1: 'c♯',
+    2: 'd♮',
+    3: 'd♯',
+    4: 'e♮',
+    5: 'f♮',
+    6: 'f♯',
+    7: 'g♮',
+    8: 'g♯',
+    9: 'a♮',
+    10: 'a♯',
+    11: 'b♮'
+  };
+  this.flat = {
+    0: 'c♮',
+    1: 'd♭',
+    2: 'd♮',
+    3: 'e♭',
+    4: 'e♮',
+    5: 'f♮',
+    6: 'g♭',
+    7: 'g♮',
+    8: 'a♭',
+    9: 'a♮',
+    10: 'b♭',
+    11: 'c♭'
+  };
+  // this.mixed = {
+  //   0: 'c♮',
+  //   1: 'c♯',
+  //   2: 'd♮',
+  //   3: 'e♭',
+  //   4: 'e♮',
+  //   5: 'f♮',
+  //   6: 'f♯',
+  //   7: 'g♮',
+  //   8: 'a♭',
+  //   9: 'a♮',
+  //   10: 'b♭',
+  //   11: 'b♮'
+  // };
+})();
+
+function FlirpButton({ buttonStyle, handleFlarpFlip, setFlarpiness }) {
+  return (
+    <div key="flarpSwitch" className="flarp-it-up">
+      <button
+        className={buttonStyle}
+        onClick={() => {
+          handleFlarpFlip(setFlarpiness);
+        }}
+      >
+        Flirp!
+      </button>
+    </div>
+  );
+}
+
+export function handleFlarpFlip(setFlarp) {
+  // setFlarpiness();
+  setFlarp(
+    (flarpiness) => {
+      const arr = Object.keys(whiteBlackKeys);
+      console.log(Object.keys(whiteBlackKeys));
+      const nextFlarpiness = arr[arr.indexOf(flarpiness) + 1] || arr[0];
+      console.log(`current flarp: ${flarpiness}`);
+      console.log(`next flarp: ${nextFlarpiness}`);
+      return nextFlarpiness;
+    }
+    // });
+  );
+}
+
 export function InputPanel({
   inputType,
   handleClick,
   loading,
   numOctaves,
   currentAnswer,
-  wrongEntries
+  wrongEntries,
+  mode
 }) {
+  const [flarpiness, setFlarpiness] = useState('flat');
+
   let parentClass;
   let childClass;
   let inputButtons;
@@ -37,6 +115,12 @@ export function InputPanel({
           currentAnswer={currentAnswer}
           wrongEntries={wrongEntries}
           handleClick={handleClick}
+          mode={mode}
+          whiteBlackKeys={whiteBlackKeys}
+          FlirpButton={FlirpButton}
+          handleFlarpFlip={handleFlarpFlip}
+          flarpiness={flarpiness}
+          setFlarpiness={setFlarpiness}
         />
       );
       break;
@@ -52,6 +136,12 @@ export function InputPanel({
           currentAnswer={currentAnswer}
           wrongEntries={wrongEntries}
           handleClick={handleClick}
+          mode={mode}
+          whiteBlackKeys={whiteBlackKeys}
+          handleFlarpFlip={handleFlarpFlip}
+          FlirpButton={FlirpButton}
+          flarpiness={flarpiness}
+          setFlarpiness={setFlarpiness}
         />
       );
       break;
@@ -67,6 +157,12 @@ export function InputPanel({
           currentAnswer={currentAnswer}
           wrongEntries={wrongEntries}
           handleClick={handleClick}
+          mode={mode}
+          whiteBlackKeys={whiteBlackKeys}
+          FlirpButton={FlirpButton}
+          handleFlarpFlip={handleFlarpFlip}
+          flarpiness={flarpiness}
+          setFlarpiness={setFlarpiness}
         />
       );
       break;
@@ -91,7 +187,13 @@ export function InputPanel({
           octaves={numOctaves}
           currentNote={currentAnswer}
           handleClick={handleClick}
+          FlirpButton={FlirpButton}
+          handleFlarpFlip={handleFlarpFlip}
           wrongEntries={wrongEntries}
+          flarpiness={flarpiness}
+          setFlarpiness={setFlarpiness}
+          currentInputSchema={inputSchemaTypes['chromatic']}
+          whiteBlackKeys={whiteBlackKeys}
         />
       );
       break;
@@ -265,4 +367,4 @@ export function InputPanel({
 //   return buttons;
 // }
 
-export default InputPanel;
+export default { InputPanel, FlirpButton };

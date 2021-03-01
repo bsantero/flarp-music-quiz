@@ -17,7 +17,7 @@
 .Quiz-main {
   display: grid;
   grid-template-columns: 30% 40% 30%;
-  grid-template-rows: 50% 8% 42%;
+  grid-template-rows: 48% 8% 44%;
   grid-template-areas:
     'imgl imgc imgr'
     'question question question'
@@ -27,7 +27,6 @@
   .Quiz-main {
     grid-template-columns: 30% 16% 54%;
     grid-template-rows: auto;
-    grid-template-rows: 42% 58%;
     grid-template-areas:
       'img question input'
       'img score input';
@@ -88,9 +87,9 @@
 }
 
 .key-img {
-  height: max-content;
+  height: 95%;
   max-width: 100%;
-  max-height: 100%;
+  max-height: calc(100vh - 3em);
   pointer-events: none;
   grid-area: imgc;
 }

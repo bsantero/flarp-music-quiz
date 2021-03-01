@@ -90,7 +90,7 @@ html {
   background-color: var(--bg-blue);
   text-align: center;
   display: grid;
-  grid-template-rows: 3.5em calc(100% - 5em) 1.5em;
+  grid-template-rows: 3.5em calc(100vh - 5em) 1.5em;
   grid-template-areas:
     'header header header'
     'main main main'
