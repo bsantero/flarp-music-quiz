@@ -3,12 +3,14 @@ import './nav-test.css';
 
 function NavButton(props) {
   return (
-    <button
-      className="themed-button"
-      onClick={() => props.setCurrentQuiz(props.quiz)}
-    >
-      {props.label}
-    </button>
+    <div className="btn-wrapper nav-btn">
+      <button
+        className="nav-button"
+        onClick={() => props.setCurrentQuiz(props.quiz)}
+      >
+        {props.label}
+      </button>
+    </div>
   );
 }
 
@@ -17,13 +19,15 @@ function MenuButton({ label, menuState, menuSet }) {
   // console.log(menuState);
   // console.log(menuSet);
   return (
-    <button
-      alt="settings"
-      className="themed-button"
-      onClick={() => menuSet(!menuState)}
-    >
-      {label}
-    </button>
+    <div className="btn-wrapper settings">
+      <button
+        alt="settings"
+        className="settings-button"
+        onClick={() => menuSet(!menuState)}
+      >
+        {label}
+      </button>
+    </div>
   );
 }
 

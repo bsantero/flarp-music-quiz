@@ -1,18 +1,28 @@
 .settings-main-container {
   display: grid;
   grid-template-rows: 2em auto;
-  grid-template-columns: 2em auto 35% 35%;
+  grid-template-columns: 30% auto auto 30% 2em;
   grid-template-areas:
-    'X header header header'
-    'left left middle right';
+    'left middle middle topright X'
+    'left middle middle right x';
+}
+
+.quiz-settings-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .quiz-settings-container .options-header {
-  font-size: 20px;
+  font-size: 6vh;
 }
 
 .quiz-settings-container .quiz-option {
-  font-size: 12px;
+  font-size: 3vh;
+  font-weight: bold;
+  width: 6em;
+  border-radius: 5.5%/18.5%;
 }
 
 @media only screen and (min-device-width: 768px) and (orientation: landscape) {

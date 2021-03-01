@@ -21,9 +21,11 @@ function NewButton({
 
   return (
     <div key={keyProp} className={containerStyle}>
-      <button className={buttonStyle} onClick={() => handleClick(note)}>
-        {note[1] == '♮' ? note[0] : note}
-      </button>
+      <div className="rotate-fix">
+        <button className={buttonStyle} onClick={() => handleClick(note)}>
+          {note[1] == '♮' ? note[0] : note}
+        </button>
+      </div>
     </div>
   );
 }

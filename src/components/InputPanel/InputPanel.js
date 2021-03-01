@@ -194,6 +194,7 @@ export function InputPanel({
           setFlarpiness={setFlarpiness}
           currentInputSchema={inputSchemaTypes['chromatic']}
           whiteBlackKeys={whiteBlackKeys}
+          mode={mode}
         />
       );
       break;

@@ -55,13 +55,16 @@ export function Chromatic({
 
   for (const [key, value] of Object.entries(whiteBlackKeys[flarpiness])) {
     // console.log('key,value: ', key, value);
-    const keyInt = parseInt(key);
+    // const keyInt = parseInt(key);
     currentNote = value;
-    containerStyle = `${DEFAULT_CONTAINER_STYLE}${keyInt}`;
+    containerStyle = `${DEFAULT_CONTAINER_STYLE}${key}`;
     buttonStyle = DEFAULT_BUTTON_STYLE;
+    // console.log(mode);
     mode == 'major' ? (buttonStyle += ' capitalize') : (buttonStyle += '');
-    console.log(buttonStyle);
-    if (wrongEntries.includes(keyInt)) {
+    // console.log(buttonStyle);
+    console.log('wrongs: ', wrongEntries);
+
+    if (wrongEntries.includes(value)) {
       console.log(`\tis wrong`);
       buttonStyle = buttonStyle + ' loser';
     }

@@ -1,7 +1,7 @@
 @media only screen and (max-device-width: 4000px) and (orientation: landscape) {
   :root {
-    --radius: 27vmax !important;
-    --whitekey-width: calc(90vmin / 7);
+    --radius: 30vmax !important;
+    --whitekey-width: calc(50vmax / 7.5);
     --whitekey-height: calc(var(--whitekey-width) * 3.4);
     --blackkey-width: calc(var(--whitekey-width) * 0.64);
     --blackkey-height: calc(var(--whitekey-height) * 0.55);
@@ -13,9 +13,7 @@
   }
 
   .question-container {
-  }
-
-  .question-container {
+    align-self: center;
   }
 
   .question-container h3 {
@@ -30,6 +28,8 @@
   }
 
   .image-container .key-img {
+    height: unset;
+    max-height: 90%;
     max-width: 90%;
   }
 
@@ -50,7 +50,7 @@
   }
 
   .piano-key.white .white-btn {
-    width: 99%;
+    /* width: 99%; */
   }
 
   .piano-key.black .black-btn {
