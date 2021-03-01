@@ -67,15 +67,17 @@ html {
   border: 1.8px solid rgb(127 229 204 / 29%);
 }
 
+.Skip-button:hover,
 .navigation button:hover,
 .themed-button:hover {
   background: rgb(7, 17, 34, 0.8);
   transform: scale(1.08);
   /* padding: calc(1em / 4); */
-  margin-top: 0.2em;
-  margin-right: 0.2em;
+  /* margin-top: 0.2em;
+  margin-right: 0.2em; */
 }
 
+.Skip-button:active,
 .navigation button:active,
 .themed-button:active {
   outline: 0 !important;
@@ -84,13 +86,46 @@ html {
   box-shadow: 0 0 0.7em 0.05em black;
 }
 
+.Skip-button:focus,
 .navigation button:focus,
 .themed-button:focus {
   outline: 0 !important;
-  border: 1px solid white;
+  /* border: 1px solid white; */
   /* background-color: #224141; */
 }
 
+.navigation button:focus,
+.Skip-button:focus,
+.themed-button:focus {
+  border: 1px solid rgb(45, 151, 116);
+  transition: border 1ms;
+}
+
+.navigation button:focus {
+  /* background: #224141 !important; */
+}
+
+.navigation button,
+.Skip-button,
+.themed-button {
+  transition: 100ms ease, 400ms ease, 400ms ease, 600ms;
+  transition-delay: 10ms, 120ms, 100ms, 100ms;
+  transition-property: border, transform, box-shadow, background;
+}
+
+.Skip-button:hover,
+.Skip-button:active,
+.Skip-button:focus,
+.themed-button:hover,
+.themed-button:active,
+.themed-button:focus,
+.navigation button:hover,
+.navigation button:active,
+.navigation button:focus {
+  transition: 50ms ease, 50ms ease, 50ms ease, 250ms ease-in-out;
+  transition-delay: 0ms, 0ms, 0ms, 0ms;
+  transition-property: border, transform, box-shadow, background;
+}
 /* Page Styles */
 
 .App {
@@ -190,8 +225,8 @@ html {
 }
 
 .navigation button {
-  transition: all 0.2s;
-  transition-delay: 80ms;
+  /* transition: all 0.4s; */
+  /* transition-delay: 120ms; */
   padding: calc(0.08vh);
   font-size: 1.5em;
   color: rgb(181, 239, 241);
@@ -199,12 +234,6 @@ html {
   /* box-shadow: none; */
   background: none;
   border: none;
-}
-@media (prefers-reduced-motion) {
-  .navigation button {
-    transition: all 0s;
-    transition-delay: 0ms;
-  }
 }
 
 .Logo-title {
@@ -226,7 +255,7 @@ html {
 .App-footer .credit {
   grid-area: credit;
   margin: auto 2vmin;
-  text-align: left;
+  text-align: right;
 }
 
 .App-footer :nth-last-child(1) {
@@ -261,6 +290,33 @@ html {
 .menu-btn-close:hover,
 .menu-btn-close:active {
   background-color: rgb(65, 12, 12);
+}
+
+@media (prefers-reduced-motion) {
+  .navigation button,
+  .Skip-button,
+  .themed-button {
+    transition: 10ms ease, 40ms ease, 40ms ease;
+    transition-delay: 10ms, 12ms, 10ms;
+    transition-property: border, transform, box-shadow;
+  }
+
+  .Skip-button:hover,
+  .Skip-button:active,
+  .Skip-button:focus,
+  .themed-button:hover,
+  .themed-button:active,
+  .themed-button:focus,
+  .navigation button:hover,
+  .navigation button:active,
+  .navigation button:focus {
+    transition: all 50ms;
+    transition-delay: 0ms;
+  }
+  .navigation button {
+    transition: all 0s;
+    transition-delay: 0ms;
+  }
 }
 
 @media screen and (-webkit-min-device-pixel-ratio: 2) {
