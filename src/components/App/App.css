@@ -251,9 +251,9 @@ html {
 }
 
 .reflection {
+  opacity: 0.2;
   grid-area: brand;
   transform: rotate(180deg);
-  opacity: 20%;
 }
 
 .App-footer .credit {
