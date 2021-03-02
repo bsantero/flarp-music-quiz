@@ -82,11 +82,12 @@
   /* top: 2vh; */
   /* right: 2vh; */
   font-size: calc(var(--button-text) * 0.7) !important;
-  font-weight: 300;
-  font-: ;
+  font-weight: 800;
+  font-style: oblique;
+  background: rgb(13 25 39 / 80%);
   border-radius: 15%/25% !important;
   border: 1px solid rgb(24 74 20 / 90%) !important;
-  color: rgb(180 90 191 / 65%) !important;
+  color: rgb(175 74 187 / 65%) !important;
   box-shadow: 0 8px 30px 10px rgba(4, 12, 14, 0.35);
 }
 
