@@ -357,45 +357,58 @@ export function QuizModule(props) {
 
 export function QuizOptions(props) {
   return (
-    <div className="quiz-settings-container input-choices">
-      <h1 className="options-header">Input Method</h1>
+    <>
+      <div className="options-box accessibility-choices">
+        <h1 className="options-header">Accessibility</h1>
 
-      <button
-        className="quiz-option"
-        // disabled
-        onClick={() => props.switchInputType('chromatic')}
-      >
-        Chromatic
-      </button>
-      <button
-        className="quiz-option"
-        // disabled
-        onClick={() => props.switchInputType('keyboard')}
-      >
-        Keyboard
-      </button>
-      <button
-        className="quiz-option"
-        // disabled
-        onClick={() => props.switchInputType('circlechromatic')}
-      >
-        Chromatic Circle
-      </button>
-      <button
-        className="quiz-option"
-        // disabled
-        onClick={() => props.switchInputType('circlefourths')}
-      >
-        Circle of Fourths
-      </button>
-      <button
-        className="quiz-option"
-        // disabled
-        onClick={() => props.switchInputType('circlefifths')}
-      >
-        Circle of Fifths
-      </button>
-    </div>
+        <button
+          className="quiz-option"
+          disabled
+          onClick={() => console.log('toggle-motion-pref')}
+        >
+          Motion
+        </button>
+      </div>
+      <div className="options-box input-choices">
+        <h1 className="options-header">Input Method</h1>
+
+        <button
+          className="quiz-option"
+          // disabled
+          onClick={() => props.switchInputType('chromatic')}
+        >
+          Chromatic
+        </button>
+        <button
+          className="quiz-option"
+          // disabled
+          onClick={() => props.switchInputType('keyboard')}
+        >
+          Keyboard
+        </button>
+        <button
+          className="quiz-option"
+          // disabled
+          onClick={() => props.switchInputType('circlechromatic')}
+        >
+          Chromatic Circle
+        </button>
+        <button
+          className="quiz-option"
+          // disabled
+          onClick={() => props.switchInputType('circlefourths')}
+        >
+          Circle of Fourths
+        </button>
+        <button
+          className="quiz-option"
+          // disabled
+          onClick={() => props.switchInputType('circlefifths')}
+        >
+          Circle of Fifths
+        </button>
+      </div>
+    </>
   );
 }
 

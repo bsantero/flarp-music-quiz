@@ -1,35 +1,69 @@
 .settings-main-container {
   display: grid;
-  grid-template-rows: 2em auto;
-  grid-template-columns: 30% auto auto 30% 2em;
+  grid-template-rows: 6vmax 40% auto;
+  grid-template-columns: 30% 30% auto 6vmax;
   grid-template-areas:
-    'left middle middle topright X'
-    'left middle middle right x';
+    'a b c X'
+    'a b c Y'
+    'd e f Z';
 }
 
-.quiz-settings-container {
-  display: flex;
-  flex-direction: column;
+.options-box:nth-of-type(1) {
+  grid-area: a;
+  display: none;
+}
+
+.options-box:nth-of-type(2) {
+  grid-area: b;
+}
+
+.options-box:nth-of-type(3) {
+  grid-area: c;
+  display: none;
+}
+
+.options-box {
+  /* display: inline-flex; */
+  /* flex-wrap: wrap; */
+  margin-top: 2vmax;
   justify-content: center;
   align-items: center;
+  max-height: 100%;
+  overflow: scoll;
 }
 
-.quiz-settings-container .options-header {
-  font-size: 6vh;
+.options-box .options-header {
+  font-size: 7vh;
+  margin-bottom: 0.45em;
 }
 
-.quiz-settings-container .quiz-option {
-  font-size: 3vh;
+.options-box .quiz-option {
+  font-size: 3.5vh;
   font-weight: bold;
+  margin-bottom: 0.45em;
   width: 6em;
   border-radius: 5.5%/18.5%;
 }
 
 @media only screen and (min-device-width: 768px) and (orientation: landscape) {
-  .quiz-settings-container .options-header {
+  .settings-main-container {
+    display: grid;
+    grid-template-rows: 6vmax 40% auto;
+    grid-template-columns: 30% 30% auto 6vmax;
+    grid-template-areas:
+      'a b c X'
+      'a b c Y'
+      'd e f Z';
+  }
+
+  .options-box {
+    border-left: 5px dotted rgba(80, 80, 80, 0.8);
+  }
+
+  .options-header {
     font-size: 30pt;
   }
-  .quiz-settings-container .quiz-option {
+  .quiz-option {
     font-size: 18pt;
     margin: 0.5pt;
     padding: 4pt 2pt;

@@ -44,14 +44,14 @@ html {
 
 .overlay {
   position: absolute;
-  top: 5vh;
-  left: 3vw;
-  height: 83vh;
-  width: 95vw;
+  top: 1vh;
+  left: 1vw;
+  height: 98vh;
+  width: 98vw;
   background-color: rgba(26, 26, 26, 0.95);
   border-radius: 0.5em;
   box-shadow: 0 0 2em 0px black;
-  z-index: 1000;
+  z-index: 900;
 }
 
 /* Theme Customizations */
@@ -145,6 +145,10 @@ html {
 .App-header {
   grid-area: brand;
   height: 100%;
+}
+
+.App-header .brand {
+  z-index: 950;
 }
 
 .App-main {
@@ -277,11 +281,8 @@ html {
 }
 
 .menu-btn-close {
-  font-size: 1.5em;
+  font-size: 4vmax;
   grid-area: X;
-  position: relative;
-  top: -0.35em;
-  left: -0.35em;
   background-color: rgb(109, 24, 24);
   border-radius: 0.25em;
   color: white;
