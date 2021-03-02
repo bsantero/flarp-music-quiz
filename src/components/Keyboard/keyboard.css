@@ -115,6 +115,10 @@
   position: relative;
 }
 
+.piano-key button:focus {
+  outline: none;
+}
+
 .piano-key.white {
   z-index: 4;
   position: relative;
@@ -127,9 +131,9 @@
   width: var(--whitekey-width);
 }
 
-.piano-key.white .white-btn:active {
-  background-color: rgb(121, 121, 116);
-  border: 5px inset rgb(80, 127, 221);
+.piano-key .white-btn:active {
+  background-color: rgb(206, 206, 206);
+  border: 2px inset rgb(29, 35, 46);
   outline: 1px inset rgba(160, 144, 110, 0.4);
 }
 
@@ -143,4 +147,25 @@
   background-color: #000000;
   height: 100%;
   width: var(--blackkey-width);
+}
+
+.piano-key.white .white-btn,
+.piano-key.black .black-btn {
+  transition-duration: 300ms;
+  transition-delay: 20ms;
+  transition-property: background-color;
+}
+
+.piano-key button:focus,
+.piano-key button:active {
+  transition-duration: 80ms ease-out, 80ms linear, 100ms linear;
+  transition-delay: 0ms, 0ms, 0ms;
+  transition-property: background-color, border, outline;
+}
+
+.piano-key .black-btn:active {
+  background-color: rgb(32, 32, 29);
+  border: 2px inset rgb(52, 58, 71);
+  /* outline: 4px inset rgba(122, 150, 182, 0.795); */
+  outline: 1px inset rgb(66, 58, 58);
 }

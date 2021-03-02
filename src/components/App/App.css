@@ -44,11 +44,11 @@ html {
 
 .overlay {
   position: absolute;
-  top: 10vh;
-  left: 4vw;
-  height: 80vh;
-  width: 90vw;
-  background-color: rgba(26, 26, 26, 0.8);
+  top: 5vh;
+  left: 3vw;
+  height: 83vh;
+  width: 95vw;
+  background-color: rgba(26, 26, 26, 0.95);
   border-radius: 0.5em;
   box-shadow: 0 0 2em 0px black;
   z-index: 1000;
@@ -57,7 +57,8 @@ html {
 /* Theme Customizations */
 
 .themed-button {
-  border-radius: 15%;
+  min-width: 1.42em;
+  border-radius: 5.5%/18.5%;
   background: rgba(21, 36, 53, 0.8);
   color: var(--bg-blue-light);
   padding: var(--button-padding);
@@ -66,22 +67,65 @@ html {
   border: 1.8px solid rgb(127 229 204 / 29%);
 }
 
+.Skip-button:hover,
+.navigation button:hover,
 .themed-button:hover {
   background: rgb(7, 17, 34, 0.8);
+  transform: scale(1.08);
+  /* padding: calc(1em / 4); */
+  /* margin-top: 0.2em;
+  margin-right: 0.2em; */
 }
 
+.Skip-button:active,
+.navigation button:active,
 .themed-button:active {
   outline: 0 !important;
   position: relative;
-  top: 0.03em;
-  box-shadow: 0 0 0.7em 0.03em black;
+  transform: scale(0.92) !important;
+  box-shadow: 0 0 0.7em 0.05em black;
 }
 
+.Skip-button:focus,
+.navigation button:focus,
 .themed-button:focus {
   outline: 0 !important;
-  background-color: #224141;
+  /* border: 1px solid white; */
+  /* background-color: #224141; */
 }
 
+.navigation button:focus,
+.Skip-button:focus,
+.themed-button:focus {
+  border: 1px solid rgb(45, 151, 116);
+  transition: border 1ms;
+}
+
+.navigation button:focus {
+  /* background: #224141 !important; */
+}
+
+.navigation button,
+.Skip-button,
+.themed-button {
+  transition: 100ms ease, 400ms ease, 400ms ease, 600ms;
+  transition-delay: 10ms, 120ms, 100ms, 100ms;
+  transition-property: border, transform, box-shadow, background;
+}
+
+.Skip-button:hover,
+.Skip-button:active,
+.Skip-button:focus,
+.themed-button:hover,
+.themed-button:active,
+.themed-button:focus,
+.navigation button:hover,
+.navigation button:active,
+.navigation button:focus {
+  transition: 50ms ease, 50ms ease, 50ms ease, 250ms ease-in-out;
+  transition-delay: 0ms, 0ms, 0ms, 0ms;
+  transition-property: border, transform, box-shadow, background;
+}
 /* Page Styles */
 
 .App {
@@ -90,16 +134,17 @@ html {
   background-color: var(--bg-blue);
   text-align: center;
   display: grid;
-  grid-template-rows: 3.5em calc(100% - 5em) 1.5em;
+  grid-template-columns: 25% 50% 25%;
+  grid-template-rows: 3.5em calc(100vh - 6em) 2.5em;
   grid-template-areas:
-    'header header header'
+    'brand nav headrt'
     'main main main'
     'footer footer footer';
 }
 
 .App-header {
-  grid-area: header;
-  height: 15%;
+  grid-area: brand;
+  height: 100%;
 }
 
 .App-main {
@@ -114,21 +159,30 @@ html {
 }
 
 .App-footer {
-  height: 1.5em;
+  height: 100%;
   font-size: 0.9em;
-  color: beige;
+  color: rgba(187, 187, 139, 0.514);
   grid-area: footer;
+  height: 100%;
+  display: grid;
+  grid-template-areas: 'credit brand';
+  grid-template-columns: 65% auto;
+}
+
+.App-footer .credit {
+  font-weight: 500;
+  font-style: oblique;
 }
 
 .brand {
-  position: absolute;
-  top: 3vmin;
-  left: 3vmin;
-  color: white;
+  grid-area: brand;
+  height: 100%;
   font-size: 12px;
-  display: inline-flex;
+  margin-left: 2vw;
+  display: flex;
   align-items: center;
   flex-direction: row;
+  color: white;
 }
 
 .App-logo {
@@ -137,19 +191,49 @@ html {
 }
 
 .navigation.float-top {
-  width: 70vw;
-  margin: 2vh 15vw 0;
-  position: absolute;
+  grid-area: nav / nav / nav / span 2;
+  display: grid;
+  grid-template-areas: 'navmenu settings';
+  grid-template-columns: 80% 20%;
+}
+
+.navigation .btn-wrapper {
+  width: 98%;
+  height: 100%;
+  max-height: 3.5em;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.navigation .themed-button {
-  margin: 0.2em;
-  border-radius: 5%;
-  font-size: 1em;
-  box-shadow: none;
-  border: 1px solid rgba(60, 60, 96, 0.54);
+.navigation .btn-wrapper.settings {
+  grid-area: settings;
+  justify-content: flex-end;
+  border-radius: 20%;
+  /* position: absolute;
+  right: 2vw; */
+}
+
+.navigation .settings .settings-button {
+  font-size: 2.2em;
+  margin-top: 1vw;
+  margin-right: 1.5vw;
+  border-radius: 25%;
+  padding: 0.03vh 0vh 0.06vh 0.03vh;
+  z-index: 5;
+  box-shadow: 0 0 25px -6px black;
+}
+
+.navigation button {
+  /* transition: all 0.4s; */
+  /* transition-delay: 120ms; */
+  padding: calc(0.08vh);
+  font-size: 1.5em;
+  color: rgb(181, 239, 241);
+  box-shadow: 0 0 0em 0em black;
+  /* box-shadow: none; */
+  background: none;
+  border: none;
 }
 
 .Logo-title {
@@ -163,22 +247,25 @@ html {
 }
 
 .reflection {
+  grid-area: brand;
   transform: rotate(180deg);
   opacity: 20%;
-  left: unset;
-  top: unset;
-  bottom: 5vmin;
-  right: 3vmin;
 }
 
-.App-footer p {
-  margin: auto;
+.App-footer .credit {
+  grid-area: credit;
+  margin: auto 2vmin;
+  text-align: right;
+}
+
+.App-footer :nth-last-child(1) {
+  margin-right: 2vw;
 }
 
 .credit a,
 .credit a:visited {
   font-size: 0.9em;
-  font-weight: 100;
+  /* font-weight: 100; */
   color: inherit;
   text-shadow: 4px 4px 10px rgba(1, 2, 1, 0.596);
 }
@@ -205,7 +292,41 @@ html {
   background-color: rgb(65, 12, 12);
 }
 
-@media only screen and (max-device-width: 768px) and (orientation: portrait) {
-  .App-main {
+@media (prefers-reduced-motion) {
+  .navigation button,
+  .Skip-button,
+  .themed-button {
+    transition: 10ms ease, 40ms ease, 40ms ease;
+    transition-delay: 10ms, 12ms, 10ms;
+    transition-property: border, transform, box-shadow;
+  }
+
+  .Skip-button:hover,
+  .Skip-button:active,
+  .Skip-button:focus,
+  .themed-button:hover,
+  .themed-button:active,
+  .themed-button:focus,
+  .navigation button:hover,
+  .navigation button:active,
+  .navigation button:focus {
+    transition: all 50ms;
+    transition-delay: 0ms;
+  }
+  .navigation button {
+    transition: all 0s;
+    transition-delay: 0ms;
+  }
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 2) {
+  .App {
+    /* background-color: lime; */
+  }
+}
+
+@media only screen and (min-device-width: 400px) and (orientation: landscape) {
+  .App-footer .credit {
+    text-align: right;
   }
 }

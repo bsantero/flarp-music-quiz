@@ -1,14 +1,21 @@
 .chromatic-container .chromatic {
+  width: 90%;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: 3em 3em;
+  grid-template-rows: 2em 2.5em 2.5em;
 }
+
+.chromatic .flarp-it-up {
+  grid-column-start: 3;
+  grid-column-end: span 2;
+}
+
 .chromatic .tick {
-  margin: 0.35em;
+  margin: calc(90% / 12);
 }
 
 .chromatic .tick button {
-  padding: 0em 0.3em;
+  padding: 0em calc(90% / 20);
   display: flex;
   justify-content: center;
   align-items: center;

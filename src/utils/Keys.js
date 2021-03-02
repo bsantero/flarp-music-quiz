@@ -44,6 +44,9 @@ const modeTransposition = {
 
 const KeyWeights = function (pitch) {
   switch (pitch) {
+    case 'c♮':
+    case 'f♮':
+    case 'b♭':
     case 'e♭':
     case 'a♭':
     case 'd♭':
@@ -51,6 +54,8 @@ const KeyWeights = function (pitch) {
     case 'c♭':
       return 'flat';
       break;
+    case 'g♮':
+    case 'd♮':
     case 'a♮':
     case 'e♮':
     case 'b♮':
@@ -58,11 +63,6 @@ const KeyWeights = function (pitch) {
     case 'c♯':
       return 'sharp';
       break;
-    case 'c♮':
-    case 'f♮':
-    case 'g♮':
-    case 'b♭':
-    case 'd♮':
       return 'mixed';
       break;
     default:
@@ -91,7 +91,7 @@ const accidentalKeys = function (pitch) {
       return 'sharp';
       break;
     case 'c♮':
-      return 'mixed';
+      return 'flat';
       break;
     default:
       return 'error';

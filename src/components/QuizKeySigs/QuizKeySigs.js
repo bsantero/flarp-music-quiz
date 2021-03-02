@@ -25,7 +25,7 @@ const DEFAULT_ANSWER = {
   pitch: 0,
   pitchName: 'c♮', // ♭, ♮, ♯
   mode: 'major',
-  accidental: 'mixed',
+  accidental: 'flat',
   uri: keyofc
 };
 const DEFAULT_INPUT_TYPE = 'circlefifths';
@@ -237,11 +237,19 @@ export function QuizModule(props) {
 
   function handleClick(entry, oldAnswer) {
     // console.log(entry, typeof entry);
-    // console.log(`${entry} entered, expected: ${answerPitch.pitchName}`);
+    console.log(inputType);
+    let answer;
+    if (inputType == 'keyboard') {
+      answer = enharmonicsToIndex[answerPitch.pitchName];
+      entry = enharmonicsToIndex[entry];
+    } else {
+      answer = answerPitch.pitchName;
+    }
+    console.log(`${entry} entered, expected: ${answerPitch.pitchName}`);
     const newWrongs = [...wrongEntries];
 
     // Test the input against the current pitch
-    if (entry == answerPitch.pitchName) {
+    if (entry == answer) {
       // Wins
       console.log('Winner!');
       updateScore(score + 1);
@@ -339,6 +347,7 @@ export function QuizModule(props) {
         wrongEntries={wrongEntries}
         currentAnswer={answerPitch}
         userRotate={userPrefRotate}
+        mode={answerPitch.mode}
       />
       <ImageContainer debug={false} />
       <QuestionBar />

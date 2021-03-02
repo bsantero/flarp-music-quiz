@@ -22,161 +22,82 @@
 .circle .tick:nth-child(1) {
   transform: rotate(-90deg) translate(var(--button-transform));
 }
-.circle .tick:nth-child(1) button {
+.circle .tick:nth-child(1) .rotate-fix {
   transform: rotate(90deg) translate(0px);
 }
 .circle .tick:nth-child(7) {
   transform: rotate(90deg) translate(var(--button-transform));
 }
-.circle .tick:nth-child(7) button {
+.circle .tick:nth-child(7) .rotate-fix {
   transform: rotate(-90deg) translate(0px);
 }
 
 .circle .tick:nth-child(2) {
   transform: rotate(-60deg) translate(var(--button-transform));
 }
-.circle .tick:nth-child(2) button {
+.circle .tick:nth-child(2) .rotate-fix {
   transform: rotate(60deg) translate(0px);
 }
 .circle .tick:nth-child(12) {
   transform: rotate(240deg) translate(var(--button-transform));
 }
-.circle .tick:nth-child(12) button {
+.circle .tick:nth-child(12) .rotate-fix {
   transform: rotate(-240deg) translate(0px);
 }
 
 .circle .tick:nth-child(3) {
   transform: rotate(-30deg) translate(var(--button-transform));
 }
-.circle .tick:nth-child(3) button {
+.circle .tick:nth-child(3) .rotate-fix {
   transform: rotate(30deg) translate(0px);
 }
 .circle .tick:nth-child(11) {
   transform: rotate(210deg) translate(var(--button-transform));
 }
-.circle .tick:nth-child(11) button {
+.circle .tick:nth-child(11) .rotate-fix {
   transform: rotate(-210deg) translate(0px);
 }
 
 .circle .tick:nth-child(4) {
   transform: rotate(0deg) translate(var(--button-transform));
 }
-.circle .tick:nth-child(4) button {
+.circle .tick:nth-child(4) .rotate-fix {
   transform: rotate(0deg) translate(0px);
 }
 .circle .tick:nth-child(10) {
   transform: rotate(180deg) translate(var(--button-transform));
 }
-.circle .tick:nth-child(10) button {
+.circle .tick:nth-child(10) .rotate-fix {
   transform: rotate(-180deg) translate(0px);
 }
 
 .circle .tick:nth-child(5) {
   transform: rotate(30deg) translate(var(--button-transform));
 }
-.circle .tick:nth-child(5) button {
+.circle .tick:nth-child(5) .rotate-fix {
   transform: rotate(-30deg) translate(0px);
 }
 .circle .tick:nth-child(9) {
   transform: rotate(150deg) translate(var(--button-transform));
 }
-.circle .tick:nth-child(9) button {
+.circle .tick:nth-child(9) .rotate-fix {
   transform: rotate(-150deg) translate(0px);
 }
 
 .circle .tick:nth-child(6) {
   transform: rotate(60deg) translate(var(--button-transform));
 }
-.circle .tick:nth-child(6) button {
+.circle .tick:nth-child(6) .rotate-fix {
   transform: rotate(-60deg) translate(0px);
 }
 .circle .tick:nth-child(8) {
   transform: rotate(120deg) translate(var(--button-transform));
 }
-.circle .tick:nth-child(8) button {
+.circle .tick:nth-child(8) .rotate-fix {
   transform: rotate(-120deg) translate(0px);
 }
 
-/*
-
-
-.circle .tick:nth-child(1) {
-  transform: rotate(-90deg) translate(17vh);
+.circle .tick button:hover {
+  margin-top: unset;
+  margin-right: unset;
 }
-.circle .tick:nth-child(1) button {
-  transform: rotate(90deg) translate(0px);
-}
-.circle .tick:nth-child(7) {
-  transform: rotate(90deg) translate(17vh);
-}
-.circle .tick:nth-child(7) button {
-  transform: rotate(-90deg) translate(0px);
-}
-
-.circle .tick:nth-child(2) {
-  transform: rotate(-60deg) translate(17vh);
-}
-.circle .tick:nth-child(2) button {
-  transform: rotate(60deg) translate(0px);
-}
-.circle .tick:nth-child(12) {
-  transform: rotate(240deg) translate(17vh);
-}
-.circle .tick:nth-child(12) button {
-  transform: rotate(-240deg) translate(0px);
-}
-
-.circle .tick:nth-child(3) {
-  transform: rotate(-30deg) translate(17vh);
-}
-.circle .tick:nth-child(3) button {
-  transform: rotate(30deg) translate(0px);
-}
-.circle .tick:nth-child(11) {
-  transform: rotate(210deg) translate(17vh);
-}
-.circle .tick:nth-child(11) button {
-  transform: rotate(-210deg) translate(0px);
-}
-
-.circle .tick:nth-child(4) {
-  transform: rotate(0deg) translate(17vh);
-}
-.circle .tick:nth-child(4) button {
-  transform: rotate(0deg) translate(0px);
-}
-.circle .tick:nth-child(10) {
-  transform: rotate(180deg) translate(17vh);
-}
-.circle .tick:nth-child(10) button {
-  transform: rotate(-180deg) translate(0px);
-}
-
-.circle .tick:nth-child(5) {
-  transform: rotate(30deg) translate(17vh);
-}
-.circle .tick:nth-child(5) button {
-  transform: rotate(-30deg) translate(0px);
-}
-.circle .tick:nth-child(9) {
-  transform: rotate(150deg) translate(17vh);
-}
-.circle .tick:nth-child(9) button {
-  transform: rotate(-150deg) translate(0px);
-}
-
-.circle .tick:nth-child(6) {
-  transform: rotate(60deg) translate(17vh);
-}
-.circle .tick:nth-child(6) button {
-  transform: rotate(-60deg) translate(0px);
-}
-.circle .tick:nth-child(8) {
-  transform: rotate(120deg) translate(17vh);
-}
-.circle .tick:nth-child(8) button {
-  transform: rotate(-120deg) translate(0px);
-}
-
-
-*/

@@ -1,17 +1,30 @@
 import React from 'react';
 import './chromatic.css';
+// import { FlirpButton } from '../InputPanel/InputPanel';
 
 const DEFAULT_CONTAINER_STYLE = 'tick key-';
 const DEFAULT_BUTTON_STYLE = 'themed-button';
 
-export function Chromatic({ octaves, currentNote, handleClick, wrongEntries }) {
+export function Chromatic({
+  octaves,
+  currentNote,
+  handleClick,
+  wrongEntries,
+  setFlarpiness,
+  flarpiness,
+  FlirpButton,
+  handleFlarpFlip,
+  whiteBlackKeys,
+  mode,
+  keyProp
+}) {
   function NewButton({ note, containerStyle, buttonStyle }) {
     let name = note;
     if (note[1] == '♮') {
       name = note[0];
     }
     return (
-      <div key={note} className={containerStyle}>
+      <div key={keyProp} note={note} className={containerStyle}>
         <button className={buttonStyle} onClick={() => handleClick(note)}>
           {name}
         </button>
@@ -19,10 +32,13 @@ export function Chromatic({ octaves, currentNote, handleClick, wrongEntries }) {
     );
   }
 
+  // console.log('whiteBlackKeys[flarpi..]: ', whiteBlackKeys[flarpiness]);
+  // debugger;
+
   let buttons = [];
 
   let containerStyle, buttonStyle;
-  const whiteBlackKeys = {
+  const whiteBlackKeysOld = {
     0: ['c♮', 'white'],
     1: ['c♯', 'black'],
     2: ['d♮', 'white'],
@@ -37,19 +53,18 @@ export function Chromatic({ octaves, currentNote, handleClick, wrongEntries }) {
     11: ['b♮', 'white']
   };
 
-  for (const [key, value] of Object.entries(whiteBlackKeys)) {
-    const keyInt = parseInt(key);
-    currentNote = value[0];
-    // if (value[1] == 'white') {
-    containerStyle = `${DEFAULT_CONTAINER_STYLE}${keyInt}`;
+  for (const [key, value] of Object.entries(whiteBlackKeys[flarpiness])) {
+    // console.log('key,value: ', key, value);
+    // const keyInt = parseInt(key);
+    currentNote = value;
+    containerStyle = `${DEFAULT_CONTAINER_STYLE}${key}`;
     buttonStyle = DEFAULT_BUTTON_STYLE;
-    // } else if (value[1] == 'black') {
-    // containerStyle = `piano-key black key-${key}`;
-    // buttonStyle = 'black-btn';
-    // } else {
-    // console.log(`Err: Key {${key}} doesn't have white/black value.`);
-    // }
-    if (wrongEntries.includes(keyInt)) {
+    // console.log(mode);
+    mode == 'major' ? (buttonStyle += ' capitalize') : (buttonStyle += '');
+    // console.log(buttonStyle);
+    console.log('wrongs: ', wrongEntries);
+
+    if (wrongEntries.includes(value)) {
       console.log(`\tis wrong`);
       buttonStyle = buttonStyle + ' loser';
     }
@@ -58,11 +73,20 @@ export function Chromatic({ octaves, currentNote, handleClick, wrongEntries }) {
       <NewButton
         buttonStyle={buttonStyle}
         containerStyle={containerStyle}
-        key={key}
+        keyProp={key}
         note={currentNote}
       />
     );
   }
+  console.log(buttons);
+  buttons.push(
+    <FlirpButton
+      buttonStyle={buttonStyle}
+      handleFlarpFlip={handleFlarpFlip}
+      flarpiness={flarpiness}
+      setFlarpiness={setFlarpiness}
+    />
+  );
 
   return buttons;
 }
