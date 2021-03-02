@@ -251,7 +251,11 @@ html {
 }
 
 .reflection {
+<<<<<<< HEAD
   opacity: 0.2;
+=======
+  opacity: 20%;
+>>>>>>> 6de31a47856f2ce8e52619dd8a2e698d22a09a7f
   grid-area: brand;
   transform: rotate(180deg);
 }
