@@ -81,7 +81,8 @@ export function InputPanel({
   currentAnswer,
   wrongEntries,
   mode,
-  volume
+  volume,
+  setVolume
 }) {
   const [flarpiness, setFlarpiness] = useState('flat');
 
@@ -159,14 +160,17 @@ export function InputPanel({
       parentClass = 'child input-container keyboard-container';
       childClass = 'piano';
       inputButtons = (
-        <Keyboard
-          key="inputpno"
-          octaves={numOctaves}
-          currentNote={currentAnswer}
-          handleClick={handleClick}
-          volume={volume}
-          wrongEntries={wrongEntries}
-        />
+        <>
+          <Keyboard
+            key="inputpno"
+            octaves={numOctaves}
+            currentNote={currentAnswer}
+            handleClick={handleClick}
+            volume={volume}
+            setVolume={setVolume}
+            wrongEntries={wrongEntries}
+          />
+        </>
       );
       // console.log(inputButtons);
       break;

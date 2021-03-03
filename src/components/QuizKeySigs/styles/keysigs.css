@@ -20,13 +20,15 @@
 .Quiz-main {
   display: grid;
   grid-template-columns: 50% 50%;
-  grid-template-rows: 30% 12% 8% 50%;
+  grid-template-rows: 30% 12% 6% 2% 50%;
   grid-template-areas:
     'imgl imgc'
     'skip imgc'
     'question question'
+    'volume volume'
     'input input';
 }
+
 @media only screen and (max-device-width: 4000px) and (orientation: landscape) {
   .Quiz-main {
     grid-template-columns: 30% 16% 54%;
@@ -133,8 +135,16 @@
 }
 
 .question-container {
-  grid-area: question;
+  grid-area: question / question / question / volume;
   align-self: end;
+}
+
+.checkbox-wrapper {
+  z-index: 400;
+}
+
+.checkbox-wrapper label {
+  border: 1px solid white;
 }
 
 .input-container {

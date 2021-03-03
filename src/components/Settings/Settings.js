@@ -2,16 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './settings-menu.css';
 
-export function SettingsContainer(props) {
+export function SettingsContainer({
+  show,
+  menuSet,
+  QuizOptions,
+  switchInputType,
+  changeInputType
+}) {
   const menuOpenStyle = 'settings-main-container float-top overlay';
   let newClass;
 
-  if (props.show == true) {
+  if (show == true) {
     // console.log(props);
     // debugger;
     newClass = menuOpenStyle;
     // console.log('Settings open for bidnis.');
-  } else if (props.show == false) {
+  } else if (show == false) {
     newClass = menuOpenStyle + ' hidden';
     // console.log('Settings lykket.');
   } else {
@@ -22,12 +28,12 @@ export function SettingsContainer(props) {
 
   return (
     <div className={newClass}>
-      <button className="menu-btn-close" onClick={() => props.menuSet(false)}>
+      <button className="menu-btn-close" onClick={() => menuSet(false)}>
         {'X'}
       </button>
-      <props.QuizOptions
-        switchInputType={props.switchInputType}
-        changeInputType={props.changeInputType}
+      <QuizOptions
+        switchInputType={switchInputType}
+        changeInputType={changeInputType}
       />
     </div>
   );

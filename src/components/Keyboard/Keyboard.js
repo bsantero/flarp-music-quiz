@@ -4,7 +4,7 @@ import './keyboard.css';
 import useSound from 'use-sound';
 // import {Howl} from 'howler';
 import c2toc4obj from './sounds/oneoctave.json';
-import pianosprite from './sounds/oneoctave.mp3';
+import oneoctavemp3 from './sounds/oneoctave.mp3';
 
 const whiteBlackKeys = {
   0: ['c♮', 'white', '0200'],
@@ -30,10 +30,11 @@ export function Keyboard({
   currentNote,
   handleClick,
   wrongEntries,
-  volume
+  volume,
+  setVolume
 }) {
   const [checked, setChecked] = useState(false);
-  const [play] = useSound(pianosprite, { sprite: sprite, volume: volume });
+  const [play] = useSound(oneoctavemp3, { sprite: sprite, volume: volume });
   // const [playc] = useSound(piano0300);
 
   const handleKeyPress = (sound, note) => {
@@ -43,7 +44,7 @@ export function Keyboard({
     handleClick(note);
   };
 
-  // console.log(`Sprite from c2toc4obj loaded with volume -${volume}-`);
+  console.log(`Sprite from oneoctave.mp3 loaded with volume -${volume}-`);
 
   const toggle = () => {
     setChecked(!checked);
@@ -94,7 +95,7 @@ export function Keyboard({
       console.log(`Err: Key {${key}} doesn't have white/black value.`);
     }
     if (wrongEntries.includes(parseInt(key))) {
-      console.log(`\tis wrong`);
+      console.log(value[0], 'is wrong');
       containerStyle = containerStyle + ' loser';
     }
 

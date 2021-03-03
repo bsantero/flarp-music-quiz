@@ -7,6 +7,22 @@
   --blackkey-height: calc(var(--whitekey-height) * 0.55);
 }
 
+.Quiz-main {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 28% 11% 14% 5% 42%;
+  grid-template-areas:
+    'imgl imgc'
+    'skip imgc'
+    'question question'
+    'volume volume'
+    'input input';
+}
+
+.volume.slider-wrapper {
+  grid-area: volume;
+}
+
 .piano .loser {
   border-style: none;
   border-width: 0;
