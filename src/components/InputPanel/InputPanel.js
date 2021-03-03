@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './styles.css';
-import { chromatic } from '../../utils/Keys';
 import { Keyboard } from '../Keyboard/Keyboard';
 import { Chromatic } from '../Chromatic/Chromatic';
 import { Circle } from '../CircleInput/Circleinput.js';
@@ -42,20 +41,6 @@ const whiteBlackKeys = new (function () {
     10: 'b♭',
     11: 'c♭'
   };
-  // this.mixed = {
-  //   0: 'c♮',
-  //   1: 'c♯',
-  //   2: 'd♮',
-  //   3: 'e♭',
-  //   4: 'e♮',
-  //   5: 'f♮',
-  //   6: 'f♯',
-  //   7: 'g♮',
-  //   8: 'a♭',
-  //   9: 'a♮',
-  //   10: 'b♭',
-  //   11: 'b♮'
-  // };
 })();
 
 function FlirpButton({ buttonStyle, handleFlarpFlip, setFlarpiness }) {
@@ -95,7 +80,8 @@ export function InputPanel({
   numOctaves,
   currentAnswer,
   wrongEntries,
-  mode
+  mode,
+  volume
 }) {
   const [flarpiness, setFlarpiness] = useState('flat');
 
@@ -109,6 +95,7 @@ export function InputPanel({
       childClass = 'circle';
       inputButtons = (
         <Circle
+          key="inputcr"
           clockwise="chromatic"
           currentInputSchema={inputSchemaTypes['chromatic']}
           octaves={numOctaves}
@@ -130,6 +117,7 @@ export function InputPanel({
       childClass = 'circle';
       inputButtons = (
         <Circle
+          key="inputc4"
           clockwise="cw4ths"
           currentInputSchema={inputSchemaTypes['cw4ths']}
           octaves={numOctaves}
@@ -151,6 +139,7 @@ export function InputPanel({
       childClass = 'circle';
       inputButtons = (
         <Circle
+          key="inputc5"
           clockwise="cw5ths"
           currentInputSchema={inputSchemaTypes['cw5ths']}
           octaves={numOctaves}
@@ -171,9 +160,11 @@ export function InputPanel({
       childClass = 'piano';
       inputButtons = (
         <Keyboard
+          key="inputpno"
           octaves={numOctaves}
           currentNote={currentAnswer}
           handleClick={handleClick}
+          volume={volume}
           wrongEntries={wrongEntries}
         />
       );
@@ -184,6 +175,7 @@ export function InputPanel({
       childClass = 'chromatic';
       inputButtons = (
         <Chromatic
+          key="inputrowc"
           octaves={numOctaves}
           currentNote={currentAnswer}
           handleClick={handleClick}

@@ -334,6 +334,8 @@ export function QuizModule(props) {
         show={props.show}
         menuSet={props.menuSet}
         QuizOptions={QuizOptions}
+        setVolume={props.setVolume}
+        volume={props.volume}
         switchInputType={changeInputType}
       />
       <SkipButton />
@@ -348,6 +350,8 @@ export function QuizModule(props) {
         currentAnswer={answerPitch}
         userRotate={userPrefRotate}
         mode={answerPitch.mode}
+        volume={props.volume}
+        setVolume={props.setVolume}
       />
       <ImageContainer debug={false} />
       <QuestionBar />

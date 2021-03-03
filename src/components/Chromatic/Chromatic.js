@@ -15,8 +15,7 @@ export function Chromatic({
   FlirpButton,
   handleFlarpFlip,
   whiteBlackKeys,
-  mode,
-  keyProp
+  mode
 }) {
   function NewButton({ note, containerStyle, buttonStyle }) {
     let name = note;
@@ -24,7 +23,7 @@ export function Chromatic({
       name = note[0];
     }
     return (
-      <div key={keyProp} note={note} className={containerStyle}>
+      <div note={note} className={containerStyle}>
         <button className={buttonStyle} onClick={() => handleClick(note)}>
           {name}
         </button>
@@ -62,10 +61,10 @@ export function Chromatic({
     // console.log(mode);
     mode == 'major' ? (buttonStyle += ' capitalize') : (buttonStyle += '');
     // console.log(buttonStyle);
-    console.log('wrongs: ', wrongEntries);
+    // console.log('wrongs: ', wrongEntries);
 
     if (wrongEntries.includes(value)) {
-      console.log(`\tis wrong`);
+      console.log(value, 'is wrong');
       buttonStyle = buttonStyle + ' loser';
     }
 
@@ -73,12 +72,12 @@ export function Chromatic({
       <NewButton
         buttonStyle={buttonStyle}
         containerStyle={containerStyle}
-        keyProp={key}
+        key={'key' + key}
         note={currentNote}
       />
     );
   }
-  console.log(buttons);
+  // console.log(buttons);
   buttons.push(
     <FlirpButton
       buttonStyle={buttonStyle}

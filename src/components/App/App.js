@@ -62,7 +62,12 @@ export function View(props) {
 
   return (
     <main className="App-main Quiz-main">
-      <QuizComponent show={props.show} menuSet={props.menuSet} />
+      <QuizComponent
+        show={props.show}
+        menuSet={props.menuSet}
+        volume={props.volume}
+        setVolume={props.setVolume}
+      />
     </main>
   );
 }
@@ -70,6 +75,7 @@ export function View(props) {
 function App() {
   const [currentQuiz, setCurrentQuiz] = React.useState(DEFAULT_QUIZ_ID);
   const [settingsShow, toggleSettings] = React.useState(false);
+  const [volume, setVolume] = React.useState(0.5);
 
   // changeSettingsClass(newClass);
 
@@ -85,6 +91,8 @@ function App() {
         currentQuiz={currentQuiz}
         show={settingsShow}
         menuSet={toggleSettings}
+        volume={volume}
+        setVolume={setVolume}
       />
       <Footer />
     </div>

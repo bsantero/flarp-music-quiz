@@ -5,13 +5,7 @@ import { enharmonicsToIndex } from '../../utils/Keys';
 const DEFAULT_CONTAINER_STYLE = 'tick key-';
 const DEFAULT_BUTTON_STYLE = 'themed-button';
 
-function NewButton({
-  note,
-  containerStyle,
-  buttonStyle,
-  handleClick,
-  keyProp
-}) {
+function NewButton({ note, containerStyle, buttonStyle, handleClick }) {
   // console.log(note, typeof note);
   // debugger;
   // if (note[1] == '♮') {
@@ -20,7 +14,7 @@ function NewButton({
   // const btn = enharmonicsToIndex[note];
 
   return (
-    <div key={keyProp} className={containerStyle}>
+    <div className={containerStyle}>
       <div className="rotate-fix">
         <button className={buttonStyle} onClick={() => handleClick(note)}>
           {note[1] == '♮' ? note[0] : note}
@@ -42,7 +36,7 @@ export function Circle({
   FlirpButton,
   handleFlarpFlip
 }) {
-  console.log(currentAnswer);
+  // console.log(currentAnswer);
   let buttons = [];
 
   let currentNote, containerStyle, buttonStyle;
@@ -57,12 +51,11 @@ export function Circle({
   });
   // console.log(layout);
 
-  console.log('mode:', mode);
+  // console.log('mode:', mode);
 
   for (const [key, value] of layout) {
     // console.log(key, value);
     const keyInt = parseInt(key);
-    currentNote = value;
     containerStyle = `${DEFAULT_CONTAINER_STYLE}${keyInt}`;
     buttonStyle = DEFAULT_BUTTON_STYLE;
     mode == 'major' ? (buttonStyle += ' capitalize') : (buttonStyle += '');
@@ -76,8 +69,8 @@ export function Circle({
       <NewButton
         buttonStyle={buttonStyle}
         containerStyle={containerStyle}
-        keyProp={key}
-        note={currentNote}
+        key={'btn' + value}
+        note={value}
         handleClick={handleClick}
         sharpFlatMixed={flarpiness}
         mode={mode}
