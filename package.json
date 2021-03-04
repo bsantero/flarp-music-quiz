@@ -21,7 +21,7 @@
     "web-vitals": "^1.1.0"
   },
   "scripts": {
-    "predeploy": "npm run build && echo $FLARP_CNAME > build/CNAME",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d build -r https://$GH_TOKEN@github.com/bsantero/flarp-music-quiz.git",
     "add-domain": "echo \"$FLARP_CNAME\" > build/CNAME",
     "start": "GENERATE_SOURCEMAP=true cross-env PORT=3660 react-scripts start",
