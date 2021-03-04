@@ -67,7 +67,7 @@ export function View(props) {
         menuSet={props.menuSet}
         volume={props.volume}
         setVolume={props.setVolume}
-        muted={props.muted}
+        state={props.state}
         setMuted={props.setMuted}
       />
     </main>
@@ -81,7 +81,7 @@ function App() {
 
   const [currentQuiz, setCurrentQuiz] = React.useState(DEFAULT_QUIZ_ID);
   const [settingsShow, toggleSettings] = React.useState(false);
-  const [volume, setVolume] = React.useState(0.2);
+  const [volume, setVolume] = React.useState(0.8);
   const reducer = (state, action) => ({ ...state, ...action });
   const [state, setState] = useReducer(reducer, initialState);
 
@@ -101,7 +101,7 @@ function App() {
         menuSet={toggleSettings}
         volume={volume}
         setVolume={setVolume}
-        muted={state.muted}
+        state={state}
         setMuted={setState}
       />
       <Footer />

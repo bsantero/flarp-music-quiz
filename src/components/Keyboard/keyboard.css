@@ -7,20 +7,33 @@
   --blackkey-height: calc(var(--whitekey-height) * 0.55);
 }
 
-.Quiz-main {
-  display: grid;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: 28% 11% 14% 5% 42%;
-  grid-template-areas:
-    'imgl imgc'
-    'skip imgc'
-    'question question'
-    'volume volume'
-    'input input';
+@media only screen and (max-device-width: 4000px) and (orientation: portrait) {
+  .Quiz-main {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 28% 11% 9% auto 20vw;
+    grid-template-areas:
+      'imgl imgc'
+      'skip imgc'
+      'question question'
+      'volume volume'
+      'input input';
+  }
 }
 
+.sound-options {
+  display: inline-flex;
+}
+
+.sound-options .volume.slider-wrapper label input {
+  display: block;
+}
+
+.sound-checkbox,
 .volume.slider-wrapper {
   grid-area: volume;
+  font-size: 0.7em;
+  margin: 0.3em;
 }
 
 .piano .loser {

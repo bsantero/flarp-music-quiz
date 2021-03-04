@@ -7,7 +7,11 @@ export function SettingsContainer({
   menuSet,
   QuizOptions,
   switchInputType,
-  changeInputType
+  changeInputType,
+  state,
+  setMuted,
+  volume,
+  setVolume
 }) {
   const menuOpenStyle = 'settings-main-container float-top overlay';
   let newClass;
@@ -34,6 +38,10 @@ export function SettingsContainer({
       <QuizOptions
         switchInputType={switchInputType}
         changeInputType={changeInputType}
+        state={state}
+        setMuted={setMuted}
+        volume={volume}
+        setVolume={setVolume}
       />
     </div>
   );

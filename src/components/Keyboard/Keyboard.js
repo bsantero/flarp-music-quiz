@@ -24,22 +24,33 @@ const whiteBlackKeys = {
 const urls = c2toc4obj.urls[0];
 const sprite = c2toc4obj.sprite;
 const spriteIndexes = Object.keys(sprite);
-
 export function Keyboard({
   octaves,
   currentNote,
   handleClick,
   wrongEntries,
   volume,
-  setVolume
+  muted,
+  setMuted,
+  state
 }) {
+  console.log(state.muted, 'muted');
+  const [playbackRate, setPlaybackRate] = React.useState(1);
+
   const [checked, setChecked] = useState(false);
-  const [play] = useSound(oneoctavemp3, { sprite: sprite, volume: volume });
+  // const playing = !muted;
+  const [play] = useSound(oneoctavemp3, {
+    sprite: sprite,
+    muted: state.muted,
+    volume: volume
+  });
   // const [playc] = useSound(piano0300);
 
   const handleKeyPress = (sound, note) => {
     // console.log('should play:', sound, typeof sound);
-    play({ id: sound });
+    if (state.muted !== true) {
+      play({ id: sound });
+    }
     console.log(sound, 'has played');
     handleClick(note);
   };

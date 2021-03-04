@@ -104,7 +104,7 @@ export function QuizModule({
   menuSet,
   volume,
   setVolume,
-  muted,
+  state,
   setMuted
 }) {
   const [generated, updateGenerated] = useState(!DEFAULT_NEW_GAME);
@@ -334,19 +334,12 @@ export function QuizModule({
         QuizOptions={QuizOptions}
         setVolume={setVolume}
         volume={volume}
+        state={state}
+        setMuted={setMuted}
         switchInputType={changeInputType}
       />
       <SkipButton />
       <ScoreBoard />
-      {inputType == 'keyboard' ? (
-        <CheckBox
-          title={'Volume'}
-          fnClick={(v) => setMuted({ muted: !v })}
-          checked={!muted}
-        />
-      ) : (
-        ''
-      )}
       <InputPanel
         numOctaves={1}
         possibleEntries={12}
@@ -359,29 +352,58 @@ export function QuizModule({
         mode={answerPitch.mode}
         volume={volume}
         setVolume={setVolume}
+        state={state}
       />
-      <ImageContainer debug={false} />
+      {inputType == 'keyboard' ? (
+        <div className={'main-screen sound-options'}>
+          <CheckBox
+            title={'Sound'}
+            fnClick={(v) => handleCheck(v, state.muted, setMuted)}
+            checked={!state.muted}
+          />
+
+          <Slider
+            title={'Volume'}
+            fnClick={(v) => setVolume(v)}
+            volume={volume}
+          />
+        </div>
+      ) : (
+        ''
+      )}
       <QuestionBar />
+      <ImageContainer debug={false} />
     </>
   );
 }
 
-export function QuizOptions({ switchInputType, volume, setVolume }) {
+function handleCheck(v, muted, setMuted) {
+  console.log(muted);
+  setMuted({ muted: v });
+}
+
+export function QuizOptions({
+  switchInputType,
+  volume,
+  setVolume,
+  state,
+  setMuted
+}) {
   return (
     <>
       <div className="options-box sounds-choices">
         <div className="slider-wrapper">
-          {/* <label>
-            Volume
-            <input
-              type="range"
-              min="0"
-              max="1"
-              value={volume}
-              onChange={(event) => handleVolume(event)}
-              step="0.01"
-            />
-          </label> */}
+          <CheckBox
+            title={'Sound'}
+            fnClick={(v) => handleCheck(v, state.muted, setMuted)}
+            checked={!state.muted}
+          />
+
+          <Slider
+            title={'Volume'}
+            fnClick={(v) => setVolume(v)}
+            volume={volume}
+          />
         </div>
       </div>
       <div className="options-box accessibility-choices">

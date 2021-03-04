@@ -20,7 +20,7 @@
 .Quiz-main {
   display: grid;
   grid-template-columns: 50% 50%;
-  grid-template-rows: 30% 12% 6% 2% 50%;
+  grid-template-rows: 30% 11% 7% 8% 44%;
   grid-template-areas:
     'imgl imgc'
     'skip imgc'
@@ -32,11 +32,11 @@
 @media only screen and (max-device-width: 4000px) and (orientation: landscape) {
   .Quiz-main {
     grid-template-columns: 30% 16% 54%;
-    grid-template-rows: 40% 40% 20%;
+    grid-template-rows: 20% 40% 40%;
     grid-template-areas:
+      'img skip volume'
       'img question input'
-      'img score input'
-      'img skip input';
+      'img score input';
   }
 }
 
@@ -71,6 +71,24 @@
 
 .skip-container {
   grid-area: skip;
+}
+
+.sound-options {
+  grid-area: volume;
+  width: 100%;
+  height: 100%;
+}
+
+.input-container + .sound-checkbox {
+  font-size: 0.6em;
+}
+
+.sound-options,
+.sound-checkbox,
+.skip-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .Skip-button:hover,
@@ -135,16 +153,12 @@
 }
 
 .question-container {
-  grid-area: question / question / question / volume;
-  align-self: end;
+  align-self: center;
+  grid-area: question;
 }
 
-.checkbox-wrapper {
-  z-index: 400;
-}
-
-.checkbox-wrapper label {
-  border: 1px solid white;
+.circle-container + .question-container {
+  align-self: center;
 }
 
 .input-container {
@@ -155,8 +169,17 @@
   justify-content: center;
 }
 
-.input-container.keyboard-container {
-  /* flex: 2.5 1; */
+.input-container.circle-container {
+  grid-area: volume;
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+@media only screen and (max-device-width: 4000px) and (orientation: landscape) {
+  .input-container.circle-container {
+    grid-column: 3;
+    grid-row: span 3;
+  }
 }
 
 .keyboard-container .score-container,
