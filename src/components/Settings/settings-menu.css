@@ -10,7 +10,7 @@
 .settings-main-container {
   display: grid;
   grid-template-rows: 6vmax 30% auto 40%;
-  grid-template-columns: 30% 30% auto 6vmax;
+  grid-template-columns: 30% 30% auto 6.5vmax;
   grid-template-areas:
     'x x x X'
     'a a a a'

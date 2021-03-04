@@ -92,22 +92,20 @@
 }
 
 .Skip-button:hover,
-.circleOfFifths button:hover {
-  background: rgb(80, 127, 221);
-  color: rgb(255, 255, 255);
+.circle button:hover {
+  /* background: rgb(80, 127, 221); */
+  color: rgb(255, 255, 255) !important;
 }
 
 .Skip-button {
-  /* position: absolute; */
-  /* top: 2vh; */
-  /* right: 2vh; */
-  font-size: calc(var(--button-text) * 0.7) !important;
+  font-size: calc(var(--button-text) * 0.95) !important;
   font-weight: 800;
   font-style: oblique;
+  padding: 0.3em !important;
   background: rgb(13 25 39 / 80%);
   border-radius: 15%/25% !important;
   border: 1px solid rgb(24 74 20 / 90%) !important;
-  color: rgb(175 74 187 / 65%) !important;
+  color: rgba(219, 112, 231, 0.65) !important;
   box-shadow: 0 8px 30px 10px rgba(4, 12, 14, 0.35);
 }
 
@@ -146,6 +144,7 @@
 .question-container .question {
   font-size: 0.8em;
   font-weight: normal;
+  color: var(--text-off-white);
 }
 
 .question-container .question b {

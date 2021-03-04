@@ -25,6 +25,7 @@ html {
   /* Colors */
   --bg-blue: #253555;
   --bg-blue-light: #c5f1ff;
+  --text-off-white: rgb(239, 254, 255);
 }
 
 /* Utils */
@@ -44,9 +45,9 @@ html {
 
 .overlay {
   position: absolute;
-  top: 1vh;
+  top: 0.8vh;
   left: 1vw;
-  height: 98vh;
+  height: 98.4vh;
   width: 98vw;
   background-color: rgba(26, 26, 26, 0.95);
   border-radius: 0.5em;
@@ -68,49 +69,52 @@ html {
 }
 
 .Skip-button:hover,
-.navigation button:hover,
+.navigation + .settings button:hover,
 .themed-button:hover {
   background: rgb(7, 17, 34, 0.8);
   transform: scale(1.08);
+  box-shadow: 0 0 0.5em 0.02em rgb(0 0 0 / 60%);
   /* padding: calc(1em / 4); */
   /* margin-top: 0.2em;
   margin-right: 0.2em; */
 }
 
+.Skip-button:hover {
+  color: white;
+  text-shadow: -2px -2px 0 rgb(160, 0, 0), 2px -2px 0 rgb(160, 0, 0),
+    -2px 2px 0 rgb(160, 0, 0), 2px 2px 0 rgb(160, 0, 0);
+}
+
+.navigation + .settings button:hover {
+  box-shadow: 0 0 0px 0px rgb(0, 0, 0);
+}
+
 .Skip-button:active,
-.navigation button:active,
+.navigation + .settings button:active,
 .themed-button:active {
   outline: 0 !important;
   position: relative;
   transform: scale(0.92) !important;
-  box-shadow: 0 0 0.7em 0.05em black;
+  box-shadow: 0 0 0.7em 0.07em black;
 }
 
+.navigation + .settings button:focus,
 .Skip-button:focus,
-.navigation button:focus,
 .themed-button:focus {
   outline: 0 !important;
-  /* border: 1px solid white; */
-  /* background-color: #224141; */
-}
-
-.navigation button:focus,
-.Skip-button:focus,
-.themed-button:focus {
-  border: 1px solid rgb(45, 151, 116);
+  border: 1px solid rgb(134, 177, 18);
+  /* background-color: rgb(5, 63, 41); */
+  color: cornsilk;
   transition: border 1ms;
 }
 
-.navigation button:focus {
-  /* background: #224141 !important; */
-}
-
-.navigation button,
+.navigation + .settings button,
 .Skip-button,
 .themed-button {
-  transition: 100ms ease, 400ms ease, 400ms ease, 600ms;
-  transition-delay: 10ms, 120ms, 100ms, 100ms;
-  transition-property: border, transform, box-shadow, background;
+  will-change: transform;
+  transition: 100ms ease, 380ms ease, 400ms ease, 600ms, 520ms;
+  transition-delay: 10ms, 90ms, 100ms, 100ms, 100ms;
+  transition-property: border, transform, box-shadow, background, color;
 }
 
 .Skip-button:hover,
@@ -119,9 +123,9 @@ html {
 .themed-button:hover,
 .themed-button:active,
 .themed-button:focus,
-.navigation button:hover,
-.navigation button:active,
-.navigation button:focus {
+.navigation + .settings button:hover,
+.navigation + .settings button:active,
+.navigation + .settings button:focus {
   transition: 50ms ease, 50ms ease, 50ms ease, 250ms ease-in-out;
   transition-delay: 0ms, 0ms, 0ms, 0ms;
   transition-property: border, transform, box-shadow, background;
@@ -135,9 +139,9 @@ html {
   text-align: center;
   display: grid;
   grid-template-columns: 25% 50% 25%;
-  grid-template-rows: 3.5em calc(100vh - 6em) 2.5em;
+  grid-template-rows: 8vh calc(100vh - 8vh - 2.5em) 2.5em;
   grid-template-areas:
-    'brand nav headrt'
+    'brand nav settings'
     'main main main'
     'footer footer footer';
 }
@@ -194,50 +198,59 @@ html {
   border-radius: 20%;
 }
 
-.navigation.float-top {
-  grid-area: nav / nav / nav / span 2;
-  display: grid;
-  grid-template-areas: 'navmenu settings';
-  grid-template-columns: 80% 20%;
-}
-
-.navigation .btn-wrapper {
-  width: 98%;
-  height: 100%;
-  max-height: 3.5em;
+.navigation.navbuttons {
+  grid-area: nav;
   display: flex;
-  align-items: center;
+  flex-direction: row;
   justify-content: center;
+  align-content: center;
 }
 
-.navigation .btn-wrapper.settings {
+.navigation .nav-btn {
+  display: inline-flex;
+  width: auto;
+  margin: 0 0.5em;
+  list-style: none;
+  align-items: center;
+  /* outline: 1px solid rgba(181, 239, 241, 0.6); */
+}
+
+.navigation .nav-btn:active {
+  background-color: rgba(181, 239, 241, 0.6);
+}
+
+.navigation .nav-btn a:-webkit-any-link {
+  text-decoration: none;
+}
+
+.nav-btn a {
+  font-size: 3.5vh;
+  /* align-self: center; */
+}
+
+.brand a,
+.brand a:visited,
+.nav-btn a,
+.nav-btn a:visited {
+  color: var(--text-off-white);
+  text-decoration: none;
+}
+
+.navigation + .btn-wrapper.settings {
   grid-area: settings;
-  justify-content: flex-end;
-  border-radius: 20%;
-  /* position: absolute;
-  right: 2vw; */
-}
-
-.navigation .settings .settings-button {
-  font-size: 2.2em;
   margin-top: 1vw;
-  margin-right: 1.5vw;
-  border-radius: 25%;
-  padding: 0.03vh 0vh 0.06vh 0.03vh;
-  z-index: 5;
-  box-shadow: 0 0 25px -6px black;
+  margin-right: 1vw;
+  justify-self: self-end;
 }
 
-.navigation button {
-  /* transition: all 0.4s; */
-  /* transition-delay: 120ms; */
-  padding: calc(0.08vh);
-  font-size: 1.5em;
-  color: rgb(181, 239, 241);
-  box-shadow: 0 0 0em 0em black;
-  /* box-shadow: none; */
-  background: none;
-  border: none;
+.navigation + .settings .settings-button {
+  z-index: 5;
+  font-size: 4.6vh;
+  border-radius: 25%;
+  padding: 0vh 0vh 0.08vh 0.03vh;
+  box-shadow: 0 0 50px -6px rgb(0, 0, 0);
+  background-color: var(--bg-blue);
+  border: 0 !important;
 }
 
 .Logo-title {
@@ -281,7 +294,7 @@ html {
 }
 
 .menu-btn-close {
-  font-size: 4vmax;
+  font-size: 4.6vmax;
   grid-area: X;
   background-color: rgb(109, 24, 24);
   border-radius: 0.25em;
@@ -294,7 +307,7 @@ html {
 }
 
 @media (prefers-reduced-motion) {
-  .navigation button,
+  .navigation + .settings .settings-button,
   .Skip-button,
   .themed-button {
     transition: 10ms ease, 40ms ease, 40ms ease;
@@ -308,13 +321,14 @@ html {
   .themed-button:hover,
   .themed-button:active,
   .themed-button:focus,
-  .navigation button:hover,
-  .navigation button:active,
-  .navigation button:focus {
+  .navigation + .settings .settings-button:hover,
+  .navigation + .settings .settings-button:active,
+  .navigation + .settings .settings-button:focus {
     transition: all 50ms;
     transition-delay: 0ms;
   }
-  .navigation button {
+
+  .navigation + .settings .settings-button {
     transition: all 0s;
     transition-delay: 0ms;
   }

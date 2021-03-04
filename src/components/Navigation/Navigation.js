@@ -1,16 +1,11 @@
 import React from 'react';
-import './nav-test.css';
+import { BrowserRouter as Router, Switch, Link } from 'react-router-dom';
 
-function NavButton(props) {
+function NavButton({ label, href }) {
   return (
-    <div className="btn-wrapper nav-btn">
-      <button
-        className="nav-button"
-        onClick={() => props.setCurrentQuiz(props.quiz)}
-      >
-        {props.label}
-      </button>
-    </div>
+    <span className="btn-wrapper nav-btn">
+      <Link to={href}>{label}</Link>
+    </span>
   );
 }
 
@@ -19,7 +14,7 @@ function MenuButton({ label, menuState, menuSet }) {
   // console.log(menuState);
   // console.log(menuSet);
   return (
-    <div className="btn-wrapper settings">
+    <span className="btn-wrapper settings">
       <button
         alt="settings"
         className="settings-button"
@@ -27,20 +22,19 @@ function MenuButton({ label, menuState, menuSet }) {
       >
         {label}
       </button>
-    </div>
+    </span>
   );
 }
 
-export function NavigationOne({ setCurrentQuiz, menuState, menuSet }) {
+export function NavigationOne({ menuState, menuSet }) {
   return (
-    <div className="navigation float-top">
-      <NavButton
-        setCurrentQuiz={setCurrentQuiz}
-        quiz={'KeySig'}
-        label="Key Signatures"
-      />
+    <>
+      <span className="navigation navbuttons">
+        {/* <NavButton label={'Home'} href={'/'} /> */}
+        <NavButton label={'Key Signatures'} href={'/keysignatures'} />
+      </span>
       <MenuButton menuState={menuState} menuSet={menuSet} label="⚙️" />
-    </div>
+    </>
   );
 }
 
