@@ -19,6 +19,7 @@ jobs:
           git config user.name "GitHub Actions"
           git config user.email "code@duckchase.com"
       - name: Build & deploy site to GitHub Pages
-        run: npm run deploy && echo 'https://flarp.duckchase.com' > /CNAME
+        run: npm run deploy
         env:
+          FLARP_DOMAIN: ${{ secrets.FLARP_DOMAIN }}
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
