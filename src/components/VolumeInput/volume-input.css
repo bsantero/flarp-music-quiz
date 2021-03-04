@@ -1,0 +1,22 @@
+.checkbox-wrapper {
+  z-index: 400;
+}
+
+.sound-checkbox label {
+  border-radius: 15em/25em;
+  border: 1px solid white;
+  padding: 0.5em;
+  opacity: 0.3;
+}
+
+.sound-checkbox.checked label {
+  border: 1px solid rgb(206, 206, 206);
+  background-color: green;
+  opacity: 1;
+}
+
+.sound-checkbox label input {
+  border-radius: 5%;
+  appearance: none;
+  -webkit-appearance: none;
+}

@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, setState } from 'react';
 import PropTypes from 'prop-types';
 import { InputPanel } from '../InputPanel/InputPanel';
+import { Slider, CheckBox } from '../VolumeInput/Slider';
 import {
   keyofc,
   chromatic,
@@ -98,31 +99,23 @@ const INPUT_OPTIONS = [
   'circlefourths'
 ];
 
-export function QuizModule(props) {
+export function QuizModule({
+  show,
+  menuSet,
+  volume,
+  setVolume,
+  state,
+  setMuted
+}) {
   const [generated, updateGenerated] = useState(!DEFAULT_NEW_GAME);
   const [score, updateScore] = useState(0);
   const [keySigs, updateKeySigs] = useState(chromatic);
   const [answerPitch, setAnswer] = useState(DEFAULT_ANSWER);
-  // const [answerMode, setAnswerMode] = useState(DEFAULT_ANSWER.mode);
-  // const [imgSrc, updateImgSrc] = useState(
-  //   getNoteData(DEFAULT_ANSWER.base, 'uri')
-  // );
-  const [accidental, updateAccidental] = useState('default');
   const [modePref, updateModePref] = useState(DEFAULT_MODE_PREF);
   const [wrongEntries, updateWrongEntries] = useState([]);
   const [inputType, changeInputType] = useState(DEFAULT_INPUT_TYPE);
   const [userPrefRotate, updatePrefRotate] = useState(DEFAULT_ROTATE_PREF);
   const [gameHistory, updateGameHistory] = useState([DEFAULT_ANSWER]);
-
-  // console.log(answerPitch);
-  // console.log(gameHistory);
-  // console.log(gameHistory[gameHistory.length - 1]);
-  // debugger;
-
-  function setNewAnswer(ans) {
-    setAnswer(ans);
-    console.log(ans);
-  }
 
   function switchInputType(type) {
     const arr = [
@@ -145,10 +138,10 @@ export function QuizModule(props) {
     mode = DEFAULT_ANSWER.mode,
     lookat = 'default'
   ) {
-    noteName
-      ? console.log(`noteName entered as: {${noteName}}`)
-      : console.log('noteName is null');
-    console.log(index, query, flarpiness, mode);
+    // noteName
+    //   ? console.log(`noteName entered as: {${noteName}}`)
+    //   : console.log('noteName is null');
+    // console.log(index, query, flarpiness, mode);
     const baseNote = keySigs[index];
     // const pointer = keySigs[index][lookat];
 
@@ -158,19 +151,19 @@ export function QuizModule(props) {
 
     let flarp;
     if (baseNote['default'] == 'flarp') {
-      console.log('pointer was flarp');
+      // console.log('pointer was flarp');
       if (SHARP_KEYS[mode].includes(noteName)) {
         flarp = baseNote['sharp'][query][mode];
       } else if (FLAT_KEYS[mode].includes(noteName)) {
         flarp = baseNote['flat'][query][mode];
       }
     } else {
-      console.log('pointer was not flarp');
+      // console.log('pointer was not flarp');
       const pointer = baseNote['default'];
       flarp = baseNote[pointer][query][mode];
     }
 
-    console.log(flarp);
+    // console.log(flarp);
     // console.log('Pointer is now:', pointer.toString());
     // console.log('pointer:query', pointer[query]);
     // console.log('uri:', pointer[query][mode]);
@@ -187,14 +180,14 @@ export function QuizModule(props) {
 
   function generateNewNote() {
     const modeOptions = MODE_OPTIONS[modePref];
-    console.log(`can generate out of ${modeOptions} mode options.`);
+    // console.log(`can generate out of ${modeOptions} mode options.`);
     const mode = modeOptions[random(0, modeOptions.length - 1)];
     const pitchOptions = PITCH_OPTIONS[mode];
     let locked = true;
     let rand;
     while (locked) {
       rand = pitchOptions[random(0, pitchOptions.length)];
-      console.log('got random:', rand);
+      // console.log('got random:', rand);
       // debugger;
       pitchOptions.includes(rand) ? (locked = false) : (locked = true);
     }
@@ -203,20 +196,20 @@ export function QuizModule(props) {
 
     // const pitchName = 'd♮'; // debug a single note after win
     const offset = 12 - modeTransposition[mode];
-    console.log('transposing', offset);
+    // console.log('transposing', offset);
     //  enharmonicsToIndex[];
 
     // console.log('base:', base);
     // console.log('mode, ' + modeTransposition[mode]);
     const pitch = enharmonicsToIndex[pitchName];
     const base = pitch + offset < 11 ? pitch + offset : pitch - 12 + offset;
-    console.log('base, pitch', base, pitch);
+    // console.log('base, pitch', base, pitch);
     // debugger;
     // if (pitch > 11) {
     //   pitch = pitch - 12;
     // }
-    console.log(`pitch: ${pitch}`);
-    console.log('pitchName is:', pitchName);
+    // console.log(`pitch: ${pitch}`);
+    // console.log('pitchName is:', pitchName);
     const flarpiness = accidentalKeys(pitchName);
     const newAnswer = {
       base: base,
@@ -233,11 +226,16 @@ export function QuizModule(props) {
 
   function handleSkip() {
     updateScore(score - 1);
+    generateNewNote();
+    updateWrongEntries([]);
+    updateGameHistory((...gameHistory) =>
+      Object.assign({}, gameHistory, { [gameHistory.length]: answerPitch })
+    );
   }
 
   function handleClick(entry, oldAnswer) {
     // console.log(entry, typeof entry);
-    console.log(inputType);
+    // console.log(inputType);
     let answer;
     if (inputType == 'keyboard') {
       answer = enharmonicsToIndex[answerPitch.pitchName];
@@ -245,7 +243,7 @@ export function QuizModule(props) {
     } else {
       answer = answerPitch.pitchName;
     }
-    console.log(`${entry} entered, expected: ${answerPitch.pitchName}`);
+    // console.log(`${entry} entered, expected: ${answerPitch.pitchName}`);
     const newWrongs = [...wrongEntries];
 
     // Test the input against the current pitch
@@ -331,9 +329,13 @@ export function QuizModule(props) {
     <>
       {/* <ShowAnswer /> */}
       <SettingsContainer
-        show={props.show}
-        menuSet={props.menuSet}
+        show={show}
+        menuSet={menuSet}
         QuizOptions={QuizOptions}
+        setVolume={setVolume}
+        volume={volume}
+        state={state}
+        setMuted={setMuted}
         switchInputType={changeInputType}
       />
       <SkipButton />
@@ -348,16 +350,62 @@ export function QuizModule(props) {
         currentAnswer={answerPitch}
         userRotate={userPrefRotate}
         mode={answerPitch.mode}
+        volume={volume}
+        setVolume={setVolume}
+        state={state}
       />
-      <ImageContainer debug={false} />
+      {inputType == 'keyboard' ? (
+        <div className={'main-screen sound-options'}>
+          <CheckBox
+            title={'Sound'}
+            fnClick={(v) => handleCheck(v, state.muted, setMuted)}
+            checked={!state.muted}
+          />
+
+          <Slider
+            title={'Volume'}
+            fnClick={(v) => setVolume(v)}
+            volume={volume}
+          />
+        </div>
+      ) : (
+        ''
+      )}
       <QuestionBar />
+      <ImageContainer debug={false} />
     </>
   );
 }
 
-export function QuizOptions(props) {
+function handleCheck(v, muted, setMuted) {
+  console.log(muted);
+  setMuted({ muted: v });
+}
+
+export function QuizOptions({
+  switchInputType,
+  volume,
+  setVolume,
+  state,
+  setMuted
+}) {
   return (
     <>
+      <div className="options-box sounds-choices">
+        <div className="slider-wrapper">
+          <CheckBox
+            title={'Sound'}
+            fnClick={(v) => handleCheck(v, state.muted, setMuted)}
+            checked={!state.muted}
+          />
+
+          <Slider
+            title={'Volume'}
+            fnClick={(v) => setVolume(v)}
+            volume={volume}
+          />
+        </div>
+      </div>
       <div className="options-box accessibility-choices">
         <h1 className="options-header">Accessibility</h1>
 
@@ -375,35 +423,35 @@ export function QuizOptions(props) {
         <button
           className="quiz-option"
           // disabled
-          onClick={() => props.switchInputType('chromatic')}
+          onClick={() => switchInputType('chromatic')}
         >
           Chromatic
         </button>
         <button
           className="quiz-option"
           // disabled
-          onClick={() => props.switchInputType('keyboard')}
+          onClick={() => switchInputType('keyboard')}
         >
           Keyboard
         </button>
         <button
           className="quiz-option"
           // disabled
-          onClick={() => props.switchInputType('circlechromatic')}
+          onClick={() => switchInputType('circlechromatic')}
         >
           Chromatic Circle
         </button>
         <button
           className="quiz-option"
           // disabled
-          onClick={() => props.switchInputType('circlefourths')}
+          onClick={() => switchInputType('circlefourths')}
         >
           Circle of Fourths
         </button>
         <button
           className="quiz-option"
           // disabled
-          onClick={() => props.switchInputType('circlefifths')}
+          onClick={() => switchInputType('circlefifths')}
         >
           Circle of Fifths
         </button>

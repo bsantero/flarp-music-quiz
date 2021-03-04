@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useReducer } from 'react';
 import PropTypes from 'prop-types';
 import conLog from '../../utils/conLog.js';
 import { Header } from '../Header/Header.js';
@@ -62,14 +62,28 @@ export function View(props) {
 
   return (
     <main className="App-main Quiz-main">
-      <QuizComponent show={props.show} menuSet={props.menuSet} />
+      <QuizComponent
+        show={props.show}
+        menuSet={props.menuSet}
+        volume={props.volume}
+        setVolume={props.setVolume}
+        state={props.state}
+        setMuted={props.setMuted}
+      />
     </main>
   );
 }
 
 function App() {
+  const initialState = {
+    muted: false
+  };
+
   const [currentQuiz, setCurrentQuiz] = React.useState(DEFAULT_QUIZ_ID);
   const [settingsShow, toggleSettings] = React.useState(false);
+  const [volume, setVolume] = React.useState(0.8);
+  const reducer = (state, action) => ({ ...state, ...action });
+  const [state, setState] = useReducer(reducer, initialState);
 
   // changeSettingsClass(newClass);
 
@@ -85,6 +99,10 @@ function App() {
         currentQuiz={currentQuiz}
         show={settingsShow}
         menuSet={toggleSettings}
+        volume={volume}
+        setVolume={setVolume}
+        state={state}
+        setMuted={setState}
       />
       <Footer />
     </div>

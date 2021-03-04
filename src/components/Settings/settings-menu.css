@@ -1,16 +1,26 @@
+:root {
+  --options-text: calc(33vmax / 5 / 3);
+  --options-header: calc(var(--options-text) * 1.6);
+}
+
+.accessibility-choices {
+  /* display: none; */
+}
+
 .settings-main-container {
   display: grid;
-  grid-template-rows: 6vmax 40% auto;
+  grid-template-rows: 6vmax 30% auto 40%;
   grid-template-columns: 30% 30% auto 6vmax;
   grid-template-areas:
-    'a b c X'
-    'a b c Y'
-    'd e f Z';
+    'x x x X'
+    'a a a a'
+    'b b b b'
+    'c c c c';
 }
 
 .options-box:nth-of-type(1) {
   grid-area: a;
-  display: none;
+  /* display: ; */
 }
 
 .options-box:nth-of-type(2) {
@@ -19,52 +29,90 @@
 
 .options-box:nth-of-type(3) {
   grid-area: c;
-  display: none;
+
+  border-bottom: none;
+  /* display: ; */
 }
 
 .options-box {
-  /* display: inline-flex; */
-  /* flex-wrap: wrap; */
-  margin-top: 2vmax;
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  align-content: center;
   max-height: 100%;
-  overflow: scoll;
+  margin: 0.1em;
+  border-bottom: 3px dotted rgba(80, 80, 80, 0.3);
+  background-color: rgba(22, 19, 35, .63));
+  overflow-y: scroll;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.options-box::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.options-box {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 .options-box .options-header {
-  font-size: 7vh;
+  font-size: var(--options-header);
   margin-bottom: 0.45em;
+  width: 100%;
 }
 
 .options-box .quiz-option {
-  font-size: 3.5vh;
+  font-size: var(--options-text);
   font-weight: bold;
-  margin-bottom: 0.45em;
-  width: 6em;
+  padding: 0.2em;
+  margin: 0.45em 0.2em;
+  width: 30%;
+  min-height: 3em;
   border-radius: 5.5%/18.5%;
 }
 
-@media only screen and (min-device-width: 768px) and (orientation: landscape) {
+@media only screen and (min-device-width: 400px) and (orientation: landscape) {
   .settings-main-container {
+    font-size: 3vmax;
     display: grid;
-    grid-template-rows: 6vmax 40% auto;
-    grid-template-columns: 30% 30% auto 6vmax;
+    grid-template-rows: 6vmax auto 20vmax;
+    grid-template-columns: 32% 31% auto 6vmax;
     grid-template-areas:
-      'a b c X'
+      'a b d X'
       'a b c Y'
-      'd e f Z';
+      'e f c Z';
+  }
+
+  .options-box:nth-of-type(1) {
+    margin-left: 2vw;
+    border-left: none;
+    /* display: ; */
+  }
+
+
+  .options-box:nth-of-type(1).sounds-choices {
+    border-top: 3px dotted rgba(80, 80, 80, 0.4);
+    grid-area: e / e / e / f;
+    /* display: ; */
   }
 
   .options-box {
-    border-left: 5px dotted rgba(80, 80, 80, 0.8);
+    margin-top: 2vmax;
+    border-bottom: none;
+    border-left: 3px dotted rgba(80, 80, 80, 0.4);
   }
 
   .options-header {
-    font-size: 30pt;
+    font-size: 4.5vmax;
   }
-  .quiz-option {
-    font-size: 18pt;
+
+  .options-box .quiz-option {
+    /* font-size: 1; */
+    width: 50%;
+
     margin: 0.5pt;
     padding: 4pt 2pt;
   }
