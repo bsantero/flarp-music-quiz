@@ -20,6 +20,9 @@ jobs:
           git config user.email "code@duckchase.com"
       - name: Build & deploy site to GitHub Pages
         run: npm run deploy
-        env:
-          FLARP_DOMAIN: ${{ secrets.FLARP_DOMAIN }}
+        env: 
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      - name: Add domain name
+        run: npm run add-domain
+        env:
+          FLARP_CNAME: ${{ secrets.FLARP_CNAME }}
