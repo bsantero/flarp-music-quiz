@@ -1,22 +1,26 @@
 {
   "files": {
-    "main.css": "/flarp-music-quiz/static/css/main.1d1b2bb4.chunk.css",
-    "main.js": "/flarp-music-quiz/static/js/main.bed462b9.chunk.js",
-    "main.js.map": "/flarp-music-quiz/static/js/main.bed462b9.chunk.js.map",
-    "runtime-main.js": "/flarp-music-quiz/static/js/runtime-main.692c8257.js",
-    "runtime-main.js.map": "/flarp-music-quiz/static/js/runtime-main.692c8257.js.map",
-    "static/js/2.642c38cd.chunk.js": "/flarp-music-quiz/static/js/2.642c38cd.chunk.js",
-    "static/js/2.642c38cd.chunk.js.map": "/flarp-music-quiz/static/js/2.642c38cd.chunk.js.map",
-    "static/js/3.b7abfad6.chunk.js": "/flarp-music-quiz/static/js/3.b7abfad6.chunk.js",
-    "static/js/3.b7abfad6.chunk.js.map": "/flarp-music-quiz/static/js/3.b7abfad6.chunk.js.map",
+    "main.css": "/flarp-music-quiz/static/css/main.1509a244.chunk.css",
+    "main.js": "/flarp-music-quiz/static/js/main.f394e273.chunk.js",
+    "main.js.map": "/flarp-music-quiz/static/js/main.f394e273.chunk.js.map",
+    "runtime-main.js": "/flarp-music-quiz/static/js/runtime-main.3bceb4e4.js",
+    "runtime-main.js.map": "/flarp-music-quiz/static/js/runtime-main.3bceb4e4.js.map",
+    "static/js/2.bdbff046.chunk.js": "/flarp-music-quiz/static/js/2.bdbff046.chunk.js",
+    "static/js/2.bdbff046.chunk.js.map": "/flarp-music-quiz/static/js/2.bdbff046.chunk.js.map",
+    "static/js/3.a76c8a8f.chunk.js": "/flarp-music-quiz/static/js/3.a76c8a8f.chunk.js",
+    "static/js/3.a76c8a8f.chunk.js.map": "/flarp-music-quiz/static/js/3.a76c8a8f.chunk.js.map",
+    "static/js/4.09adf7ca.chunk.js": "/flarp-music-quiz/static/js/4.09adf7ca.chunk.js",
+    "static/js/4.09adf7ca.chunk.js.map": "/flarp-music-quiz/static/js/4.09adf7ca.chunk.js.map",
     "index.html": "/flarp-music-quiz/index.html",
-    "static/css/main.1d1b2bb4.chunk.css.map": "/flarp-music-quiz/static/css/main.1d1b2bb4.chunk.css.map",
-    "static/js/2.642c38cd.chunk.js.LICENSE.txt": "/flarp-music-quiz/static/js/2.642c38cd.chunk.js.LICENSE.txt"
+    "static/css/main.1509a244.chunk.css.map": "/flarp-music-quiz/static/css/main.1509a244.chunk.css.map",
+    "static/js/2.bdbff046.chunk.js.LICENSE.txt": "/flarp-music-quiz/static/js/2.bdbff046.chunk.js.LICENSE.txt",
+    "static/js/3.a76c8a8f.chunk.js.LICENSE.txt": "/flarp-music-quiz/static/js/3.a76c8a8f.chunk.js.LICENSE.txt",
+    "static/media/oneoctave.a15678ee.mp3": "/flarp-music-quiz/static/media/oneoctave.a15678ee.mp3"
   },
   "entrypoints": [
-    "static/js/runtime-main.692c8257.js",
-    "static/js/2.642c38cd.chunk.js",
-    "static/css/main.1d1b2bb4.chunk.css",
-    "static/js/main.bed462b9.chunk.js"
+    "static/js/runtime-main.3bceb4e4.js",
+    "static/js/2.bdbff046.chunk.js",
+    "static/css/main.1509a244.chunk.css",
+    "static/js/main.f394e273.chunk.js"
   ]
 }
