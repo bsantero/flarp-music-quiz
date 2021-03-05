@@ -326,7 +326,7 @@ export function QuizModule({
   // Main function's Return ...
 
   return (
-    <>
+    <main className="App-main Quiz-main">
       {/* <ShowAnswer /> */}
       <SettingsContainer
         show={show}
@@ -373,7 +373,7 @@ export function QuizModule({
       )}
       <QuestionBar />
       <ImageContainer debug={false} />
-    </>
+    </main>
   );
 }
 
