@@ -79,7 +79,7 @@ export function Circle({
   }
   buttons.push(
     <FlirpButton
-      buttonStyle={buttonStyle}
+      buttonStyle={DEFAULT_BUTTON_STYLE}
       handleFlarpFlip={handleFlarpFlip}
       setFlarpiness={setFlarpiness}
     />
